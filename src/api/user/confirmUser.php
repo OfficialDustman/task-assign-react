@@ -15,8 +15,8 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
         // Email exists, check if the hashed password matches
         $checkUser = $pdo->prepare("SELECT username, email, team_id FROM users WHERE email = ? AND password = ?");
         $checkUser->execute([$email, $password]);
-        $userDetails = $checkUser->;
-fetchColumn()
+        $userDetails = $checkUser->fetchColumn();
+
         if ($userDetails) {
             // Username and password match, sign-in successful
             $response = [
