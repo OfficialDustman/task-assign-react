@@ -1,28 +1,37 @@
-
+import UIButton from '../../Ui/Button';
+import UIForm from '../../Ui/Form';
+import { Form, InputGroup } from 'react-bootstrap';
 
 function SignIn() {
-    
+
     return (
-        <form>
-            <div className="email">
-                <label htmlFor="email">Enter Your Email</label>
-                <input 
-                    type="email"
-                    id="email"
-                    placeholder="email"
-                    required
-                />
-            </div>
-            <div className="Password">
-                <label htmlFor="Password">Enter Your Password</label>
-                <input 
-                    type="Password"
-                    id="Password"
-                    placeholder="Password"
-                    required
-                />
-            </div>
-        </form>
+        <UIForm>
+            <Form.Group className="mb-3">
+                <Form.Label>Enter Your Email</Form.Label>
+                <InputGroup>
+                    <InputGroup.Text>Email</InputGroup.Text>
+                    <Form.Control
+                        type="email"
+                        placeholder="user@email.com"
+                        required
+                    />
+                </InputGroup>
+            </Form.Group>
+
+            <Form.Group className="mb-3">
+                <Form.Label>Enter Your Password</Form.Label>
+                <InputGroup>
+                    <InputGroup.Text>Password</InputGroup.Text>
+                    <Form.Control
+                        type="password"
+                        placeholder="Password"
+                        required
+                    />
+                </InputGroup>
+            </Form.Group>
+
+            <UIButton type='submit'>Sign In</UIButton>
+        </UIForm>
     )
 }
 

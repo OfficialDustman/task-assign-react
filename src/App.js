@@ -1,5 +1,6 @@
 import logo from "./logo.svg";
 import "./App.css";
+import 'bootstrap/dist/css/bootstrap.min.css';
 import Auth from "./components/Pages/Auth";
 import SignIn from "./components/Layouts/Auth/SignIn";
 import SignUp from "./components/Layouts/Auth/SignUp";
@@ -34,7 +35,11 @@ const router = createBrowserRouter([
 
 ]);
 
-
+// useEffect(() => {
+//   if (location.pathname != '/') {
+//       navigate("/");
+//   }
+// }, [location.pathname]);
 
 function App() {
   return <RouterProvider router={router}></RouterProvider>;
