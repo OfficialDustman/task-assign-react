@@ -7,6 +7,12 @@ import SignUp from "./components/Layouts/Auth/SignUp";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "./components/Pages/Home";
 
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { fas } from '@fortawesome/free-solid-svg-icons'
+import { faFontAwesome } from '@fortawesome/free-brands-svg-icons'
+library.add(fas, faFontAwesome)
+
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -30,8 +36,16 @@ const router = createBrowserRouter([
   },
   {
     path: "/home",
-    element: <Home />,
+    element: <Home />
   },
+  {
+    path: "/signup",
+    element: <SignUp />
+  },
+  {
+    path: "/signin",
+    element: <SignIn />
+  }
 
 ]);
 

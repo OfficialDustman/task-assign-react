@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
-import { useLocation, Link, useNavigate, Outlet } from "react-router-dom";
+// import useFetch from "../../hooks/useFetch";
+import { Link, useNavigate, Outlet } from "react-router-dom";
 import { Container, Row, Col } from 'react-bootstrap';
 
 function Auth() {
@@ -7,24 +8,21 @@ function Auth() {
     const [teams, setTeams] = useState(null);
 
     const navigate = useNavigate();
-    const location = useLocation();
-    // console.log(location.pathname);
     const hasAccountHandler = () => {
         setHasAccount(!hasAccount)
     }
-
-    // useEffect(() => {
-    //     if (location.pathname != '/') {
-    //         navigate("/");
-    //     }
-    //   }, [location.pathname]);
 
     useEffect(() => {
         if (hasAccount) {
             navigate("signin");
         }
-    }, [hasAccount]);
-
+    }, [hasAccount, navigate]);
+    
+    // const { fetchData } = useFetch(
+    //     "http://localhost/repos/task-assign/api/getTeams.php"
+    // );
+    // setTeams(fetchData);
+    
     useEffect(() => {
         // Using fetch
         fetch(`http://localhost/repos/task-assign/api/getTeams.php`)
@@ -36,7 +34,6 @@ function Auth() {
             console.error('Error fetching data:', error);
         });
     }, []);
-
 
     return (
         <Container className="auth">
