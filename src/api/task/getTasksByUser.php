@@ -4,7 +4,7 @@ require '../config.php';
 
 // Check if the required POST data is set
 if (isset($_POST['username'])) {
-    $username = $_POST['username'];
+    $username = $_POST[''];
 
     // Check if the username exists in the database
     $checkUser = $pdo->prepare("SELECT COUNT(*) as user_count FROM users WHERE username = ?");

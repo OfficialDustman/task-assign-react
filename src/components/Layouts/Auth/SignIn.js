@@ -3,17 +3,17 @@ import UIForm from "../../Ui/Form";
 import { Form, InputGroup, Spinner } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import AuthContext from "../../../store/auth-context";
-import { useState, useEffect, useContext } from "react";
+import { useState, useContext } from "react";
+import SuccessModal from '../../Ui/SuccessModal';
 
 function SignIn() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isLoaded, setIsLoaded] = useState(true);
-  const [data, setData] = useState(null);
-
-  const ctx = useContext(AuthContext);
-  ctx.changeUserData("I am a boy");
-  console.log(ctx.userData);
+  const [fetchData, setFetchData] = useState(null);
+  const [error, setError] = useState(null);
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
+  const { userData, changeUserData } = useContext(AuthContext)
 
   const navigate = useNavigate();
 
@@ -30,16 +30,24 @@ function SignIn() {
       method: "POST",
       body: formData,
     })
-      .then((response) => response.json())
+      .then((response) => response.json() )
       .then((data) => {
-        setData(data);
+        setFetchData(data);
         setIsLoaded(true);
-        console.log(data);
+        changeUserData(fetchData.data)
+        setShowSuccessModal(true)
+        console.log(userData);
       })
       .catch((error) => {
+        setError(error)
         console.error("Error fetching data:", error);
       });
   }
+
+  const handleCloseSuccessModal = () => {
+    setShowSuccessModal(false);
+    navigate("/home");
+  };
 
   return (
     <UIForm onSubmit={submitHandler}>
@@ -71,6 +79,8 @@ function SignIn() {
         </InputGroup>
       </Form.Group>
 
+      {error && <p>{error.message}</p>}
+
       <UIButton type="submit">
         {isLoaded ? (
           "Sign In"
@@ -78,6 +88,12 @@ function SignIn() {
           <Spinner animation="border" variant="light" size="sm" />
         )}
       </UIButton>
+
+      <SuccessModal 
+        show={showSuccessModal} 
+        handleClose={handleCloseSuccessModal}
+        data={fetchData}
+      />
     </UIForm>
   );
 }

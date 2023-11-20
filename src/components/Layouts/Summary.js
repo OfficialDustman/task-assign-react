@@ -3,7 +3,7 @@ import DateFilter from "../Ui/DateFilter"
 import TaskCount from "../Ui/TaskCount"
 
 
-export default function Summary({tasks, onFilteredTasksChange}) {
+export default function Summary({tasks, onFilteredTasksChange, onDateChange}) {
     const [datefilteredTasks, setDateFilteredTasks] = useState([...tasks]);
   
     const handleDateChange = (newDate) => {
@@ -14,6 +14,7 @@ export default function Summary({tasks, onFilteredTasksChange}) {
       });
       setDateFilteredTasks(newFilteredTasks);
       onFilteredTasksChange(newFilteredTasks)
+      onDateChange(newDate)
     };
 
     // Count all tasks and completed tasks

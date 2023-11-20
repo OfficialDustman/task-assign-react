@@ -2,10 +2,14 @@ import logo from "./logo.svg";
 import "./App.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Auth from "./components/Pages/Auth";
+import Home from "./components/Pages/Home";
+import Task from "./components/Pages/Task";
+import Profile from "./components/Pages/Profile";
+import Project from "./components/Pages/Project";
+
 import SignIn from "./components/Layouts/Auth/SignIn";
 import SignUp from "./components/Layouts/Auth/SignUp";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Home from "./components/Pages/Home";
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fas } from '@fortawesome/free-solid-svg-icons'
@@ -36,24 +40,28 @@ const router = createBrowserRouter([
   },
   {
     path: "/home",
-    element: <Home />
-  },
-  {
-    path: "/signup",
-    element: <SignUp />
-  },
-  {
-    path: "/signin",
-    element: <SignIn />
+    element: <Home />,
+    children: [
+      {
+        index: true,
+        element: <Home />
+      },
+      {
+        path: "/home/task",
+        element: <Task />
+      },
+      {
+        path: "/home/profile",
+        element: <Profile />
+      },
+      {
+        path: "/home/project",
+        element: <Project />
+      }
+    ],
   }
 
 ]);
-
-// useEffect(() => {
-//   if (location.pathname != '/') {
-//       navigate("/");
-//   }
-// }, [location.pathname]);
 
 function App() {
   return <RouterProvider router={router}></RouterProvider>;
