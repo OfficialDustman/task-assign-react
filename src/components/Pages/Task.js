@@ -1,7 +1,7 @@
-import Header from '../Layouts/Header'
+// import Header from '../Layouts/Header'
 import Summary from '../Layouts/Summary'
 import TaskBody from '../Layouts/Tasks/TaskBody'
-
+import { useState } from 'react';
 
 function Task() {
 
@@ -19,7 +19,7 @@ function Task() {
     
     return (
         <>
-            <Header userData={userData}/>
+            {/* <Header userData={userData}/> */}
             <Summary 
                 tasks={tasks} 
                 onFilteredTasksChange={handleFilteredTasksChange}
