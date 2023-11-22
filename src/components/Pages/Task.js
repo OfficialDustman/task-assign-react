@@ -12,12 +12,12 @@ function Task() {
     const [isLoaded, setIsLoaded] = useState(true);
     const [error, setError] = useState(null);
     const { userData } = useContext(AuthContext)
-
+    console.log(userData);
     useEffect(() => {
         setIsLoaded(false);
 
         const formData = new FormData();
-        formData.append("username", userData.username);
+        formData.append("username", userData?.username);
     
         fetch("http://localhost/repos/task-assign/api/user/confirmUser.php", {
           method: "POST",
