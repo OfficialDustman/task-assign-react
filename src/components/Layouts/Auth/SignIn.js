@@ -45,10 +45,14 @@ function SignIn() {
   }
 
   const dataObjHandler = (originalObject) => {
-    const arrayOfObjects = Object.keys(originalObject).map(key => ({ 
-      [key]: originalObject[key] 
-    }));
+    // const arrayOfObjects = Object.keys(originalObject).map(key => ({ 
+    //   [key]: originalObject[key] 
+    // }));
 
+
+    const arrayOfObjects = Object.entries(originalObject).map(
+      ([key, value]) => ({ key, value })
+    );
     console.log(arrayOfObjects);
     // changeUserData(arrayOfObjects);
   }
