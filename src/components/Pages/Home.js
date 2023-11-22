@@ -1,5 +1,6 @@
 import { useLocation, useNavigate, Outlet } from "react-router-dom";
 import NavBar from '../Layouts/NavBar'
+import { useEffect } from "react";
 
 function Home() {
     
