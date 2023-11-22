@@ -46,7 +46,7 @@ function SignIn() {
 
   const dataObjHandler = (originalObject) => {
     console.log(originalObject);
-    const arrayOfObjects = Object.keys(originalObject).map(key => ({ [key]: inputObject[key] }));
+    const arrayOfObjects = Object.keys(originalObject).map(key => ({ [key]: originalObject[key] }));
 
     console.log(arrayOfObjects);
     // changeUserData(arrayOfObjects);
