@@ -48,6 +48,8 @@ function Task() {
     };
 
     
+    console.log(tasks, filteredTasks);
+
     return (
         <>
             {/* <Header userData={userData}/> */}
