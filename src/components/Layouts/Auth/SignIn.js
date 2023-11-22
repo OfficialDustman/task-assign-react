@@ -35,7 +35,6 @@ function SignIn() {
         setFetchData(data);
         setIsLoaded(true);
         changeUserData(fetchData.data[0]);
-        // dataObjHandler(fetchData.data[0]);
         handleOpenSuccessModal();
       })
       .catch((error) => {
