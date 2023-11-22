@@ -10,7 +10,7 @@ function SignIn() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isLoaded, setIsLoaded] = useState(true);
-  const [fetchData, setFetchData] = useState(null);
+  const [fetchData, setFetchData] = useState({});
   const [error, setError] = useState(null);
   const [showSuccessModal, setShowSuccessModal] = useState(false);
   const { userData, changeUserData } = useContext(AuthContext)
@@ -36,7 +36,7 @@ function SignIn() {
         setIsLoaded(true);
         dataObjHandler(fetchData.data);
         handleOpenSuccessModal();
-        console.log(userData);
+        console.log(data);
       })
       .catch((error) => {
         setError(error)
