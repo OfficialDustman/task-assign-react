@@ -34,8 +34,8 @@ function SignIn() {
       .then((data) => {
         setFetchData(data);
         setIsLoaded(true);
-        changeUserData(fetchData.data)
-        setShowSuccessModal(true)
+        changeUserData(fetchData.data);
+        handleOpenSuccessModal();
         console.log(userData);
       })
       .catch((error) => {
@@ -43,6 +43,14 @@ function SignIn() {
         console.error("Error fetching data:", error);
       });
   }
+
+  const handleOpenSuccessModal = () => {
+    if (fetchData.status = 'success') {
+      setShowSuccessModal(true);
+    } else {
+      setError(fetchData.status)
+    }
+  };
 
   const handleCloseSuccessModal = () => {
     setShowSuccessModal(false);

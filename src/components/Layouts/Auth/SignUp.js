@@ -38,7 +38,8 @@ function SignUp() {
             .then(data => {
                 setData(data);
                 setIsLoaded(true)
-                setShowSuccessModal(true)
+                changeUserData(fetchData.data);
+                handleOpenSuccessModal();
                 console.log(data);
             })
             .catch(error => {
@@ -46,7 +47,15 @@ function SignUp() {
                 setError(error)
             });
     }
-
+    
+    const handleOpenSuccessModal = () => {
+        if (fetchData.status = 'success') {
+          setShowSuccessModal(true);
+        } else {
+          setError(fetchData.status)
+        }
+      };
+    
     const handleCloseSuccessModal = () => {
         setShowSuccessModal(false);
         navigate("/signin");

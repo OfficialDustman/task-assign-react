@@ -4,8 +4,8 @@ import NavBar from '../Layouts/NavBar'
 
 function Home() {
     
-    // const navigate = useNavigate();
-    // navigate("/home/task");
+    const navigate = useNavigate();
+    navigate("/home/task");
 
     return (
         <>
