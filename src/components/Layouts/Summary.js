@@ -1,6 +1,7 @@
 import { Card, CardGroup } from "react-bootstrap"
 import DateFilter from "../Ui/DateFilter"
 import TaskCount from "../Ui/TaskCount"
+import { useState } from 'react';
 
 
 export default function Summary({tasks, onFilteredTasksChange, onDateChange}) {
@@ -8,7 +9,7 @@ export default function Summary({tasks, onFilteredTasksChange, onDateChange}) {
   
     const handleDateChange = (newDate) => {
       // Filter tasks based on the selected date and update the state
-      const newFilteredTasks = tasks.filter(task => {
+      const newFilteredTasks = tasks?.filter(task => {
         const taskDate = new Date(task.start_date); // Assuming each task has a 'date' property
         return taskDate.toDateString() === newDate.toDateString();
       });

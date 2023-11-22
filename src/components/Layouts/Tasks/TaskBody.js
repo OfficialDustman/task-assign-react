@@ -1,6 +1,7 @@
 import { Card } from 'react-bootstrap';
 import TaskFilter from '../../Ui/TaskFilter';
 import TaskList from './TaskList';
+import { useState } from 'react';
 
 const TaskBody = ({ date, tasks }) => {
 
@@ -14,10 +15,10 @@ const TaskBody = ({ date, tasks }) => {
         newFilteredTasks = [...tasks];
         break;
       case 'ongoing':
-        newFilteredTasks = tasks.filter(task => task.status === 'ongoing');
+        newFilteredTasks = tasks?.filter(task => task.status === 'ongoing');
         break;
       case 'completed':
-        newFilteredTasks = tasks.filter(task => task.status === 'completed');
+        newFilteredTasks = tasks?.filter(task => task.status === 'completed');
         break;
       default:
         newFilteredTasks = [...tasks];
