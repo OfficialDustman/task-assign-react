@@ -1,15 +1,22 @@
-import { useNavigate, Outlet } from "react-router-dom";
+import { useLocation, useNavigate, Outlet } from "react-router-dom";
 import NavBar from '../Layouts/NavBar'
 
 function Home() {
     
-    const navigate = useNavigate();
-    navigate("/home/task");
+    const navigate = useNavigate(),
+          location = useLocation();
+
+    useEffect(() => {
+        if (location.pathname === '/home') {
+            navigate("/home/task");  
+        }
+    }, [location, navigate]);
 
     return (
         <>
-            <NavBar/>
-            <Outlet/>
+            <Outlet>
+                <NavBar/>
+            </Outlet>
         </>
     )
 }
