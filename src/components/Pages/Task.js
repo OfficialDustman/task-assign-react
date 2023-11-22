@@ -35,7 +35,7 @@ function Task() {
             setError(error)
             console.error("Error fetching data:", error);
           });
-    }, [userData.username, fetchData.data])
+    }, [])
     
     const [filteredTasks, setFilteredTasks] = useState([...tasks]);
 
