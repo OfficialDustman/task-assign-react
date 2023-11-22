@@ -44,7 +44,7 @@ function SignIn() {
       });
   }
 
-  const dataObjHandler = () => {
+  const dataObjHandler = (originalObject) => {
     const arrayOfObjects = Object.keys(originalObject).map(key => ({ 
       [key]: originalObject[key] 
     }));
