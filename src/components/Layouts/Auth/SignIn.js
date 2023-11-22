@@ -34,22 +34,14 @@ function SignIn() {
       .then((data) => {
         setFetchData(data);
         setIsLoaded(true);
-        dataObjHandler(fetchData.data[0]);
+        changeUserData(fetchData.data[0]);
+        // dataObjHandler(fetchData.data[0]);
         handleOpenSuccessModal();
-        console.log(userData);
       })
       .catch((error) => {
         setError(error)
         console.error("Error fetching data:", error);
       });
-  }
-
-  const dataObjHandler = (originalObject) => {
-    console.log(originalObject);
-    const arrayOfObjects = Object.keys(originalObject).map(key => ({ [key]: originalObject[key] }));
-
-    console.log(arrayOfObjects);
-    // changeUserData(arrayOfObjects);
   }
 
   const handleOpenSuccessModal = () => {
