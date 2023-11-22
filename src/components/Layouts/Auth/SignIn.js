@@ -49,7 +49,8 @@ function SignIn() {
       [key]: originalObject[key] 
     }));
 
-    changeUserData(arrayOfObjects);
+    console.log(arrayOfObjects);
+    // changeUserData(arrayOfObjects);
   }
 
   const handleOpenSuccessModal = () => {
