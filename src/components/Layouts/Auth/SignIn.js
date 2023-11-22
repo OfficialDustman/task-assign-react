@@ -34,7 +34,7 @@ function SignIn() {
       .then((data) => {
         setFetchData(data);
         setIsLoaded(true);
-        changeUserData(fetchData.data);
+        dataObjHandler(fetchData.data);
         handleOpenSuccessModal();
         console.log(userData);
       })
@@ -42,6 +42,14 @@ function SignIn() {
         setError(error)
         console.error("Error fetching data:", error);
       });
+  }
+
+  const dataObjHandler = () => {
+    const arrayOfObjects = Object.keys(originalObject).map(key => ({ 
+      [key]: originalObject[key] 
+    }));
+
+    changeUserData(arrayOfObjects);
   }
 
   const handleOpenSuccessModal = () => {
