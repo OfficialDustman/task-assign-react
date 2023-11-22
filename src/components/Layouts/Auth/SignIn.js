@@ -45,7 +45,7 @@ function SignIn() {
   }
 
   const handleOpenSuccessModal = () => {
-    if (fetchData.status = 'success') {
+    if (fetchData.status === 'success') {
       setShowSuccessModal(true);
     } else {
       setError(fetchData.status)

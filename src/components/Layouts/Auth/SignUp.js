@@ -2,7 +2,8 @@ import UIButton from '../../Ui/Button';
 import UIForm from '../../Ui/Form';
 import { Form, InputGroup, Spinner } from 'react-bootstrap';
 import { useOutletContext, useNavigate } from "react-router-dom";
-import { useState } from 'react';
+import AuthContext from "../../../store/auth-context";
+import { useState, useContext } from 'react';
 import SuccessModal from '../../Ui/SuccessModal';
 
 function SignUp() {
@@ -13,9 +14,10 @@ function SignUp() {
     const [team, setTeam] = useState('');
     const [selectTeam, setSelectTeam] = useState(true);
     const [isLoaded, setIsLoaded] = useState(true)
-    const [data, setData] = useState(null);
+    const [fetchData, setFetchData] = useState(null);
     const [error, setError] = useState(null);
     const [showSuccessModal, setShowSuccessModal] = useState(false);
+    const { changeUserData } = useContext(AuthContext)
 
     const navigate = useNavigate();
 
@@ -36,7 +38,7 @@ function SignUp() {
         })
             .then(response => response.json())
             .then(data => {
-                setData(data);
+                setFetchData(data);
                 setIsLoaded(true)
                 changeUserData(fetchData.data);
                 handleOpenSuccessModal();
@@ -49,7 +51,7 @@ function SignUp() {
     }
     
     const handleOpenSuccessModal = () => {
-        if (fetchData.status = 'success') {
+        if (fetchData.status === 'success') {
           setShowSuccessModal(true);
         } else {
           setError(fetchData.status)
@@ -134,7 +136,7 @@ function SignUp() {
             <SuccessModal 
                 show={showSuccessModal} 
                 handleClose={handleCloseSuccessModal}
-                data={data}
+                data={fetchData}
             />
         </UIForm>
     )
