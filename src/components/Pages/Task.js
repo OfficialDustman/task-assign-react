@@ -22,7 +22,7 @@ function Task() {
     
         console.log(formData);
 
-        fetch("http://localhost/repos/task-assign/api/user/confirmUser.php", {
+        fetch("http://localhost/repos/task-assign/api/task/createTask.php", {
           method: "POST",
           body: formData,
         })
