@@ -39,6 +39,7 @@ const TaskFilter = ({ onFilterChange }) => {
             id={`radio-${idx}`}
             type="radio"
             name="radio"
+            variant="light"
             value={radio.value}
             checked={value === radio.value}
             onChange={handleChange}
@@ -48,7 +49,7 @@ const TaskFilter = ({ onFilterChange }) => {
               {}
             }
           >
-            {radio.name}
+            {radio.text}
           </ToggleButton>
       ))}
     </ToggleButtonGroup>
