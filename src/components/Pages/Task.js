@@ -31,6 +31,7 @@ function Task() {
             setFetchData(data);
             setIsLoaded(true);
             setTasks(fetchData.data);
+            console.log(data, fetchData);
           })
           .catch((error) => {
             setError(error)
