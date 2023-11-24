@@ -32,12 +32,14 @@ const TaskFilter = ({ onFilterChange }) => {
       onChange={handleChange}
     >
       {valuesFilter.map(({value, text}) => {
-      <ToggleButton 
-        value={value} 
-        className={'rounded-pill'} 
-        style={{backgroundColor: '#613BE7'}}>
-        {text}
-      </ToggleButton>
+        {console.log(value, text)}
+        <ToggleButton 
+          value={value} 
+          className={'rounded-pill'} 
+          style={{backgroundColor: '#613BE7'}}
+        >
+          {text}
+        </ToggleButton>
       })}
     </ToggleButtonGroup>
   );
