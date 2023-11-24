@@ -10,13 +10,11 @@ function Task() {
     const [fetchData, setFetchData] = useState(null);
     const [tasks, setTasks] = useState([]);
     const [date, setDate] = useState('Today');
-    const [isLoaded, setIsLoaded] = useState(true);
+    const [isLoaded, setIsLoaded] = useState(false);
     const [error, setError] = useState(null);
     const { userData } = useContext(AuthContext)
     console.log(userData);
     useEffect(() => {
-        setIsLoaded(false);
-
         const formData = new FormData();
         formData.append("username", userData?.username);
     
@@ -65,10 +63,10 @@ function Task() {
               onFilteredTasksChange={handleFilteredTasksChange}
               onDateChange={handleDateChange}
           />
-          <TaskBody
+          {isLoaded && <TaskBody
               date={date}
               tasks={filteredTasks}
-          />
+          />}
       </Card>
     )
 }
