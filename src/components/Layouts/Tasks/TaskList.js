@@ -6,7 +6,7 @@ export default function TaskList({tasks}) {
 
     return (
         <>
-            {tasks?.data.map((task) => (
+            {tasks?.map((task) => (
                 <TaskItem task={task}/>
             )) }
         </>
