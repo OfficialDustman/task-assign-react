@@ -2,27 +2,14 @@ import { ToggleButton, ToggleButtonGroup } from 'react-bootstrap';
 import { useState } from 'react';
 
 const TaskFilter = ({ onFilterChange }) => {
-  const [value, setValue] = useState('all');
-  const valuesFilter = [
-    {
-      value : 'all',
-      text : 'All Tasks',
-    },
-    {
-      value : 'ongoing',
-      text : 'In Progress',
-    },
-    {
-      value : 'completed',
-      text : 'Completed',
-    }
-
-  ]
+  const [value, setValue] = useState('all'); 
 
   const handleChange = (val) => {
     setValue(val);
     onFilterChange(val);
   };
+
+  let styles = {backgroundColor: '#613BE7'};
 
   return (
     <ToggleButtonGroup
@@ -31,18 +18,9 @@ const TaskFilter = ({ onFilterChange }) => {
       value={value}
       onChange={handleChange}
     >
-      {valuesFilter.map(({value, text}) => {
-        let Toggle = 
-        <ToggleButton 
-          value={value} 
-          className={'rounded-pill'} 
-          style={{backgroundColor: '#613BE7'}}
-        >
-          {text}
-        </ToggleButton>;
-        {console.log(Toggle)}
-
-      })}
+      <ToggleButton value="all" className={'rounded-pill'} style={styles}>All Tasks</ToggleButton>
+      <ToggleButton value="ongoing" className={'rounded-pill'} style={styles}>In Progress</ToggleButton>
+      <ToggleButton value="completed" className={'rounded-pill'} style={styles}>Completed</ToggleButton>
     </ToggleButtonGroup>
   );
 };
