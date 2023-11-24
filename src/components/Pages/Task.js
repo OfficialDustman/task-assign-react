@@ -9,6 +9,7 @@ function Task() {
     
     const [fetchData, setFetchData] = useState(null);
     const [tasks, setTasks] = useState([]);
+    const [filteredTasks, setFilteredTasks] = useState([]);
     const [date, setDate] = useState('Today');
     const [isLoaded, setIsLoaded] = useState(false);
     const [error, setError] = useState(null);
@@ -38,11 +39,10 @@ function Task() {
           
           if (fetchData) {
             setTasks(fetchData.data) 
+            setFilteredTasks(tasks)
             setIsLoaded(true);
           }
-    }, [userData, fetchData, setFetchData, setIsLoaded])
-
-    const [filteredTasks, setFilteredTasks] = useState([...tasks]);
+    }, [userData, fetchData, setFetchData, setIsLoaded, setFilteredTasks])
 
     const handleFilteredTasksChange = (newFilteredTasks) => {
       setFilteredTasks(newFilteredTasks);
