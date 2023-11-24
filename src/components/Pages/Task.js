@@ -18,7 +18,7 @@ function Task() {
         const formData = new FormData();
         formData.append("username", userData?.username);
     
-        console.log(formData);
+        console.log(formData.values);
 
         fetch("http://localhost/repos/task-assign/api/task/createTask.php", {
           method: "POST",
