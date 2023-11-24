@@ -6,14 +6,14 @@ export default function TaskList({tasks}) {
 
     return (
         <>
-                <p>No Task Yet!</p>
-            {/* {tasks? 
+                {/* <p>No Task Yet!</p> */}
+            {tasks? 
                 (tasks?.data.map((task) => (
                     <TaskItem task={task}/>
                 ))) :
                 
                 <p>No Task Yet!</p>
-            } */}
+            }
         </>
     )
     

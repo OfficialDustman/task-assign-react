@@ -21,10 +21,12 @@ const TaskFilter = ({ onFilterChange }) => {
   const handleChange = (val) => {
     setValue(val.currentTarget.value);
     onFilterChange(val.currentTarget.value);
-    console.log(val.currentTarget.value, value)
   };
 
-  let styles = {backgroundColor: '#613BE7'};
+  let styles = {
+    backgroundColor: '#613BE7',
+    color : '#FFFFFF'
+  };
 
   return (
     <ToggleButtonGroup
