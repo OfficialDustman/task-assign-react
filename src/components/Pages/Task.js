@@ -36,11 +36,12 @@ function Task() {
           //   setError(error)
           //   console.error("Error fetching data:", error);
           // });
+
+          if (isLoaded) {
+            setTasks(fetchData.data) 
+          }
     }, [userData])
 
-    isLoaded ? console.log(fetchData.data) : [];
-    isLoaded ? setTasks(fetchData.data) : [];
-    
     const [filteredTasks, setFilteredTasks] = useState([...tasks]);
 
     const handleFilteredTasksChange = (newFilteredTasks) => {
