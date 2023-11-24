@@ -6,12 +6,12 @@ export default function TaskList({tasks}) {
 
     return (
         <>
-                {/* <p>No Task Yet!</p> */}
-            {tasks? 
-                (tasks?.data.map((task) => (
+            {/* <p>No Task Yet!</p> */}
+            if (tasks) {
+                tasks?.data.map((task) => (
                     <TaskItem task={task}/>
-                ))) :
-                
+                )) 
+            } else {
                 <p>No Task Yet!</p>
             }
         </>
