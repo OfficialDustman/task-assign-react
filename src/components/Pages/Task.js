@@ -27,9 +27,9 @@ function Task() {
           .then((response) => response.json() )
           .then((data) => {
             setFetchData(data);
-            setIsLoaded(true);
             setTasks(fetchData.data);
             console.log(data, fetchData);
+            setIsLoaded(true);
           })
           .catch((error) => {
             setError(error)
