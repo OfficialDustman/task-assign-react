@@ -24,13 +24,18 @@ export default function Summary({tasks, onFilteredTasksChange, onDateChange}) {
 
 
     return (
-        <Card>
+        <Card style={{ 
+            display: 'flex', 
+            lexDirection: 'column', 
+            padding: '20px', 
+            marginTop: '20px' 
+        }}>
             <Card.Header>
                 <Card.Title>Summary</Card.Title>
                 <DateFilter onDateChange={handleDateChange}/>
             </Card.Header>
 
-            <CardGroup>
+            <CardGroup style={{ marginTop: '20px' }}>
                 <TaskCount 
                     state={'Assigned'} 
                     count={allTasksCount}

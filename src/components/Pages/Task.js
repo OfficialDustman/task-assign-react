@@ -1,6 +1,7 @@
 // import Header from '../Layouts/Header'
 import Summary from '../Layouts/Summary'
 import TaskBody from '../Layouts/Tasks/TaskBody'
+import { Card } from 'react-bootstrap';
 import AuthContext from "../../store/auth-context";
 import { useState, useEffect, useContext } from "react";
 
@@ -51,18 +52,23 @@ function Task() {
     console.log(tasks, filteredTasks);
 
     return (
-        <>
-            {/* <Header userData={userData}/> */}
-            <Summary 
-                tasks={tasks} 
-                onFilteredTasksChange={handleFilteredTasksChange}
-                onDateChange={handleDateChange}
-            />
-            <TaskBody
-                date={date}
-                tasks={filteredTasks}
-            />
-        </>
+      <Card style={{ 
+          display: 'flex', 
+          flexDirection: 'column', 
+          padding: '20px', 
+          marginTop: '20px' 
+      }}>
+          {/* <Header userData={userData}/> */}
+          <Summary 
+              tasks={tasks} 
+              onFilteredTasksChange={handleFilteredTasksChange}
+              onDateChange={handleDateChange}
+          />
+          <TaskBody
+              date={date}
+              tasks={filteredTasks}
+          />
+      </Card>
     )
 }
 

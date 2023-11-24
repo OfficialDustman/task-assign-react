@@ -28,7 +28,12 @@ const TaskBody = ({ date, tasks }) => {
   };
 
   return (
-    <Card>
+    <Card style={{ 
+        display: 'flex', 
+        flexDirection: 'column', 
+        padding: '20px', 
+        marginTop: '20px' 
+      }}>
         <Card.Title>{date} Task</Card.Title>
         <TaskFilter onFilterChange={handleFilterChange} />
         <TaskList tasks={filteredTasks} />
