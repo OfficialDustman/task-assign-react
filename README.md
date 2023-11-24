@@ -1,70 +1,99 @@
-# Getting Started with Create React App
+# Task Management System
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Overview
 
-## Available Scripts
+The Task Management System is a simple PHP-based application for managing tasks, projects, and user assignments. It uses a MySQL database to store information about users, teams, tasks, and projects. This system provides APIs for creating, editing, and deleting tasks and projects, as well as retrieving information about tasks based on user or team assignments.
 
-In the project directory, you can run:
+## Table of Contents
 
-### `npm start`
+- [Features](#features)
+- [Requirements](#requirements)
+- [Setup](#setup)
+- [Usage](#usage)
+- [API Endpoints](#api-endpoints)
+- [Contributing](#contributing)
+- [License](#license)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Features
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- Create, edit, and delete tasks
+-Create, edit, and delete projects
+- Assign tasks to one or more users
+- Retrieve tasks based on user or team assignments
+- Secure password handling (passwords are hashed using MD5)
+- User authentication and authorization
+- Team management
+- Project-specific task assignments
 
-### `npm test`
+## Requirements
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- PHP 7.0 or later
+- MySQL database
+- Web server (e.g., Apache, Nginx)
+- Node Package Manager (for managing react dependencies)
 
-### `npm run build`
+## Setup
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. Clone the repository:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+   ```bash
+   git clone https://github.com/OfficialDustman/task-assign-react.git
+   ```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+2. Configure your database details:
 
-### `npm run eject`
+   - Open `config.php` and update the database connection parameters (`$host`, `$dbname`, `$username`, `$password`) to match your setup.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+3. Install dependencies:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+   ```bash
+   npm install
+   ```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+4. Import the database schema:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+   - Execute the SQL script provided in the `database.sql` file to create the necessary tables.
 
-## Learn More
+5. Set up your web server to point to the project directory.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Usage
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+1. Ensure that your web server and database server are running.
 
-### Code Splitting
+2. Access the application through your web browser.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+3. Use the provided API endpoints to interact with the system programmatically.
 
-### Analyzing the Bundle Size
+## API Endpoints
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+- **Teams API**
+  - GET `/api/getTeams`: Retrieve all teams.
 
-### Making a Progressive Web App
+- **User Profile API**
+  - POST `/api/user/createUser`: Create a new user.
+  - POST `/api/user/deleteUser`: Delete a user.
+  - POST `/api/user/confirmUser`: Authenticate a user.
+  - POST `/api/user/editUser`: Edit user details.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+- **Tasks API**
+  - POST `/api/task/createTask`: Create a new task.
+  - POST `/api/task/editTask`: Edit task details.
+  - POST `/api/task/deleteTask`: Delete a task.
+  - POST `/api/task/getTasksByUser`: Retrieve tasks assigned to a user.
+  - POST `/api/task/getTasksByTeam`:     Retrieve tasks assigned to a Team.
 
-### Advanced Configuration
+- **Projects API**
+  - POST `/api/project/createProject`: Create a new project.
+  - POST `/api/project/editProject`: Edit project details.
+  - POST `/api/project/deleteProject`: Delete a project.
+  - POST `/api/project/getProjects`: Retrieve projects based.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+For detailed API documentation, refer to the API documentation provided in the code.
 
-### Deployment
+## Contributing
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+Feel free to contribute to the project. Fork the repository, create a branch, make your changes, and submit a pull request.
 
-### `npm run build` fails to minify
+## License
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+This project is not currently licensed not under the [MIT License](LICENSE) - see the LICENSE file for details.

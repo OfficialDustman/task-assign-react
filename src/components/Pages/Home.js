@@ -15,8 +15,8 @@ function Home() {
 
     return (
         <>
-            <NavBar/>
             <Outlet/>
+            <NavBar/>
         </>
     )
 }

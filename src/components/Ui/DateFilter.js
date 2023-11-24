@@ -6,15 +6,18 @@ const DateFilter = ({ onDateChange }) => {
 
     const generatePastWeekDates = () => {
         const dates = [];
-        const today = new Date();
+        let today = new Date();
 
         // Add today and yesterday
-        dates.push(today);
-        dates.push(new Date(today.setDate(today.getDate() - 1)));
+        dates.push(new Date(today));
+        today.setDate(today.getDate() - 1); 
+        dates.push(new Date(today));
 
         // Add the remaining dates of the past week
         for (let i = 2; i < 7; i++) {
-            dates.push(new Date(today.setDate(today.getDate() - i)));
+            today = new Date(); // Reset to the original date
+            today.setDate(today.getDate() - i);
+            dates.push(new Date(today));;
         }
         
         return dates;
