@@ -30,7 +30,6 @@ function Task() {
           .then((data) => {
             console.log(data);
             setFetchData(data);
-            setTasks(fetchData.data);
             setIsLoaded(true);
           })
           // .catch((error) => {
@@ -38,6 +37,9 @@ function Task() {
           //   console.error("Error fetching data:", error);
           // });
     }, [userData])
+
+    isLoaded ? console.log(fetchData.data) : [];
+    isLoaded ? setTasks(fetchData.data) : [];
     
     const [filteredTasks, setFilteredTasks] = useState([...tasks]);
 
