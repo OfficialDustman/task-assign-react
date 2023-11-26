@@ -18,10 +18,6 @@ function Task() {
     useEffect(() => {
         const formData = new FormData();
         formData.append("username", userData?.username);
-    
-        // for (const value of formData.values()) {
-        //   console.log(value);
-        // }
 
         fetch("http://localhost/repos/task-assign/api/task/getTasksByUser.php", {
           method: "POST",
@@ -29,9 +25,7 @@ function Task() {
         })
           .then((response) => response.json() )
           .then((data) => {
-            console.log(data);
             setFetchData(data);
-            // fetchUpdateHandler();
           })
           // .catch((error) => {
           //   setError(error)
@@ -41,25 +35,19 @@ function Task() {
     }, [userData])
 
     useEffect(() => {
-      // Only proceed if fetchData is not null
       if (fetchData) {
-        // Update tasks state
         setTasks(fetchData.data);
       }
     }, [fetchData]);
   
     useEffect(() => {
-      // Only proceed if tasks are updated
       if (tasks.length > 0) {
-        // Update filteredTasks state
         setFilteredTasks(tasks);
       }
     }, [tasks]);
   
     useEffect(() => {
-      // Only proceed if filteredTasks are updated
       if (filteredTasks.length > 0) {
-        // Update isLoaded state
         setIsLoaded(true);
       }
     }, [filteredTasks]);
@@ -79,7 +67,7 @@ function Task() {
           padding: '20px', 
           marginTop: '20px' 
       }}>
-          {/* <Header userData={userData}/> */}
+          {userData && <Header userData={userData}/>}
           <Summary 
               tasks={tasks} 
               onFilteredTasksChange={handleFilteredTasksChange}

@@ -19,6 +19,7 @@ const TaskFilter = ({ onFilterChange }) => {
 
   ]
   const handleChange = (val) => {
+    console.log(val, val.currentTarget.value);
     setValue(val.currentTarget.value);
     onFilterChange(val.currentTarget.value);
   };
