@@ -9,7 +9,7 @@ export default function TaskItem({task}) {
             <Card.Body>
                 <CardGroup>
                     <ListGroup.Item>
-                        {task.project_id}
+                        {task.project_name}
                     </ListGroup.Item>
                     <ListGroup.Item>
                         {task.end_date}

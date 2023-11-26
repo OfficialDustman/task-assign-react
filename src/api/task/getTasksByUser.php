@@ -4,7 +4,7 @@ require '../config.php';
 
 // Check if the required POST data is set
 if (isset($_POST['username'])) {
-    $username = $_POST[''];
+    $username = $_POST['username'];
 
     // Check if the username exists in the database
     $checkUser = $pdo->prepare("SELECT COUNT(*) as user_count FROM users WHERE username = ?");
@@ -12,20 +12,19 @@ if (isset($_POST['username'])) {
     $userCount = $checkUser->fetchColumn();
 
     if ($userCount > 0) {
-        // Username exists, retrieve task IDs assigned to the user
-        $getTaskIds = $pdo->prepare("SELECT task_id FROM task_assignments WHERE username = ?");
-        $getTaskIds->execute([$username]);
+        // Username exists, retrieve task IDs and project names assigned to the user
+        $getTaskDetails = $pdo->prepare("
+            SELECT t.*, p.project_name
+            FROM tasks t
+            JOIN task_assignments ta ON t.task_id = ta.task_id
+            JOIN projects p ON t.project_id = p.project_id
+            WHERE ta.username = ?
+        ");
+        $getTaskDetails->execute([$username]);
 
-        $taskIds = $getTaskIds->fetchAll(PDO::FETCH_COLUMN);
+        $tasks = $getTaskDetails->fetchAll(PDO::FETCH_ASSOC);
 
-        if (!empty($taskIds)) {
-            
-            // Fetch task details for the retrieved task IDs
-            $getTaskDetails = $pdo->prepare("SELECT * FROM tasks WHERE task_id IN (".implode(',', array_fill(0, count($taskIds), '?')).")");
-            $getTaskDetails->execute($taskIds);
-
-            $tasks = $getTaskDetails->fetchAll(PDO::FETCH_ASSOC);
-
+        if (!empty($tasks)) {
             $response = [
                 'status' => 'success',
                 'message' => 'Tasks retrieved successfully',
