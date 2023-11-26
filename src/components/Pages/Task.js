@@ -67,7 +67,7 @@ function Task() {
           padding: '20px', 
           marginTop: '20px' 
       }}>
-          {userData && <Header userData={userData}/>}
+          {/* {userData && <Header userData={userData}/>} */}
           <Summary 
               tasks={tasks} 
               onFilteredTasksChange={handleFilteredTasksChange}
