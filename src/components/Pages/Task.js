@@ -40,18 +40,29 @@ function Task() {
           
     }, [userData])
 
-    if (fetchData) {
-      setTasks(fetchData.data) 
-      // setFilteredTasks(tasks)
-      handleFilteredTasksChange(tasks)
-      console.log(tasks, filteredTasks);
-      setIsLoaded(true);
-    }
-
-    // const fetchUpdateHandler = () => {
-
-   
-    // }
+    useEffect(() => {
+      // Only proceed if fetchData is not null
+      if (fetchData) {
+        // Update tasks state
+        setTasks(fetchData.data);
+      }
+    }, [fetchData]);
+  
+    useEffect(() => {
+      // Only proceed if tasks are updated
+      if (tasks.length > 0) {
+        // Update filteredTasks state
+        setFilteredTasks(tasks);
+      }
+    }, [tasks]);
+  
+    useEffect(() => {
+      // Only proceed if filteredTasks are updated
+      if (filteredTasks.length > 0) {
+        // Update isLoaded state
+        setIsLoaded(true);
+      }
+    }, [filteredTasks]);
 
     const handleFilteredTasksChange = (newFilteredTasks) => {
       setFilteredTasks(newFilteredTasks);
