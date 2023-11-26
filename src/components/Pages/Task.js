@@ -14,14 +14,14 @@ function Task() {
     const [isLoaded, setIsLoaded] = useState(false);
     const [error, setError] = useState(null);
     const { userData } = useContext(AuthContext)
-    console.log(userData);
+    // console.log(userData);
     useEffect(() => {
         const formData = new FormData();
         formData.append("username", userData?.username);
     
-        for (const value of formData.values()) {
-          console.log(value);
-        }
+        // for (const value of formData.values()) {
+        //   console.log(value);
+        // }
 
         fetch("http://localhost/repos/task-assign/api/task/getTasksByUser.php", {
           method: "POST",
@@ -31,6 +31,7 @@ function Task() {
           .then((data) => {
             console.log(data);
             setFetchData(data);
+            fetchUpdateHandler();
           })
           // .catch((error) => {
           //   setError(error)
@@ -39,10 +40,14 @@ function Task() {
           
     }, [userData, fetchData, setFetchData, setIsLoaded, setFilteredTasks])
 
-    if (fetchData) {
-      setTasks(fetchData.data) 
-      setFilteredTasks(tasks)
-      setIsLoaded(true);
+    const fetchUpdateHandler = () => {
+
+      if (fetchData) {
+        setTasks(fetchData.data) 
+        setFilteredTasks(tasks)
+        setIsLoaded(true);
+      }
+      console.log(tasks, filteredTasks);
     }
 
     const handleFilteredTasksChange = (newFilteredTasks) => {
@@ -52,9 +57,6 @@ function Task() {
     const handleDateChange = (newDate) => {
         setDate(newDate);
     };
-
-    
-    console.log(tasks, filteredTasks);
 
     return (
       <Card style={{ 
