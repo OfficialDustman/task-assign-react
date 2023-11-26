@@ -31,7 +31,7 @@ function Task() {
           .then((data) => {
             console.log(data);
             setFetchData(data);
-            fetchUpdateHandler();
+            // fetchUpdateHandler();
           })
           // .catch((error) => {
           //   setError(error)
@@ -40,16 +40,18 @@ function Task() {
           
     }, [userData])
 
-    const fetchUpdateHandler = () => {
-
-      if (fetchData) {
-        setTasks(fetchData.data) 
-        // setFilteredTasks(tasks)
-        handleFilteredTasksChange(tasks)
-        setIsLoaded(true);
-      }
+    if (fetchData) {
+      setTasks(fetchData.data) 
+      // setFilteredTasks(tasks)
+      handleFilteredTasksChange(tasks)
       console.log(tasks, filteredTasks);
+      setIsLoaded(true);
     }
+
+    // const fetchUpdateHandler = () => {
+
+   
+    // }
 
     const handleFilteredTasksChange = (newFilteredTasks) => {
       setFilteredTasks(newFilteredTasks);
