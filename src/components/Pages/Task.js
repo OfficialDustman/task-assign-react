@@ -38,7 +38,7 @@ function Task() {
           //   console.error("Error fetching data:", error);
           // });
           
-    }, [userData, fetchData, setFetchData])
+    }, [userData])
 
     const fetchUpdateHandler = () => {
 
