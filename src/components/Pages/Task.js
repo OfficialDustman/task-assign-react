@@ -38,13 +38,14 @@ function Task() {
           //   console.error("Error fetching data:", error);
           // });
           
-    }, [userData, fetchData, setFetchData, setIsLoaded, setFilteredTasks])
+    }, [userData, fetchData, setFetchData])
 
     const fetchUpdateHandler = () => {
 
       if (fetchData) {
         setTasks(fetchData.data) 
-        setFilteredTasks(tasks)
+        // setFilteredTasks(tasks)
+        handleFilteredTasksChange(tasks)
         setIsLoaded(true);
       }
       console.log(tasks, filteredTasks);
