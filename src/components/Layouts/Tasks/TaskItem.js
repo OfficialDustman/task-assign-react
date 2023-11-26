@@ -3,13 +3,13 @@ import { Card, Button, CardGroup, ListGroup } from "react-bootstrap"
 export default function TaskItem({task}) {
     return (
         <Card>
-            <Card.Title>{task.name}</Card.Title>
-            <Card.Text>{task.description}</Card.Text>
+            <Card.Title>{task.task_name}</Card.Title>
+            <Card.Text>{task.task_description}</Card.Text>
 
             <Card.Body>
                 <CardGroup>
                     <ListGroup.Item>
-                        {task.project}
+                        {task.project_id}
                     </ListGroup.Item>
                     <ListGroup.Item>
                         {task.end_date}

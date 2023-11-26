@@ -70,7 +70,7 @@ function Task() {
           />
           {isLoaded && <TaskBody
               date={date}
-              tasks={tasks}
+              tasks={filteredTasks}
           />}
       </Card>
     )
