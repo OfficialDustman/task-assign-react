@@ -10,7 +10,7 @@ const TaskFilter = ({ onFilterChange }) => {
     },
     {
       value : 'ongoing',
-      text : 'In Progress',
+      text : 'In   Progress',
     },
     {
       value : 'completed',
@@ -19,7 +19,7 @@ const TaskFilter = ({ onFilterChange }) => {
 
   ]
   const handleChange = (val) => {
-    console.log(val);
+    // console.log(val);
     console.log(val.currentTarget.value);
     setValue(val.currentTarget.value);
     onFilterChange(val.currentTarget.value);
