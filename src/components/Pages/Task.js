@@ -37,12 +37,13 @@ function Task() {
           //   console.error("Error fetching data:", error);
           // });
           
-          if (fetchData) {
-            setTasks(fetchData.data) 
-            setFilteredTasks(tasks)
-            setIsLoaded(true);
-          }
     }, [userData, fetchData, setFetchData, setIsLoaded, setFilteredTasks])
+
+    if (fetchData) {
+      setTasks(fetchData.data) 
+      setFilteredTasks(tasks)
+      setIsLoaded(true);
+    }
 
     const handleFilteredTasksChange = (newFilteredTasks) => {
       setFilteredTasks(newFilteredTasks);
