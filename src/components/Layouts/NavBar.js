@@ -27,8 +27,8 @@ const Navigation = () => {
         alignSelf: 'center',
         justifyContent: 'center',
         position: 'fixed',
-        bottom: 0,
-        width: '100%',
+        bottom: '20px',
+        width: '75%',
         borderRadius: '141px',
         background: '#FFF',
         boxShadow: '1px 0px 5px 1px rgba(13, 16, 28, 0.20)',
@@ -39,7 +39,7 @@ const Navigation = () => {
           key={index}
           to={route.path}
           exact
-          className="nav-link"
+          className="nav-link rounded-pill"
           style={{
             ...(route.path === window.location.pathname ? activeLinkStyle : {}),
             display: 'flex',
