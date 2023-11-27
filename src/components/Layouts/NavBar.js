@@ -21,6 +21,7 @@ const Navigation = () => {
       expand="sm"
       style={{
         display: 'flex',
+        padding: '0.5rem',
         alignItems: 'flex-start',
         gap: '2px',
         flex: '1 0 0',

@@ -1,4 +1,4 @@
-// import Header from '../Layouts/Header'
+import Header from '../Layouts/Header'
 import Summary from '../Layouts/Summary'
 import TaskBody from '../Layouts/Tasks/TaskBody'
 import { Card } from 'react-bootstrap';
@@ -66,7 +66,7 @@ function Task() {
           flexDirection: 'column', 
           padding: '20px', 
       }}>
-          {/* {userData && <Header userData={userData}/>} */}
+          {userData && <Header userData={userData}/>}
           <Summary 
               tasks={tasks} 
               onFilteredTasksChange={handleFilteredTasksChange}
