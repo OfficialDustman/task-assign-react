@@ -39,9 +39,9 @@ const TaskBody = ({ date, tasks }) => {
         <Card.Title>{date} Task</Card.Title>
         <TaskFilter onFilterChange={handleFilterChange} />
         {filteredTasks ? 
-            (<TaskList tasks={filteredTasks} />) 
+            <TaskList tasks={filteredTasks} />
               :
-            (<p>No Task Yet</p>)
+            <p>No Task Yet</p>
         }
     </Card>
   );
