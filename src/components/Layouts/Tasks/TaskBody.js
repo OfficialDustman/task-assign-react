@@ -27,7 +27,7 @@ const TaskBody = ({ date, tasks }) => {
     setFilteredTasks(newFilteredTasks);
   };
 
-  console.log(newFilteredTasks);
+  console.log(filteredTasks);
 
   return (
     <Card style={{ 
