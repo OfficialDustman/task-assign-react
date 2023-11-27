@@ -24,7 +24,7 @@ export default function TaskItem({ task }) {
 
             <Card.Body style={{
                 display: 'flex',
-                alignItems: 'center',
+                alignItems: 'flex-start',
                 gap: '12px',
                 alignSelf: 'stretch',
                 justifyContent: 'space-between'
@@ -36,11 +36,20 @@ export default function TaskItem({ task }) {
                     gap: '10px',
                     flex: '1 0 0'
                 }}>
-                    <ListGroup.Item style={{ textTransform: 'capitalize' }}>
+                    <ListGroup.Item style={{ 
+                        textTransform: 'capitalize',
+                        display: 'flex',
+                        gap: '1rem',
+                        alignItems: 'center',
+                    }}>
                         <FontAwesomeIcon icon="fa-solid fa-folder" />
                         {task.project_name}
                     </ListGroup.Item>
-                    <ListGroup.Item>
+                    <ListGroup.Item style={{ 
+                        display: 'flex',
+                        gap: '1rem',
+                        alignItems: 'center',
+                    }}>
                         <FontAwesomeIcon icon="fa-solid fa-stopwatch" />
                         {formatDate(task.end_date)}
                     </ListGroup.Item>
