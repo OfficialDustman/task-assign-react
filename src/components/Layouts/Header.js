@@ -1,4 +1,5 @@
 import { Card } from 'react-bootstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export default function Header({ userData }) {
     return (
