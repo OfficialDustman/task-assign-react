@@ -50,7 +50,6 @@ function Project() {
         // });
 
     }, [userData])
-    console.log(fetchData);
 
     useEffect(() => {
         if (fetchData) {

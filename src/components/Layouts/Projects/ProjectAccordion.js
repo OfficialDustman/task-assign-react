@@ -2,6 +2,9 @@ import React from 'react';
 import { Accordion, Card, Button } from 'react-bootstrap';
 
 const ProjectAccordion = ({ projects }) => {
+
+  console.log(projects);
+
   return (
     <Accordion>
       {projects.map(project => (
