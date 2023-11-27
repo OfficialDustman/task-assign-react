@@ -7,7 +7,7 @@ function Project() {
 
     const [fetchData, setFetchData] = useState(null);
     const [tasks, setTasks] = useState([]);
-    const [projects, setProjects] = useState([]);
+    const [projects, setProjects] = useState();
     const [filteredTasks, setFilteredTasks] = useState([]);
     const [isLoaded, setIsLoaded] = useState(false);
     const [error, setError] = useState(null);
@@ -65,10 +65,18 @@ function Project() {
         }
     }, [tasks]);
 
+    useEffect(() => {
+        if (projects) {
+          setIsLoaded(true);
+        }
+      }, [filteredTasks]);
+
+    console.log(projects);
+
     return (
         <>
             <Sidebar />
-            <ProjectAccordion projects={projects} />
+            {isLoaded && <ProjectAccordion projects={projects} />}
         </>
     )
 }
