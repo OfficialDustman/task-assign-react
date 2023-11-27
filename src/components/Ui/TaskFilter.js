@@ -29,7 +29,6 @@ const TaskFilter = ({ onFilterChange }) => {
 
   let styles = {
     backgroundColor: '#613BE7',
-    color : '#FFFFFF'
   };
 
   return (
@@ -49,6 +48,7 @@ const TaskFilter = ({ onFilterChange }) => {
             value={radio.value}
             checked={value === radio.value}
             onChange={handleChange}
+            className="rounded-pill"
             style={
               value === radio.value ? 
               { backgroundColor: '#613BE7' } : 

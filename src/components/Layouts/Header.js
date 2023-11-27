@@ -2,6 +2,19 @@ import { Card } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export default function Header({ userData }) {
+
+    const checkTimeOfDay = (date) => {
+        const hour = date.getHours();
+      
+        if (hour >= 6 && hour < 12) {
+          return 'Morning';
+        } else if (hour >= 12 && hour < 18) {
+          return 'Afternoon';
+        } else {
+          return 'Evening';
+        }
+    };
+
     return (
         <header style={{
             display: 'flex',
@@ -19,7 +32,7 @@ export default function Header({ userData }) {
                 flex: '1 0 0',
                 alignSelf: 'stretch',
             }}>
-                <Card.Subtitle>Good Morning {userData.username}!</Card.Subtitle>
+                <Card.Subtitle>Good {checkTimeOfDay(new Date())} {userData.username}!</Card.Subtitle>
                 <Card.Title>{new Date().toDateString()}</Card.Title>
             </div>
 

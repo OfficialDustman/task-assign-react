@@ -34,7 +34,8 @@ const TaskBody = ({ date, tasks }) => {
         display: 'flex', 
         flexDirection: 'column', 
         padding: '20px', 
-        marginTop: '20px' 
+        marginTop: '20px',
+        gap: '1rem',
       }}>
         <Card.Title>{date} Task</Card.Title>
         <TaskFilter onFilterChange={handleFilterChange} />

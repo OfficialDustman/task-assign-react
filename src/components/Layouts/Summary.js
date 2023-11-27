@@ -44,10 +44,11 @@ export default function Summary({ tasks, onFilteredTasksChange, onDateChange }) 
         }}>
             <Card.Header style={{
                 display: 'flex',
-                alignItems: 'center',
+                alignItems: 'flex-start',
                 gap: '1rem',
                 alignSelf: 'stretch',
-                justifyContent: 'space-between'
+                justifyContent: 'space-between',
+                backgroundColor: 'transparent'
             }}>
                 <Card.Title>Summary</Card.Title>
                 <DateFilter onDateChange={handleDateChange} />
