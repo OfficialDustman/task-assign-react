@@ -69,7 +69,7 @@ function Project() {
         if (projects) {
           setIsLoaded(true);
         }
-      }, [filteredTasks]);
+      }, [projects]);
 
     console.log(projects);
 
