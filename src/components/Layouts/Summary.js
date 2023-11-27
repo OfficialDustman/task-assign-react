@@ -30,6 +30,8 @@ export default function Summary({ tasks, onFilteredTasksChange, onDateChange }) 
         gap: '0.5rem',
         flex: '1 0 0',
         borderRadius: '12px',
+        height: '6.5rem',
+        justifyContent: 'space-between'
     }
 
     return (
@@ -37,7 +39,8 @@ export default function Summary({ tasks, onFilteredTasksChange, onDateChange }) 
             display: 'flex',
             flexDirection: 'column',
             padding: '20px',
-            marginTop: '20px'
+            marginTop: '20px',
+            backgroundColor: '#DCE1EF'
         }}>
             <Card.Header style={{
                 display: 'flex',
