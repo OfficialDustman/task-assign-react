@@ -38,7 +38,7 @@ const TaskBody = ({ date, tasks }) => {
       }}>
         <Card.Title>{date} Task</Card.Title>
         <TaskFilter onFilterChange={handleFilterChange} />
-        {filteredTasks ? 
+        {filteredTasks.length > 0 ? 
             <TaskList tasks={filteredTasks} />
               :
             <p>No Task Yet</p>
