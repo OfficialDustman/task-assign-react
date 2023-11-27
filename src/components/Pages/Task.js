@@ -65,7 +65,6 @@ function Task() {
           display: 'flex', 
           flexDirection: 'column', 
           padding: '20px', 
-          marginTop: '20px' 
       }}>
           {/* {userData && <Header userData={userData}/>} */}
           <Summary 

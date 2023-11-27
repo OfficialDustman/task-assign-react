@@ -3,21 +3,28 @@ import NavBar from '../Layouts/NavBar'
 import { useEffect } from "react";
 
 function Home() {
-    
+
     const navigate = useNavigate(),
-          location = useLocation();
+        location = useLocation();
 
     useEffect(() => {
         if (location.pathname === '/home') {
-            navigate("/home/task");  
+            navigate("/home/task");
         }
     }, [location, navigate]);
 
     return (
-        <>
-            <Outlet/>
-            <NavBar/>
-        </>
+        <div
+            style={{
+                display: 'flex',
+                flexDirection: 'column',
+                margin: '0 auto',
+                width: '100%'
+            }}
+        >
+            <Outlet />
+            <NavBar />
+        </div>
     )
 }
 
