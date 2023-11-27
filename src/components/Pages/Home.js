@@ -19,7 +19,7 @@ function Home() {
                 display: 'flex',
                 flexDirection: 'column',
                 margin: '0 auto',
-                width: '100%'
+                width: '80%'
             }}
         >
             <Outlet />

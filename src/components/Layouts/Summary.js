@@ -28,7 +28,8 @@ export default function Summary({ tasks, onFilteredTasksChange, onDateChange }) 
         flexDirection: 'column',
         alignItems: 'flex-start',
         gap: '0.5rem',
-        flex: '1 0 0'
+        flex: '1 0 0',
+        borderRadius: '12px',
     }
 
     return (
@@ -43,6 +44,7 @@ export default function Summary({ tasks, onFilteredTasksChange, onDateChange }) 
                 alignItems: 'center',
                 gap: '1rem',
                 alignSelf: 'stretch',
+                justifyContent: 'space-between'
             }}>
                 <Card.Title>Summary</Card.Title>
                 <DateFilter onDateChange={handleDateChange} />

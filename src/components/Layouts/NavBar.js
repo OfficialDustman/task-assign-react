@@ -12,7 +12,6 @@ const Navigation = () => {
     { path: '/home/task', icon: 'fa-solid fa-house', text: 'Task' },
     { path: '/home/project', icon: 'fa-solid fa-folder', text: 'Project' },
     { path: '/home/profile', icon: 'fa-solid fa-user', text: 'Profile' },
-    // Add more routes as needed
   ];
 
   return (
@@ -29,7 +28,7 @@ const Navigation = () => {
         justifyContent: 'center',
         position: 'fixed',
         bottom: '20px',
-        width: '75%',
+        width: '50%',
         borderRadius: '141px',
         background: '#FFF',
         boxShadow: '1px 0px 5px 1px rgba(13, 16, 28, 0.20)',
@@ -40,7 +39,6 @@ const Navigation = () => {
           key={index}
           to={route.path}
           exact
-          className="nav-link rounded-pill"
           style={{
             ...(route.path === window.location.pathname ? activeLinkStyle : {}),
             display: 'flex',
