@@ -1,38 +1,30 @@
-import React, { useState } from 'react';
-import { Navbar, Nav, Accordion, Button } from 'react-bootstrap';
+import React from 'react';
+import { Navbar, Nav } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBars, faHome, faInfoCircle, faUser } from '@fortawesome/free-solid-svg-icons';
+import { NavLink } from 'react-router-dom';
 
 const Sidebar = () => {
-  const [sidebarOpen, setSidebarOpen] = useState(false);
-
-  const toggleSidebar = () => {
-    setSidebarOpen(!sidebarOpen);
-  };
-
   return (
-    <>
-      <Navbar bg="light" expand="sm">
-        <Navbar.Toggle onClick={toggleSidebar} />
-        <Navbar.Brand>My App</Navbar.Brand>
-      </Navbar>
-
-      <Accordion className={`sidebar ${sidebarOpen ? 'open' : 'closed'}`}>
-        <Accordion.Toggle as={Button} variant="link" eventKey="0" className="toggle-btn">
-          <FontAwesomeIcon icon={sidebarOpen ? 'fa-solid fa-chevron-left' : 'fa-solid fa-chevron-right'} />
-        </Accordion.Toggle>
-        <Accordion.Collapse eventKey="0">
-          <Nav className="flex-column">
-            {/* Your sidebar content goes here */}
-            <Nav.Link href="#home">Home</Nav.Link>
-            <Nav.Link href="#about">About</Nav.Link>
-            <Nav.Link href="#contact">Contact</Nav.Link>
-          </Nav>
-        </Accordion.Collapse>
-      </Accordion>
-    </>
+    <Navbar expand="lg" className="bg-light">
+      <Navbar.Toggle aria-controls="basic-navbar-nav">
+        <FontAwesomeIcon icon={faBars} />
+      </Navbar.Toggle>
+      <Navbar.Collapse id="basic-navbar-nav">
+        <Nav className="flex-column">
+          <NavLink to="/home/task" exact className="nav-link">
+            <FontAwesomeIcon icon={faHome} /> Home
+          </NavLink>
+          <NavLink to="/home/project" className="nav-link">
+            <FontAwesomeIcon icon={faInfoCircle} /> About
+          </NavLink>
+          <NavLink to="/home/profile" className="nav-link">
+            <FontAwesomeIcon icon={faUser} /> Contact
+          </NavLink>
+        </Nav>
+      </Navbar.Collapse>
+    </Navbar>
   );
 };
 
 export default Sidebar;
-
-
