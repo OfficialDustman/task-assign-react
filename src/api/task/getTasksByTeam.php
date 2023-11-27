@@ -1,6 +1,6 @@
 <?php
 // Include database connection setup (modify the details as per your configuration)
-require 'config.php';
+require '../config.php';
 
 // Check if the required POST data is set
 if (isset($_POST['username'])) {
