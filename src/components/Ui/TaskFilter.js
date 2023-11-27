@@ -24,7 +24,7 @@ const TaskFilter = ({ onFilterChange }) => {
     // setValue(val.currentTarget.value);
     setValue(val);
     console.log(value);
-    onFilterChange(val.currentTarget.value);
+    onFilterChange(val);
   };
 
   let styles = {

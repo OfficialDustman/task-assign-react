@@ -27,6 +27,8 @@ const TaskBody = ({ date, tasks }) => {
     setFilteredTasks(newFilteredTasks);
   };
 
+  console.log(newFilteredTasks);
+
   return (
     <Card style={{ 
         display: 'flex', 
