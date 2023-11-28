@@ -1,20 +1,9 @@
-import React from 'react';
-import { Accordion, Card, Button } from 'react-bootstrap';
+import { Accordion, Card } from 'react-bootstrap';
 
 const ProjectAccordion = ({ projects }) => {
 
-  console.log(projects);
-  
-  projects.map(project => {
-    console.log(project, project.project_id, project.project_name)
-  })
-
-  if (!projects || projects.length === 0) {
-    return <div>No projects available</div>;
-  }
-
   return (
-    <Accordion>
+    <Accordion defaultActiveKey={project.project_id.toString()} alwaysOpen>
       {projects.map(project => (
         <Accordion.Item 
           key={project.project_id}

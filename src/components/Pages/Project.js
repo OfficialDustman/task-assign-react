@@ -1,5 +1,4 @@
 import Sidebar from "../Layouts/Projects/SideBar";
-import ProjectAccordion from "../Layouts/Projects/ProjectAccordion";
 import AuthContext from "../../store/auth-context";
 import { useState, useEffect, useContext } from "react";
 
@@ -74,8 +73,7 @@ function Project() {
 
     return (
         <>
-            <Sidebar />
-            {isLoaded && <ProjectAccordion projects={projects} />}
+            {isLoaded && <Sidebar projects={projects} />}
         </>
     )
 }
