@@ -1,5 +1,5 @@
 import React from 'react';
-import { Navbar, Nav } from 'react-bootstrap';
+import { Navbar, Nav, Button, Badge } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import ProjectAccordion from "./ProjectAccordion";
 
