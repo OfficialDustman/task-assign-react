@@ -4,7 +4,7 @@ import { Accordion, Card, Button } from 'react-bootstrap';
 const ProjectAccordion = ({ projects }) => {
 
   console.log(projects);
-
+  
   projects.map(project => {
     console.log(project, project.project_id, project.project_name)
   })
@@ -16,11 +16,11 @@ const ProjectAccordion = ({ projects }) => {
   return (
     <Accordion>
       {projects.map(project => (
-        <Card key={project.project_id}>
+        <Accordion.Item key={project.project_id}>
           <Card.Header>
-            <Accordion.Toggle as={Button} variant="link" eventKey={project.project_id.toString()}>
+            <Accordion.Header as={Button} variant="link" eventKey={project.project_id.toString()}>
               {project.project_name}
-            </Accordion.Toggle>
+            </Accordion.Header>
           </Card.Header>
           <Accordion.Collapse eventKey={project.project_id.toString()}>
             <Card.Body>
@@ -31,7 +31,7 @@ const ProjectAccordion = ({ projects }) => {
               </ul>
             </Card.Body>
           </Accordion.Collapse>
-        </Card>
+        </Accordion.Item>
       ))}
     </Accordion>
   );
