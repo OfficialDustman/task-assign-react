@@ -35,6 +35,7 @@ const TaskBody = ({ date, tasks }) => {
         flexDirection: 'column', 
         padding: '20px', 
         marginTop: '20px',
+        marginBottom: '6rem',
         gap: '1rem',
       }}>
         <Card.Title>{date} Task</Card.Title>
