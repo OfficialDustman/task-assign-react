@@ -6,7 +6,9 @@ const ProjectAccordion = ({ projects }) => {
   console.log(projects);
 
   projects.map(project => {
-    console.log(project, project.project_id, project.project_name)
+    console.log(project, project.tasks)
+
+    project.tasks.map(task => console.log(task))
   })
 
   return (
