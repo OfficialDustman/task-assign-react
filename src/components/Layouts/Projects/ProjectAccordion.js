@@ -21,7 +21,7 @@ const ProjectAccordion = ({ projects }) => {
           eventKey={project.project_id.toString()}
         >
           <Card.Header>
-            <Accordion.Header as={Button}>
+            <Accordion.Header>
               {project.project_name}
             </Accordion.Header>
           </Card.Header>
@@ -29,7 +29,11 @@ const ProjectAccordion = ({ projects }) => {
             <Card.Body>
               <ul>
                 {project.tasks.map(task => (
-                  <li key={task.task_id}>{task.task_name}</li>
+                  <li 
+                    key={task.task_id}
+                  >
+                    {task.task_name}
+                  </li>
                 ))}
               </ul>
             </Card.Body>
