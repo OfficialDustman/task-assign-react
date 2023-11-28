@@ -73,7 +73,11 @@ function Project() {
 
     return (
         <>
-            {isLoaded && <Sidebar projects={projects} />}
+            {isLoaded && 
+                <Sidebar 
+                    projects={projects} 
+                    username={userData?.username}
+                />}
         </>
     )
 }

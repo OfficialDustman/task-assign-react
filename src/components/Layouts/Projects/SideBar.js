@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import ProjectAccordion from "./ProjectAccordion";
 
 
-const Sidebar = ({ projects }) => {
+const Sidebar = ({ projects, username }) => {
   return (
     <Navbar
       expand="lg"
@@ -18,20 +18,21 @@ const Sidebar = ({ projects }) => {
         gap: '1rem'
       }}
     >
-      {/* <Navbar.Toggle aria-controls="basic-navbar-nav">
-        <FontAwesomeIcon icon="fa-solid fa-bars" />
-      </Navbar.Toggle> */}
-      <Navbar.Collapse
-        id="basic-navbar-nav"
-        style={{
-          flexBasis: 0,
-          flexGrow: 0,
-        }}
-      >
-        <Nav className="flex-column">
-          <ProjectAccordion projects={projects} />
-        </Nav>
-      </Navbar.Collapse>
+      <Button variant="light">
+        <Badge 
+          style={{backgroundColor: '#613BE7'}}
+        >
+          {username[0]}
+        </Badge>
+        {username} 
+      </Button>
+      <Navbar.Brand>
+        <FontAwesomeIcon icon={'fa-solid fa-folder'} />{' '}
+        Projects
+      </Navbar.Brand>
+      <Nav>
+        <ProjectAccordion projects={projects} />
+      </Nav>
     </Navbar>
   );
 };
