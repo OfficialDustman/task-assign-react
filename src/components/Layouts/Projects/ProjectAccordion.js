@@ -6,14 +6,16 @@ const ProjectAccordion = ({ projects }) => {
   console.log(projects);
 
   projects.map(project => {
-    console.log(project, project.project_id.toString())
-
-    // project.tasks.map(task => console.log(task))
+    console.log(project, project.project_id, project.project_name)
   })
+
+  if (!projects || projects.length === 0) {
+    return <div>No projects available</div>;
+  }
 
   return (
     <Accordion>
-      {/* {projects.map(project => (
+      {projects.map(project => (
         <Card key={project.project_id}>
           <Card.Header>
             <Accordion.Toggle as={Button} variant="link" eventKey={project.project_id.toString()}>
@@ -30,7 +32,7 @@ const ProjectAccordion = ({ projects }) => {
             </Card.Body>
           </Accordion.Collapse>
         </Card>
-      ))} */}
+      ))}
     </Accordion>
   );
 };
