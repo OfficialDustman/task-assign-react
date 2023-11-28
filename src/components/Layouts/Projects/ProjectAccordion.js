@@ -3,7 +3,7 @@ import { Accordion, Card } from 'react-bootstrap';
 const ProjectAccordion = ({ projects }) => {
 
   return (
-    <Accordion defaultActiveKey={project.project_id.toString()} alwaysOpen>
+    <Accordion defaultActiveKey={projects[1].project_id.toString()} alwaysOpen>
       {projects.map(project => (
         <Accordion.Item 
           key={project.project_id}
