@@ -16,9 +16,12 @@ const ProjectAccordion = ({ projects }) => {
   return (
     <Accordion>
       {projects.map(project => (
-        <Accordion.Item key={project.project_id}>
+        <Accordion.Item 
+          key={project.project_id}
+          eventKey={project.project_id.toString()}
+        >
           <Card.Header>
-            <Accordion.Header as={Button} variant="link" eventKey={project.project_id.toString()}>
+            <Accordion.Header as={Button}>
               {project.project_name}
             </Accordion.Header>
           </Card.Header>
