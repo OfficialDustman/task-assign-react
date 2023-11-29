@@ -1,12 +1,13 @@
 import UIButton from "../../Ui/Button";
 import UIForm from "../../Ui/Form";
 import { Form, InputGroup, Spinner } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
+import { useOutletContext, useNavigate } from "react-router-dom";
 import AuthContext from "../../../store/auth-context";
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import SuccessModal from '../../Ui/SuccessModal';
 
 function SignIn() {
+  const [teams] = useOutletContext();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isLoaded, setIsLoaded] = useState(true);
@@ -35,7 +36,6 @@ function SignIn() {
         setFetchData(data);
         setIsLoaded(true);
         changeUserData(fetchData.data[0]);
-        handleOpenSuccessModal();
       })
       .catch((error) => {
         setError(error)
@@ -43,9 +43,15 @@ function SignIn() {
       });
   }
 
+  useEffect(() => {
+    if(fetchData){
+      console.log(fetchData)
+      handleOpenSuccessModal();
+    }
+  }, [fetchData])
+
   const handleOpenSuccessModal = () => {
     if (fetchData.status === 'success') {
-      console.log(userData)
       setShowSuccessModal(true);
     } else {
       setError(fetchData.status)

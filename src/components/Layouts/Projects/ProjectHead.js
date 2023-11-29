@@ -7,7 +7,7 @@ function Project({username}) {
             <Card>
                 <Card.Img 
                     variant="top" 
-                    src={'https://picsum.photos/seed/' + username +'/675'} 
+                    src={'https://picsum.photos/seed/' + username +'200/300'} 
                 />
                 <Card.Body>
                     <Card.Text>
