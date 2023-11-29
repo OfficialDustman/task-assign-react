@@ -92,7 +92,9 @@ function Project() {
                         style={{
                             display: 'flex',
                             flexDirection: 'column',
-                            gap: '1rem'
+                            alignItems: 'center',
+                            gap: '1rem',
+                            width: '100%'
                         }}
                     >
                         <ProjectHead userData={userData} />

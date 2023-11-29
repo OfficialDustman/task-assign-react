@@ -25,6 +25,7 @@ const ProjectBody = ({  tasks }) => {
       padding: '20px',
       marginBottom: '6rem',
       gap: '1rem',
+      width: '100%'
     }}>
       <Card.Title>Today Task</Card.Title>
       <DateFilter onDateChange={handleDateChange} />

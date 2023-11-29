@@ -4,13 +4,13 @@ function Project({userData}) {
     console.log(userData);
     return (
         <Card style={{
-            width: '65%',
-            height: '40vh',
+            width: '85%',
+            height: '45vh',
         }}>
             <Card.Img 
                 variant="top" 
                 src={'https://picsum.photos/seed/' + userData.username +'/200/300'} 
-                style={{height: '15vh'}}
+                style={{height: '20vh'}}
             />
             <Card.Body>
                 <Card.Title>Team : {userData.team_name}</Card.Title>
