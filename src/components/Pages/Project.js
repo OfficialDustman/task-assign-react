@@ -74,7 +74,7 @@ function Project() {
 
     return (
         <>
-            <ProjectHead username={userData?.username}/>
+            <ProjectHead userData={userData}/>
             {isLoaded && 
                 <Sidebar 
                     projects={projects} 

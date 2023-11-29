@@ -46,7 +46,6 @@ function SignIn() {
       .then((data) => {
         setFetchData(data);
         setIsLoaded(true);
-        changeUserData(fetchData.data[0]);
       })
       .catch((error) => {
         setError(error)
@@ -56,10 +55,8 @@ function SignIn() {
 
   useEffect(() => {
     if(fetchData){
-      console.log(fetchData)
-      console.log(teams)
       const enrichedUserData = enrichUserDataWithTeams(fetchData.data, teams.data);
-      console.log(enrichedUserData);
+      changeUserData(enrichedUserData[0]);
       handleOpenSuccessModal();
     }
   }, [fetchData])

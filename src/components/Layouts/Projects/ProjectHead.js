@@ -1,13 +1,13 @@
 import { Card } from 'react-bootstrap/';
 
-function Project({username}) {
-
+function Project({userData}) {
+    console.log(userData);
     return (
         <header>
             <Card>
                 <Card.Img 
                     variant="top" 
-                    src={'https://picsum.photos/seed/' + username +'200/300'} 
+                    src={'https://picsum.photos/seed/' + userData.username +'200/300'} 
                 />
                 <Card.Body>
                     <Card.Text>
