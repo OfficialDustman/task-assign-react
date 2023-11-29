@@ -2,6 +2,7 @@ import ProjectHead from "../Layouts/Projects/ProjectHead";
 import Sidebar from "../Layouts/Projects/SideBar";
 import AuthContext from "../../store/auth-context";
 import { useState, useEffect, useContext } from "react";
+import { Container } from 'react-bootstrap';
 
 function Project() {
 
@@ -73,14 +74,16 @@ function Project() {
     console.log(projects);
 
     return (
-        <>
+        <Container style={{
+            display: 'flex'
+        }}>
             <ProjectHead userData={userData}/>
             {isLoaded && 
                 <Sidebar 
                     projects={projects} 
                     username={userData?.username}
                 />}
-        </>
+        </Container>
     )
 }
 

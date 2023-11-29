@@ -15,7 +15,8 @@ const Sidebar = ({ projects, username }) => {
         display: 'flex',
         justifyContent: 'flex-start',
         flexDirection: 'column',
-        gap: '1rem'
+        gap: '1rem',
+        position: 'absolute'
       }}
     >
       <Card>
@@ -34,7 +35,7 @@ const Sidebar = ({ projects, username }) => {
           {username}
         </Button>
       </Card>
-      
+
       <Navbar.Brand>
         <FontAwesomeIcon icon={'fa-solid fa-folder'} />{' '}
         Projects
