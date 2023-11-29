@@ -18,6 +18,17 @@ function SignIn() {
 
   const navigate = useNavigate();
 
+  function enrichUserDataWithTeams(userData, teamsData) {
+    return userData.map(user => {
+      const team = teamsData.find(team => team.team_id === user.team_id);
+      return {
+        ...user,
+        team_name: team ? team.team_name : null,
+        team_description: team ? team.team_description : null,
+      };
+    });
+  }
+  
   function submitHandler(e) {
     e.preventDefault();
 
@@ -47,6 +58,8 @@ function SignIn() {
     if(fetchData){
       console.log(fetchData)
       console.log(teams)
+      const enrichedUserData = enrichUserDataWithTeams(fetchData.data, teams.data);
+      console.log(enrichedUserData);
       handleOpenSuccessModal();
     }
   }, [fetchData])
