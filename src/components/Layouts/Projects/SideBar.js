@@ -16,22 +16,24 @@ const Sidebar = ({ projects, username }) => {
         justifyContent: 'flex-start',
         flexDirection: 'column',
         gap: '1rem',
-        position: 'absolute'
+        position: 'sticky',
+        top: '0'
       }}
     >
       <Card>
         <Button
           variant="light"
-          style={{ textTransform: 'capitalize' }}
         >
           <Badge
             style={{
               backgroundColor: '#613BE7 !important',
-              textTransform: 'capitalize'
+              textTransform: 'uppercase',
+              fontSize: '1.2rem',
             }}
           >
             {username[0]}
           </Badge>
+          {' '}
           {username}
         </Button>
       </Card>

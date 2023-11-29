@@ -3,6 +3,7 @@ import Sidebar from "../Layouts/Projects/SideBar";
 import AuthContext from "../../store/auth-context";
 import { useState, useEffect, useContext } from "react";
 import { Card } from 'react-bootstrap';
+import ProjectBody from "../Layouts/Projects/ProjectBody";
 
 function Project() {
 
@@ -79,15 +80,20 @@ function Project() {
             width: '100%',
             flexDirection: 'row',
             gap: '1rem',
+            justifyContent: 'space-between'
         }}>
             {isLoaded &&
-                <Sidebar
-                    projects={projects}
-                    username={userData?.username}
-                />
+                <>
+                    <Sidebar
+                        projects={projects}
+                        username={userData?.username}
+                    />
+                    <ProjectHead userData={userData} />
+                    <ProjectBody tasks={tasks} />
+                </>
             }
             <ProjectHead userData={userData} />
-
+            <ProjectBody tasks={tasks} />
         </Card>
     )
 }
