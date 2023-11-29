@@ -46,6 +46,7 @@ function SignIn() {
   useEffect(() => {
     if(fetchData){
       console.log(fetchData)
+      console.log(teams)
       handleOpenSuccessModal();
     }
   }, [fetchData])
