@@ -1,6 +1,6 @@
 import { Card } from 'react-bootstrap';
-import TaskFilter from '../../Ui/TaskFilter';
-import TaskList from './TaskList';
+import DateFilter from '../../Ui/DateFilter';
+import TaskList from '../Tasks/TaskList';
 import { useState } from 'react';
 
 const ProjectBody = ({  tasks }) => {
