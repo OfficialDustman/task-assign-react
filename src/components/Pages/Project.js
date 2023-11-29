@@ -2,7 +2,7 @@ import ProjectHead from "../Layouts/Projects/ProjectHead";
 import Sidebar from "../Layouts/Projects/SideBar";
 import AuthContext from "../../store/auth-context";
 import { useState, useEffect, useContext } from "react";
-import { Container } from 'react-bootstrap';
+import { Card } from 'react-bootstrap';
 
 function Project() {
 
@@ -67,23 +67,28 @@ function Project() {
 
     useEffect(() => {
         if (projects) {
-          setIsLoaded(true);
+            setIsLoaded(true);
         }
-      }, [projects]);
+    }, [projects]);
 
     console.log(projects);
 
     return (
-        <Container style={{
-            display: 'flex'
+        <Card style={{
+            display: 'flex',
+            width: '100%',
+            flexDirection: 'row',
+            gap: '1rem',
         }}>
-            <ProjectHead userData={userData}/>
-            {isLoaded && 
-                <Sidebar 
-                    projects={projects} 
+            {isLoaded &&
+                <Sidebar
+                    projects={projects}
                     username={userData?.username}
-                />}
-        </Container>
+                />
+            }
+            <ProjectHead userData={userData} />
+
+        </Card>
     )
 }
 
