@@ -1,3 +1,4 @@
+import ProjectHead from "../Layouts/Projects/ProjectHead";
 import Sidebar from "../Layouts/Projects/SideBar";
 import AuthContext from "../../store/auth-context";
 import { useState, useEffect, useContext } from "react";
@@ -73,6 +74,7 @@ function Project() {
 
     return (
         <>
+            <ProjectHead username={userData?.username}/>
             {isLoaded && 
                 <Sidebar 
                     projects={projects} 

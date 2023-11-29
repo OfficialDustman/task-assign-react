@@ -1,5 +1,5 @@
 import React from 'react';
-import { Navbar, Nav, Button, Badge } from 'react-bootstrap';
+import { Navbar, Nav, Button, Badge, Card } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import ProjectAccordion from "./ProjectAccordion";
 
@@ -18,14 +18,23 @@ const Sidebar = ({ projects, username }) => {
         gap: '1rem'
       }}
     >
-      <Button variant="light">
-        <Badge 
-          style={{backgroundColor: '#613BE7'}}
+      <Card>
+        <Button
+          variant="light"
+          style={{ textTransform: 'capitalize' }}
         >
-          {username[0]}
-        </Badge>
-        {username} 
-      </Button>
+          <Badge
+            style={{
+              backgroundColor: '#613BE7 !important',
+              textTransform: 'capitalize'
+            }}
+          >
+            {username[0]}
+          </Badge>
+          {username}
+        </Button>
+      </Card>
+      
       <Navbar.Brand>
         <FontAwesomeIcon icon={'fa-solid fa-folder'} />{' '}
         Projects
