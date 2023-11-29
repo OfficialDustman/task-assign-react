@@ -23,7 +23,6 @@ const ProjectBody = ({  tasks }) => {
       display: 'flex',
       flexDirection: 'column',
       padding: '20px',
-      marginTop: '20px',
       marginBottom: '6rem',
       gap: '1rem',
     }}>

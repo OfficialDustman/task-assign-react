@@ -2,7 +2,7 @@ import ProjectHead from "../Layouts/Projects/ProjectHead";
 import Sidebar from "../Layouts/Projects/SideBar";
 import AuthContext from "../../store/auth-context";
 import { useState, useEffect, useContext } from "react";
-import { Card } from 'react-bootstrap';
+import { Card, Container } from 'react-bootstrap';
 import ProjectBody from "../Layouts/Projects/ProjectBody";
 
 function Project() {
@@ -88,8 +88,16 @@ function Project() {
                         projects={projects}
                         username={userData?.username}
                     />
-                    <ProjectHead userData={userData} />
-                    <ProjectBody tasks={tasks} />
+                    <Container 
+                        style={{
+                            display: 'flex',
+                            flexDirection: 'column',
+                            gap: '1rem'
+                        }}
+                    >
+                        <ProjectHead userData={userData} />
+                        <ProjectBody tasks={tasks} />
+                    </Container>
                 </>
             }
         </Card>

@@ -6,7 +6,6 @@ function Project({userData}) {
         <Card style={{
             width: '65%',
             height: '40vh',
-            margin: '1rem'
         }}>
             <Card.Img 
                 variant="top" 

@@ -9,11 +9,9 @@ const ProjectAccordion = ({ projects }) => {
           key={project.project_id}
           eventKey={project.project_id.toString()}
         >
-          <Card.Header>
-            <Accordion.Header>
-              {project.project_name}
-            </Accordion.Header>
-          </Card.Header>
+          <Accordion.Header>
+            {project.project_name}
+          </Accordion.Header>
           <Accordion.Collapse eventKey={project.project_id.toString()}>
             <Card.Body>
               <ul>
