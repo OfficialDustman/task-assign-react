@@ -92,8 +92,6 @@ function Project() {
                     <ProjectBody tasks={tasks} />
                 </>
             }
-            <ProjectHead userData={userData} />
-            <ProjectBody tasks={tasks} />
         </Card>
     )
 }
