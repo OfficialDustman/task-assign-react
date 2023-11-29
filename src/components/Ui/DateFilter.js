@@ -24,7 +24,7 @@ const DateFilter = ({ onDateChange }) => {
     };
 
     const handleDateChange = (event) => {
-        const selectedDate = new Date(event.target.value);
+        const selectedDate = event.target.value;
         setSelectedDate(selectedDate);
         onDateChange(selectedDate);
     };
