@@ -32,9 +32,9 @@ const DateFilter = ({ onDateChange }) => {
     return (
         <Form.Group controlId="dateFilter">
             <Form.Label>Select Date:</Form.Label>
-            <Form.Control as="select" value={selectedDate.toISOString()} onChange={handleDateChange}>
+            <Form.Control as="select" value={selectedDate} onChange={handleDateChange}>
                 {generatePastWeekDates().map((date, index) => (
-                    <option key={index} value={date.toISOString()}>
+                    <option key={index} value={date}>
                         {date.toDateString()}
                     </option>
                 ))}
