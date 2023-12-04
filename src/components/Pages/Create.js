@@ -46,7 +46,7 @@ function Create() {
 
     return (
         <>
-           {users && <CreateForm
+           {users.length > 0 && <CreateForm
                 projects={projects}
                 users={users}
            />}
