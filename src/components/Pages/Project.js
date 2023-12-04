@@ -98,7 +98,10 @@ function Project() {
                         }}
                     >
                         <ProjectHead userData={userData} />
-                        <ProjectBody tasks={tasks} />
+                        <ProjectBody 
+                            tasks={tasks}
+                            projects={projects}
+                        />
                     </Container>
                 </>
             }

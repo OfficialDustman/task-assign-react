@@ -5,6 +5,7 @@ import Home from "./components/Pages/Home";
 import Task from "./components/Pages/Task";
 import Profile from "./components/Pages/Profile";
 import Project from "./components/Pages/Project";
+import Create from "./components/Pages/Create";
 
 import SignIn from "./components/Layouts/Auth/SignIn";
 import SignUp from "./components/Layouts/Auth/SignUp";
@@ -56,8 +57,12 @@ const router = createBrowserRouter([
       {
         path: "/home/project",
         element: <Project />
+      },
+      {
+        path: "/home/create/:new",
+        element: <Create />
       }
-    ],
+    ],  
   }
 
 ]);
