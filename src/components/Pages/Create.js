@@ -24,6 +24,7 @@ function Create() {
             .then((response) => response.json())
             .then((data) => {
                 setFetchData(data);
+                console.log(data);
             })
         // .catch((error) => {
         //   setError(error)
@@ -35,6 +36,7 @@ function Create() {
     useEffect(() => {
         if (fetchData) {
             setUsers(fetchData.data);
+            console.log(fetchData);
         }
     }, [fetchData]);
 
