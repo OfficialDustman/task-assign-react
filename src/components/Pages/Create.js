@@ -41,12 +41,13 @@ function Create() {
     useEffect(() => {
         if (users.length > 0) {
             console.log(users, projects);
+            setIsLoaded(true)
         }
     }, [users]);    
 
     return (
         <>
-           {users.length > 0 && <CreateForm
+           {isLoaded && <CreateForm
                 projects={projects}
                 users={users}
            />}
