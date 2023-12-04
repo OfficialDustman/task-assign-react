@@ -38,12 +38,18 @@ function Create() {
         }
     }, [fetchData]);
 
+    useEffect(() => {
+        if (users) {
+            console.log(users);
+        }
+    }, [users]);    
+
     return (
         <>
-           <CreateForm
+           {/* <CreateForm
                 projects={projects}
                 users={users}
-           /> 
+           />  */}
         </>
     )
 }
