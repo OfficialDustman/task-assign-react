@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Form, Button, Col } from 'react-bootstrap';
 
 const CreateForm = ({ projects, users }) => {
@@ -8,6 +8,8 @@ const CreateForm = ({ projects, users }) => {
   const [startDate, setStartDate] = useState('');
   const [endDate, setEndDate] = useState('');
   const [assignedTo, setAssignedTo] = useState([]);
+
+  console.log(projects, users);
 
   const handleProjectChange = (event) => {
     setProjectId(event.target.value);
