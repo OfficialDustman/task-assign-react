@@ -15,7 +15,7 @@ function Create() {
 
     useEffect(() => {
         const formData = new FormData();
-        formData.append("username", userData?.team_id);
+        formData.append("team_id", userData?.team_id);
 
         fetch("http://localhost/repos/task-assign/api/user/getUsersByTeam.php", {
             method: "POST",
@@ -41,7 +41,7 @@ function Create() {
     }, [fetchData]);
 
     useEffect(() => {
-        if (users) {
+        if (users.length > 0) {
             console.log(users);
         }
     }, [users]);    
