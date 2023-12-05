@@ -74,8 +74,8 @@ const CreateForm = ({ projects, users }) => {
         />
       </Form.Group>
 
-      <Form.Row>
-        {/* <Form.Group as={Col} controlId="projectId">
+      {/* <Form.Row>
+        <Form.Group as={Col} controlId="projectId">
           <Form.Label>Project</Form.Label>
           <Form.Control as="select" value={projectId} onChange={handleProjectChange}>
             <option value="">Select Project</option>
@@ -85,7 +85,7 @@ const CreateForm = ({ projects, users }) => {
               </option>
             ))}
           </Form.Control>
-        </Form.Group> */}
+        </Form.Group>
 
         <Form.Group as={Col} controlId="startDate">
           <Form.Label>Start Date</Form.Label>
@@ -104,7 +104,7 @@ const CreateForm = ({ projects, users }) => {
             onChange={handleEndDateChange}
           />
         </Form.Group>
-      </Form.Row>
+      </Form.Row> */}
 
       {/* <Form.Group controlId="assignedTo">
         <Form.Label>Assigned To</Form.Label>
