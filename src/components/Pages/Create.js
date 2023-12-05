@@ -20,7 +20,7 @@ function Create() {
         const formData = new FormData(); 
         formData.append("team_id", userData?.team_id);
 
-        fetch("http://localhost/repos/task-assign/api/user/{getUsersByTeam}.php", {
+        fetch("http://localhost/repos/task-assign/api/user/getUsersByTeam.php", {
             method: "POST",
             body: formData,
         })
