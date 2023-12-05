@@ -62,7 +62,17 @@ const CreateForm = ({ projects, users, userData, page }) => {
   };
 
   return (
-    <Form onSubmit={handleSubmit}>
+    <Form 
+      onSubmit={handleSubmit}
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        width: '85%',
+        margin: '0 auto',
+        marginBottom: '7rem',
+        gap: '1rem',
+      }}
+    >
       <Form.Group controlId="formName">
         <Form.Label>{page} Name</Form.Label>
         <Form.Control
