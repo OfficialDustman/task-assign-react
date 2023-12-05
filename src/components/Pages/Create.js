@@ -1,5 +1,5 @@
 import CreateForm from "../Layouts/CreateForm";
-import { useLocation, useParams, useHistory } from 'react-router-dom'
+import { useLocation, useParams, useNavigate } from 'react-router-dom'
 import { useState, useEffect, useContext } from 'react';
 import AuthContext from "../../store/auth-context";
 
@@ -16,10 +16,7 @@ function Create() {
     const location = useLocation();
     const { projects } = location.state
 
-    const history = useHistory();
-    const handleGoBack = () => {
-        history.goBack();
-    };
+    const navigate = useNavigate();
 
     useEffect(() => {
         const formData = new FormData();
@@ -54,7 +51,7 @@ function Create() {
 
     return (
         <>
-            <button onClick={handleGoBack}>
+            <button onClick={() => navigate(-1)}>
                 <FontAwesomeIcon icon="fa-solid fa-angle-left" />
             </button>
             <h1>Create new {form}</h1>
