@@ -9,7 +9,7 @@ const CreateForm = ({ projects, users }) => {
   const [endDate, setEndDate] = useState('');
   const [assignedTo, setAssignedTo] = useState([]);
  
-  console.log(projects, users);
+  console.log(assignedTo);
 
   const handleProjectChange = (event) => {
     setProjectId(event.target.value);
@@ -74,7 +74,7 @@ const CreateForm = ({ projects, users }) => {
         />
       </Form.Group>
 
-      {/* <Form.Row>
+      <Form.Group as={Row}>
         <Form.Group as={Col} controlId="projectId">
           <Form.Label>Project</Form.Label>
           <Form.Control as="select" value={projectId} onChange={handleProjectChange}>
@@ -104,7 +104,7 @@ const CreateForm = ({ projects, users }) => {
             onChange={handleEndDateChange}
           />
         </Form.Group>
-      </Form.Row> */}
+      </Form.Group>
 
       <Form.Group controlId="assignedTo">
         <Form.Label>Assigned To</Form.Label>
