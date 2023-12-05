@@ -9,7 +9,7 @@ const SearchableMultiSelect = ({ options, selectedValues, onChange }) => {
   };
 
   const handleSelectChange = (event) => {
-    const selectedOption = event.target.value;
+    const selectedOption = Array.from(event.target.selectedOptions, option => option.value);
     onChange(selectedOption);
   };
 
