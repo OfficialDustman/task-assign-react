@@ -47,6 +47,7 @@ const SearchableMultiSelect = ({ options, selectedValues, onChange }) => {
         multiple
         value={selectedValues}
         onChange={handleSelectChange}
+        ref={selectRef}
       >
         {filteredOptions.map((option) => (
           <option key={option} value={option}>
