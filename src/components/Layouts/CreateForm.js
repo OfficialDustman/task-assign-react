@@ -106,7 +106,7 @@ const CreateForm = ({ projects, users }) => {
         </Form.Group>
       </Form.Row> */}
 
-      {/* <Form.Group controlId="assignedTo">
+      <Form.Group controlId="assignedTo">
         <Form.Label>Assigned To</Form.Label>
         <Form.Control
           as="select"
@@ -120,7 +120,7 @@ const CreateForm = ({ projects, users }) => {
             </option>
           ))}
         </Form.Control>
-      </Form.Group> */}
+      </Form.Group>
 
       <Form.Group controlId="status">
         <Form.Label>Status</Form.Label>
