@@ -30,9 +30,9 @@ const SearchableMultiSelect = ({ options, selectedValues, onChange }) => {
     selectRef.current.addEventListener('focus', handleFocus);
 
     // Cleanup the event listener on component unmount
-    return () => {
-      selectRef.current.removeEventListener('focus', handleFocus);
-    };
+    // return () => {
+    //   selectRef.current.removeEventListener('focus', handleFocus);
+    // };
   }, []);
 
   return (
