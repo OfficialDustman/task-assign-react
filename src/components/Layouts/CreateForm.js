@@ -15,9 +15,9 @@ const CreateForm = ({ projects, users, userData, page }) => {
 
   useEffect(() => {
     if (page === 'task') {
-      setIsProject(true)
-    } else if (page === 'project') {
       setIsTask(true)
+    } else if (page === 'project') {
+      setIsProject(true)
     }
   }, [page]);
 
