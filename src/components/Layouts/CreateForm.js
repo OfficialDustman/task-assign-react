@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Form, Button, Col, Row } from 'react-bootstrap';
+import SearchableMultiSelect from '../Ui/SearchableMultiSelect';
 
 const CreateForm = ({ projects, users }) => {
   const [taskName, setTaskName] = useState('');
@@ -23,9 +24,9 @@ const CreateForm = ({ projects, users }) => {
     setEndDate(event.target.value);
   };
 
-  const handleAssignedToChange = (event) => {
+  const handleAssignedToChange = (selectedUsers) => {
     // Convert NodeList to Array and extract selected values
-    const selectedUsers = Array.from(event.target.selectedOptions, option => option.value);
+    // const selectedUsers = Array.from(event.target.selectedOptions, option => option.value);
     setAssignedTo(selectedUsers);
   };
 
@@ -108,18 +109,11 @@ const CreateForm = ({ projects, users }) => {
 
       <Form.Group controlId="assignedTo">
         <Form.Label>Assigned To</Form.Label>
-        <Form.Control
-          as="select"
-          multiple
-          value={assignedTo}
+        <SearchableMultiSelect
+          options={users.map((user) => user.username)}
+          selectedValues={assignedTo}
           onChange={handleAssignedToChange}
-        >
-          {users.map((user) => (
-            <option key={user.username} value={user.username}>
-              {user.username}
-            </option>
-          ))}
-        </Form.Control>
+        />
       </Form.Group>
 
       <Form.Group controlId="status">
