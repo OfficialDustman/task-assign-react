@@ -64,21 +64,21 @@ const CreateForm = ({ projects, users, userData, page }) => {
   return (
     <Form onSubmit={handleSubmit}>
       <Form.Group controlId="formName">
-        <Form.Label>Task Name</Form.Label>
+        <Form.Label>{page} Name</Form.Label>
         <Form.Control
           type="text"
-          placeholder="Enter task name"
+          placeholder={`Enter ${page} name`}
           value={formName}
           onChange={(e) => setFormName(e.target.value)}
         />
       </Form.Group>
 
       <Form.Group controlId="formDescription">
-        <Form.Label>Task Description</Form.Label>
+        <Form.Label>{page} Description</Form.Label>
         <Form.Control
           as="textarea"
           rows={3}
-          placeholder="Enter task description"
+          placeholder={`Enter ${page} description`}
           value={formDescription}
           onChange={(e) => setFormDescription(e.target.value)}
         />
