@@ -47,10 +47,10 @@ const Sidebar = ({ projects, username }) => {
 
       <UIButton>
         <Link
-          to='/home/create/task'
-          // state={{ projects: projects }}
+          to='/home/create/project'
+          state={{ projects: projects }}
         >
-          Create Task
+          Create Project
           <FontAwesomeIcon icon="fa-solid fa-plus" />
         </Link>
       </UIButton>
