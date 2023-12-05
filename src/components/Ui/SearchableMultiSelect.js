@@ -22,8 +22,10 @@ const SearchableMultiSelect = ({ options, selectedValues, onChange }) => {
   useEffect(() => {
     // Automatically enable multiple selection when the select element is focused
     const handleFocus = () => {
-      selectRef.current.setAttribute('multiple', 'multiple');
-      console.log('focus');
+    //   selectRef.current.setAttribute('multiple', 'multiple');
+        const event = new MouseEvent('mousedown', { bubbles: true, cancelable: true, ctrlKey: true });
+        selectRef.current.dispatchEvent(event);
+        console.log('focus');
     };
 
     // Attach the event listener
