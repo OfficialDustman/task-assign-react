@@ -2,6 +2,8 @@ import React from 'react';
 import { Navbar, Nav, Button, Badge, Card } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import ProjectAccordion from "./ProjectAccordion";
+import UIButton from '../../Ui/Button';
+import {Link} from "react-router-dom";
 
 
 const Sidebar = ({ projects, username }) => {
@@ -42,6 +44,17 @@ const Sidebar = ({ projects, username }) => {
         <FontAwesomeIcon icon={'fa-solid fa-folder'} />{' '}
         Projects
       </Navbar.Brand>
+
+      <UIButton>
+        <Link
+          to='/home/create/task'
+          // state={{ projects: projects }}
+        >
+          Create Task
+          <FontAwesomeIcon icon="fa-solid fa-plus" />
+        </Link>
+      </UIButton>
+
       <Nav>
         <ProjectAccordion projects={projects} />
       </Nav>

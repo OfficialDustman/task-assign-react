@@ -1,16 +1,25 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Form, Button, Col, Row } from 'react-bootstrap';
 import SearchableMultiSelect from '../Ui/SearchableMultiSelect';
 
-const CreateForm = ({ projects, users }) => {
-  const [taskName, setTaskName] = useState('');
-  const [taskDescription, setTaskDescription] = useState('');
+const CreateForm = ({ projects, users, userData, page }) => {
+
+  const [isProject, setIsProject] = useState(false);
+  const [isTask, setIsTask] = useState(false);
+  const [formName, setFormName] = useState('');
+  const [formDescription, setFormDescription] = useState('');
   const [projectId, setProjectId] = useState('');
   const [startDate, setStartDate] = useState('');
   const [endDate, setEndDate] = useState('');
   const [assignedTo, setAssignedTo] = useState([]);
- 
-  console.log(assignedTo);
+
+  useEffect(() => {
+    if (page === 'task') {
+      setIsProject(true)
+    } else if (page === 'project') {
+      setIsTask(true)
+    }
+  }, [page]);
 
   const handleProjectChange = (event) => {
     setProjectId(event.target.value);
@@ -35,8 +44,8 @@ const CreateForm = ({ projects, users }) => {
 
     // Do something with the form data (e.g., submit to API)
     console.log({
-      taskName,
-      taskDescription,
+      formName,
+      formDescription,
       projectId,
       startDate,
       endDate,
@@ -44,8 +53,8 @@ const CreateForm = ({ projects, users }) => {
     });
 
     // Reset form fields
-    setTaskName('');
-    setTaskDescription('');
+    setFormName('');
+    setFormDescription('');
     setProjectId('');
     setStartDate('');
     setEndDate('');
@@ -54,29 +63,29 @@ const CreateForm = ({ projects, users }) => {
 
   return (
     <Form onSubmit={handleSubmit}>
-      <Form.Group controlId="taskName">
+      <Form.Group controlId="formName">
         <Form.Label>Task Name</Form.Label>
         <Form.Control
           type="text"
           placeholder="Enter task name"
-          value={taskName}
-          onChange={(e) => setTaskName(e.target.value)}
+          value={formName}
+          onChange={(e) => setFormName(e.target.value)}
         />
       </Form.Group>
 
-      <Form.Group controlId="taskDescription">
+      <Form.Group controlId="formDescription">
         <Form.Label>Task Description</Form.Label>
         <Form.Control
           as="textarea"
           rows={3}
           placeholder="Enter task description"
-          value={taskDescription}
-          onChange={(e) => setTaskDescription(e.target.value)}
+          value={formDescription}
+          onChange={(e) => setFormDescription(e.target.value)}
         />
       </Form.Group>
 
       <Form.Group as={Row}>
-        <Form.Group as={Col} controlId="projectId">
+        {isTask && <Form.Group as={Col} controlId="projectId">
           <Form.Label>Project</Form.Label>
           <Form.Control as="select" value={projectId} onChange={handleProjectChange}>
             <option value="">Select Project</option>
@@ -86,7 +95,18 @@ const CreateForm = ({ projects, users }) => {
               </option>
             ))}
           </Form.Control>
-        </Form.Group>
+        </Form.Group>}
+
+
+        {isProject && <Form.Group controlId="teamId">
+          <Form.Label>Team</Form.Label>
+          <Form.Control
+            id={userData.team_id}
+            type="text"
+            value={userData.team_name}
+            readOnly
+          />
+        </Form.Group>}
 
         <Form.Group as={Col} controlId="startDate">
           <Form.Label>Start Date</Form.Label>
@@ -107,14 +127,14 @@ const CreateForm = ({ projects, users }) => {
         </Form.Group>
       </Form.Group>
 
-      <Form.Group controlId="assignedTo">
+      {isTask && <Form.Group controlId="assignedTo">
         <Form.Label>Assigned To</Form.Label>
         <SearchableMultiSelect
           options={users.map((user) => user.username)}
           selectedValues={assignedTo}
           onChange={handleAssignedToChange}
         />
-      </Form.Group>
+      </Form.Group>}
 
       <Form.Group controlId="status">
         <Form.Label>Status</Form.Label>

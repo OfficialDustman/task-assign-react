@@ -35,7 +35,7 @@ const ProjectBody = ({ tasks, projects }) => {
 
         <UIButton>
           <Link 
-            to='/home/create/:task'
+            to='/home/create/task'
             state={{ projects: projects }}
           >
             Create Task 
