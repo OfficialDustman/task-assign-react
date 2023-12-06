@@ -10,7 +10,8 @@ function Project() {
     const [fetchData, setFetchData] = useState(null);
     const [fetchProject, setFetchProject] = useState(null);
     const [tasks, setTasks] = useState([]);
-    const [projects, setProjects] = useState(null);
+    const [projects, setProjects] = useState([]);
+    const [groupedProjects, setGroupedProjects] = useState(null);
     const [filteredTasks, setFilteredTasks] = useState([]);
     const [isLoaded, setIsLoaded] = useState(false);
     const [error, setError] = useState(null);
@@ -89,22 +90,29 @@ function Project() {
     }, [fetchData]);
 
     useEffect(() => {
-        if (tasks.length > 0 && fetchProject.data.length > 0) {
+        if (fetchProject) {
             console.log(fetchProject.data);
-            const groupedProjects = groupTasksByProject(fetchProject.data, tasks);
-            console.log(groupedProjects);
-            setProjects(groupedProjects);
+            setProjects(fetchProject.data);
         }
-    }, [fetchProject, tasks]);
+    }, [fetchProject]);
 
     useEffect(() => {
-        if (projects) {
+        if (tasks.length > 0 && projects.length > 0) {
             console.log(projects);
+            const groupedProjects = groupTasksByProject(projects, tasks);
+            console.log(groupedProjects);
+            setGroupedProjects(groupedProjects);
+        }
+    }, [projects, tasks]);
+
+    useEffect(() => {
+        if (groupedProjects) {
+            console.log(groupedProjects);
             // setIsLoaded(true);
         }
-    }, [projects]);
+    }, [groupedProjects]);
 
-    console.log(projects);
+    console.log(groupedProjects);
 
     return (
         <Card style={{
@@ -118,7 +126,7 @@ function Project() {
             {isLoaded &&
                 <>
                     <Sidebar
-                        projects={projects}
+                        projects={groupedProjects}
                         username={userData?.username}
                     />
                     <Container 
@@ -133,7 +141,7 @@ function Project() {
                         <ProjectHead userData={userData} />
                         <ProjectBody 
                             tasks={tasks}
-                            projects={projects}
+                            projects={groupedProjects}
                         />
                     </Container>
                 </>
