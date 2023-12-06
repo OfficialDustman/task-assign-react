@@ -52,6 +52,7 @@ function Project() {
         })
             .then((response) => response.json())
             .then((data) => {
+                console.log(data)
                 setFetchData(data);
             })
         // .catch((error) => {
@@ -82,6 +83,7 @@ function Project() {
 
     useEffect(() => {
         if (fetchData) {
+            console.log(fetchData.data);
             setTasks(fetchData.data);
         }
     }, [fetchData]);
