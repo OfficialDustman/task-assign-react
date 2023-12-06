@@ -99,6 +99,7 @@ function Project() {
     useEffect(() => {
         if (tasks.length > 0 && projects.length > 0) {
             console.log(projects);
+            console.log(tasks);
             const groupedProjects = groupTasksByProject(projects, tasks);
             console.log(groupedProjects);
             setGroupedProjects(groupedProjects);
