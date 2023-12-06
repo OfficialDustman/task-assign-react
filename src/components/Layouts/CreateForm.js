@@ -50,12 +50,7 @@ const CreateForm = ({ projects, users, userData, page }) => {
     event.preventDefault();
 
     setIsLoaded(false);
-    formName,
-    formDescription,
-    projectId,
-    startDate,
-    endDate,
-    assignedTo
+
     const formData = new FormData();
     formData.append(`${page}_name`, formName);
     formData.append(`${page}_description`, formDescription);
