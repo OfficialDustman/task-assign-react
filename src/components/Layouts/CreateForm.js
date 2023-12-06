@@ -8,6 +8,7 @@ import SuccessModal from '../Ui/SuccessModal';
 const CreateForm = ({ projects, users, userData, page }) => {
   
   const [isLoaded, setIsLoaded] = useState(true);
+  const [showModal, setShowModal] = useState(false);
   const [error, setError] = useState(null);
   const [fetchData, setFetchData] = useState(null);
   const [isProject, setIsProject] = useState(false);
@@ -106,13 +107,11 @@ const CreateForm = ({ projects, users, userData, page }) => {
   };
 
   useEffect(() => {
-    console.log(fetchData);
-    if (fetchData !== null) {
-      console.log(fetchData);
+    if (fetchData) {
       setIsLoaded(true);
+      setShowModal(true);
     }
   }, [fetchData]);
-
 
   return (
     <Form 
@@ -226,7 +225,7 @@ const CreateForm = ({ projects, users, userData, page }) => {
       </UIButton>
 
       <SuccessModal 
-        show={isLoaded} 
+        show={showModal} 
         handleClose={handleCloseSuccessModal}
         data={fetchData}
       />
