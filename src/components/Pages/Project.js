@@ -28,17 +28,9 @@ function Project() {
         });
 
         tasks.forEach(task => {
-            // if (!groupedTasks[task.project_id]) {
-            //     groupedTasks[task.project_id] = {
-            //         project_id: task.project_id,
-            //         project_name: task.project_name,
-            //         tasks: [],
-            //     };
-            // }
             if (groupedTasks[task.project_id]) {
                 groupedTasks[task.project_id].tasks.push(task);
             }
-             
         });
 
         return Object.values(groupedTasks);
@@ -55,13 +47,12 @@ function Project() {
         })
             .then((response) => response.json())
             .then((data) => {
-                console.log(data)
                 setFetchData(data);
             })
-        // .catch((error) => {
-        //   setError(error)
-        //   console.error("Error fetching data:", error);
-        // });
+        .catch((error) => {
+          setError(error)
+          console.error("Error fetching data:", error);
+        });
 
     }, [userData])
 
@@ -77,33 +68,28 @@ function Project() {
             .then((data) => {
                 setFetchProject(data);
             })
-        // .catch((error) => {
-        //   setError(error)
-        //   console.error("Error fetching data:", error);
-        // });
+        .catch((error) => {
+          setError(error)
+          console.error("Error fetching data:", error);
+        });
 
     }, [userData])
 
     useEffect(() => {
         if (fetchData) {
-            console.log(fetchData.data);
             setTasks(fetchData.data);
         }
     }, [fetchData]);
 
     useEffect(() => {
         if (fetchProject) {
-            console.log(fetchProject.data);
             setProjects(fetchProject.data);
         }
     }, [fetchProject]);
 
     useEffect(() => {
         if (tasks.length > 0 && projects.length > 0) {
-            console.log(projects);
-            console.log(tasks);
             const groupedProjects = groupTasksByProject(projects, tasks);
-            console.log(groupedProjects);
             setGroupedProjects(groupedProjects);
         }
     }, [projects, tasks]);
@@ -111,11 +97,9 @@ function Project() {
     useEffect(() => {
         if (groupedProjects) {
             console.log(groupedProjects);
-            // setIsLoaded(true);
+            setIsLoaded(true);
         }
     }, [groupedProjects]);
-
-    console.log(groupedProjects);
 
     return (
         <Card style={{
