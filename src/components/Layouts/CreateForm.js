@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react';
-import { Form, Col, Row } from 'react-bootstrap';
+import { Form, Col, Row, Spinner } from 'react-bootstrap';
 import SearchableMultiSelect from '../Ui/SearchableMultiSelect';
 import UIButton from '../Ui/Button';
 
 const CreateForm = ({ projects, users, userData, page }) => {
-
+  
+  const [isLoaded, setIsLoaded] = useState(true);
   const [isProject, setIsProject] = useState(false);
   const [isTask, setIsTask] = useState(false);
   const [formName, setFormName] = useState('');
@@ -40,8 +41,48 @@ const CreateForm = ({ projects, users, userData, page }) => {
     setAssignedTo(selectedUsers);
   };
 
+  const submitBtnStyles = {
+    alignSelf: 'center',
+    padding: '0.5rem 3rem',
+  }
+
   const handleSubmit = (event) => {
     event.preventDefault();
+
+    setIsLoaded(false);
+    formName,
+    formDescription,
+    projectId,
+    startDate,
+    endDate,
+    assignedTo
+    const formData = new FormData();
+    formData.append(`${page}_name`, formName);
+    formData.append(`${page}_description`, formDescription);
+    formData.append("start_date", startDate);
+    formData.append("end_date", endDate);
+    formData.append("status", 'assigned');
+
+    if (isTask) {
+      formData.append("project_id", projectId);
+      formData.append("assigned_users", assignedTo);
+    } else if (isProject) {
+      formData.append("team_id", userData.team_id);
+    }
+
+    fetch(`http://localhost/repos/task-assign/api/${page}/create${page}.php`, {
+      method: "POST",
+      body: formData,
+    })
+      .then((response) => response.json() )
+      .then((data) => {
+        console.log(data);
+        setIsLoaded(true);
+      })
+      .catch((error) => {
+        // setError(error)
+        console.error("Error fetching data:", error);
+      });
 
     // Do something with the form data (e.g., submit to API)
     console.log({
@@ -155,8 +196,15 @@ const CreateForm = ({ projects, users, userData, page }) => {
         />
       </Form.Group>
 
-      <UIButton variant="primary" type="submit">
-        Submit
+      <UIButton 
+        type="submit"
+        styles={submitBtnStyles}
+      >
+        {isLoaded ? (
+          "Submit"
+        ) : (
+          <Spinner animation="border" variant="light" size="sm" />
+        )}
       </UIButton>
     </Form>
   );
