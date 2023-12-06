@@ -27,6 +27,8 @@ function Project() {
             };
         });
 
+        console.log(projects, tasks, groupedTasks);
+
         tasks.forEach(task => {
             // if (!groupedTasks[task.project_id]) {
             //     groupedTasks[task.project_id] = {
@@ -35,8 +37,9 @@ function Project() {
             //         tasks: [],
             //     };
             // }
-
+            console.log(groupedTasks);
             groupedTasks[task.project_id].tasks.push(task);
+            console.log(groupedTasks);
         });
 
         return Object.values(groupedTasks);
