@@ -49,6 +49,13 @@ const Sidebar = ({ projects, username }) => {
         <Link
           to='/home/create/project'
           state={{ projects: projects }}
+          style={{
+            color: 'white',
+            textDecoration: 'none',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '1rem',
+          }}
         >
           Create Project
           <FontAwesomeIcon icon="fa-solid fa-plus" />

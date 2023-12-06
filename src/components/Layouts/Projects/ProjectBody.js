@@ -3,7 +3,7 @@ import DateFilter from '../../Ui/DateFilter';
 import UIButton from '../../Ui/Button';
 import TaskList from '../Tasks/TaskList';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useState } from 'react';
 
 const ProjectBody = ({ tasks, projects }) => {
@@ -30,15 +30,28 @@ const ProjectBody = ({ tasks, projects }) => {
       gap: '1rem',
       width: '100%'
     }}>
-      <Card.Title>
+      <Card.Title
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          gap: '2rem',
+        }}
+      >
         Today Task
 
         <UIButton>
-          <Link 
+          <Link
             to='/home/create/task'
             state={{ projects: projects }}
+            style={{
+              color: 'white',
+              textDecoration: 'none',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '1rem',
+            }}
           >
-            Create Task 
+            Create Task
             <FontAwesomeIcon icon="fa-solid fa-plus" />
           </Link>
         </UIButton>

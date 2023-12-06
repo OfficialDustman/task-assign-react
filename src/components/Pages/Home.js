@@ -19,7 +19,8 @@ function Home() {
                 display: 'flex',
                 flexDirection: 'column',
                 margin: '0 auto',
-                width: '100%'
+                width: '100%',
+                background: 'linear-gradient(180deg, #FFF 0%, #DFE4F1 100%)'
             }}
         >
             <Outlet />

@@ -37,7 +37,8 @@ export default function Summary({ tasks, onFilteredTasksChange, onDateChange }) 
     return (
         <Card style={{
             display: 'flex',
-            flexDirection: 'column',
+            flexDirection: 'row',
+            justifyContent: 'space-between',
             padding: '20px',
             marginTop: '20px',
             backgroundColor: '#DCE1EF'

@@ -65,7 +65,6 @@ function Task() {
           display: 'flex', 
           flexDirection: 'column', 
           padding: '20px', 
-          background: 'linear-gradient(180deg, #FFF 0%, #DFE4F1 100%)'
       }}>
           {userData && <Header userData={userData}/>}
           <Summary 

@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
-import { Form, Button, Col, Row } from 'react-bootstrap';
+import { Form, Col, Row } from 'react-bootstrap';
 import SearchableMultiSelect from '../Ui/SearchableMultiSelect';
+import UIButton from '../Ui/Button';
 
 const CreateForm = ({ projects, users, userData, page }) => {
 
@@ -73,7 +74,8 @@ const CreateForm = ({ projects, users, userData, page }) => {
         gap: '1rem',
       }}
     >
-      <Form.Group controlId="formName">
+      <Form.Group as={Row}>
+        <Form.Group as={Col} controlId="formName">
         <Form.Label style={{textTransform: 'capitalize'}}>{page} Name</Form.Label>
         <Form.Control
           type="text"
@@ -81,9 +83,9 @@ const CreateForm = ({ projects, users, userData, page }) => {
           value={formName}
           onChange={(e) => setFormName(e.target.value)}
         />
-      </Form.Group>
+        </Form.Group>
 
-      <Form.Group controlId="formDescription">
+        <Form.Group as={Col} controlId="formDescription">
         <Form.Label style={{textTransform: 'capitalize'}}>{page} Description</Form.Label>
         <Form.Control
           as="textarea"
@@ -92,7 +94,9 @@ const CreateForm = ({ projects, users, userData, page }) => {
           value={formDescription}
           onChange={(e) => setFormDescription(e.target.value)}
         />
+        </Form.Group>
       </Form.Group>
+
 
       <Form.Group as={Row}>
         {isTask && <Form.Group as={Col} controlId="projectId">
@@ -108,7 +112,7 @@ const CreateForm = ({ projects, users, userData, page }) => {
         </Form.Group>}
 
 
-        {isProject && <Form.Group controlId="teamId">
+        {isProject && <Form.Group as={Col} controlId="teamId">
           <Form.Label>Team</Form.Label>
           <Form.Control
             id={userData.team_id}
@@ -155,9 +159,9 @@ const CreateForm = ({ projects, users, userData, page }) => {
         />
       </Form.Group>
 
-      <Button variant="primary" type="submit">
+      <UIButton variant="primary" type="submit">
         Submit
-      </Button>
+      </UIButton>
     </Form>
   );
 };

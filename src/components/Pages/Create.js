@@ -54,10 +54,23 @@ function Create() {
         <>
             <div
                 style={{
-                    
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '2rem',
+                    position: 'sticky',
+                    top: 0,
+                    background: 'white',
+                    paddingLeft: '8%',
                 }}
             >
-                <button onClick={() => navigate(-1)}>
+                <button 
+                    style={{
+                        fontSize: '2rem',
+                        border: 'none',
+                        background: 'none',
+                    }}
+                    onClick={() => navigate(-1)}
+                >
                     <FontAwesomeIcon icon="fa-solid fa-angle-left" />
                 </button>
                 <h1>Create new {form}</h1>

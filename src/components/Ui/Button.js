@@ -1,7 +1,7 @@
 import { Button } from 'react-bootstrap';
 
 function UIButton({children, type, styles}) {
-    styles = {backgroundColor: '#613BE7', color : '#FFF', ...styles}
+    styles = {backgroundColor: '#613BE7', ...styles}
     return (
         <Button 
             type={type} 
