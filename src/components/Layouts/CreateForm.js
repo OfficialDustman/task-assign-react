@@ -65,6 +65,10 @@ const CreateForm = ({ projects, users, userData, page }) => {
       formData.append("team_id", userData.team_id);
     }
 
+    for (const value of formData.values()) {
+      console.log(value);
+    }
+
     fetch(`http://localhost/repos/task-assign/api/${page}/create${page}.php`, {
       method: "POST",
       body: formData,

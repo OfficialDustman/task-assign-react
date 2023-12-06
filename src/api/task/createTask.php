@@ -19,7 +19,7 @@ if (isset($_POST['task_name'], $_POST['task_description'], $_POST['project_id'],
     // Get the task ID of the newly created task
     $taskId = $pdo->lastInsertId();
 
-    if (!empty($assignedUsers)) {
+    if (!empty($assignedUsers && is_array($assignedUsers))) {
         // Prepare the data for inserting into the task_assignments table
         $assignmentData = [];
         foreach ($assignedUsers as $username) {
