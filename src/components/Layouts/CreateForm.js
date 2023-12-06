@@ -1,11 +1,15 @@
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom'
 import { Form, Col, Row, Spinner } from 'react-bootstrap';
 import SearchableMultiSelect from '../Ui/SearchableMultiSelect';
 import UIButton from '../Ui/Button';
+import SuccessModal from '../Ui/SuccessModal';
 
 const CreateForm = ({ projects, users, userData, page }) => {
   
   const [isLoaded, setIsLoaded] = useState(true);
+  const [error, setError] = useState(null);
+  const [fetchData, setFetchData] = useState(null);
   const [isProject, setIsProject] = useState(false);
   const [isTask, setIsTask] = useState(false);
   const [formName, setFormName] = useState('');
@@ -14,6 +18,8 @@ const CreateForm = ({ projects, users, userData, page }) => {
   const [startDate, setStartDate] = useState('');
   const [endDate, setEndDate] = useState('');
   const [assignedTo, setAssignedTo] = useState([]);
+  
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (page === 'task') {
@@ -22,6 +28,10 @@ const CreateForm = ({ projects, users, userData, page }) => {
       setIsProject(true)
     }
   }, [page]);
+
+  const handleCloseSuccessModal = () => {
+    navigate(-1);
+  };
 
   const handleProjectChange = (event) => {
     setProjectId(event.target.value);
@@ -75,22 +85,31 @@ const CreateForm = ({ projects, users, userData, page }) => {
     })
       .then((response) => response.json() )
       .then((data) => {
-        console.log(data);
-        setIsLoaded(true);
+        setFetchData(data)
       })
-      // .catch((error) => {
-      //   // setError(error)
-      //   console.error("Error fetching data:", error);
-      // });
+      .catch((error) => {
+        setError(error)
+        console.error("Error fetching data:", error);
+      });
 
-    // Reset form fields
-    setFormName('');
-    setFormDescription('');
-    setProjectId('');
-    setStartDate('');
-    setEndDate('');
-    setAssignedTo([]);
   };
+
+  useEffect(() => {
+    if (fetchData.status === 'success') {
+      setIsLoaded(true);
+
+      // Reset form fields
+      setFormName('');
+      setFormDescription('');
+      setProjectId('');
+      setStartDate('');
+      setEndDate('');
+      setAssignedTo([]);
+    } else {
+      setError(fetchData.status)
+    }  
+  }, [fetchData]);
+
 
   return (
     <Form 
@@ -109,6 +128,7 @@ const CreateForm = ({ projects, users, userData, page }) => {
           type="text"
           placeholder={`Enter ${page} name`}
           value={formName}
+          required
           onChange={(e) => setFormName(e.target.value)}
         />
         </Form.Group>
@@ -120,6 +140,7 @@ const CreateForm = ({ projects, users, userData, page }) => {
           rows={3}
           placeholder={`Enter ${page} description`}
           value={formDescription}
+          required
           onChange={(e) => setFormDescription(e.target.value)}
         />
         </Form.Group>
@@ -127,7 +148,7 @@ const CreateForm = ({ projects, users, userData, page }) => {
       <Form.Group as={Row}>
         {isTask && <Form.Group as={Col} controlId="projectId">
           <Form.Label>Project</Form.Label>
-          <Form.Control as="select" value={projectId} onChange={handleProjectChange}>
+          <Form.Control as="select" value={projectId} required onChange={handleProjectChange}>
             <option value="">Select Project</option>
             {projects.map((project) => (
               <option key={project.project_id} value={project.project_id}>
@@ -153,6 +174,7 @@ const CreateForm = ({ projects, users, userData, page }) => {
           <Form.Control
             type="date"
             value={startDate}
+            required
             onChange={handleStartDateChange}
           />
         </Form.Group>
@@ -162,6 +184,7 @@ const CreateForm = ({ projects, users, userData, page }) => {
           <Form.Control
             type="date"
             value={endDate}
+            required
             onChange={handleEndDateChange}
           />
         </Form.Group>
@@ -172,6 +195,7 @@ const CreateForm = ({ projects, users, userData, page }) => {
         <SearchableMultiSelect
           options={users.map((user) => user.username)}
           selectedValues={assignedTo}
+          required={required}
           onChange={handleAssignedToChange}
         />
       </Form.Group>}
@@ -185,6 +209,8 @@ const CreateForm = ({ projects, users, userData, page }) => {
         />
       </Form.Group>
 
+      {error && <p>{error.message}</p>}
+
       <UIButton 
         type="submit"
         styles={submitBtnStyles}
@@ -195,6 +221,12 @@ const CreateForm = ({ projects, users, userData, page }) => {
           <Spinner animation="border" variant="light" size="sm" />
         )}
       </UIButton>
+
+      <SuccessModal 
+        show={isLoaded} 
+        handleClose={handleCloseSuccessModal}
+        data={fetchData}
+      />
     </Form>
   );
 };

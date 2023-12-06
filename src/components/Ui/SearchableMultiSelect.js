@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Form } from 'react-bootstrap';
 
-const SearchableMultiSelect = ({ options, selectedValues, onChange }) => {
+const SearchableMultiSelect = ({ options, selectedValues, required, onChange }) => {
   const [filter, setFilter] = useState('');
 
   const handleFilterChange = (event) => {
@@ -30,6 +30,7 @@ const SearchableMultiSelect = ({ options, selectedValues, onChange }) => {
         as="select"
         multiple
         value={selectedValues}
+        required
         onChange={handleSelectChange}
       >
         {filteredOptions.map((option) => (
