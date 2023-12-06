@@ -96,7 +96,7 @@ function Project() {
     }, [fetchProject, tasks]);
 
     useEffect(() => {
-        if (projects) {
+        if (projects.length > 0) {
             console.log(projects);
             // setIsLoaded(true);
         }
