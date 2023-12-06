@@ -65,19 +65,23 @@ const CreateForm = ({ projects, users, userData, page }) => {
       formData.append("team_id", userData.team_id);
     }
 
-    fetch(`http://localhost/repos/task-assign/api/${page}/create${page}.php`, {
-      method: "POST",
-      body: formData,
-    })
-      .then((response) => response.json() )
-      .then((data) => {
-        console.log(data);
-        setIsLoaded(true);
-      })
-      .catch((error) => {
-        // setError(error)
-        console.error("Error fetching data:", error);
-      });
+    for (const value of formData.values()) {
+      console.log(value);
+    }
+
+    // fetch(`http://localhost/repos/task-assign/api/${page}/create${page}.php`, {
+    //   method: "POST",
+    //   body: formData,
+    // })
+    //   .then((response) => response.json() )
+    //   .then((data) => {
+    //     console.log(data);
+    //     setIsLoaded(true);
+    //   })
+    //   .catch((error) => {
+    //     // setError(error)
+    //     console.error("Error fetching data:", error);
+    //   });
 
     // Do something with the form data (e.g., submit to API)
     console.log({
