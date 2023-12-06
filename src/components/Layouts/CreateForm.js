@@ -74,7 +74,7 @@ const CreateForm = ({ projects, users, userData, page }) => {
       }}
     >
       <Form.Group controlId="formName">
-        <Form.Label>{page} Name</Form.Label>
+        <Form.Label style={{textTransform: 'capitalize'}}>{page} Name</Form.Label>
         <Form.Control
           type="text"
           placeholder={`Enter ${page} name`}
@@ -84,7 +84,7 @@ const CreateForm = ({ projects, users, userData, page }) => {
       </Form.Group>
 
       <Form.Group controlId="formDescription">
-        <Form.Label>{page} Description</Form.Label>
+        <Form.Label style={{textTransform: 'capitalize'}}>{page} Description</Form.Label>
         <Form.Control
           as="textarea"
           rows={3}

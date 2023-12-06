@@ -52,10 +52,16 @@ function Create() {
 
     return (
         <>
-            <button onClick={() => navigate(-1)}>
-                <FontAwesomeIcon icon="fa-solid fa-angle-left" />
-            </button>
-            <h1>Create new {form}</h1>
+            <div
+                style={{
+                    
+                }}
+            >
+                <button onClick={() => navigate(-1)}>
+                    <FontAwesomeIcon icon="fa-solid fa-angle-left" />
+                </button>
+                <h1>Create new {form}</h1>
+            </div>
             {isLoaded && <CreateForm
                 projects={projects}
                 users={users}
