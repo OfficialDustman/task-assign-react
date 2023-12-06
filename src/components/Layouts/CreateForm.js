@@ -86,6 +86,17 @@ const CreateForm = ({ projects, users, userData, page }) => {
       .then((response) => response.json() )
       .then((data) => {
         setFetchData(data)
+        if (data.status === 'success') {
+          // Reset form fields
+          setFormName('');
+          setFormDescription('');
+          setProjectId('');
+          setStartDate('');
+          setEndDate('');
+          setAssignedTo([]);
+        } else {
+          setError(data.status)
+        }
       })
       .catch((error) => {
         setError(error)
@@ -95,19 +106,7 @@ const CreateForm = ({ projects, users, userData, page }) => {
   };
 
   useEffect(() => {
-    if (fetchData.status === 'success') {
-      setIsLoaded(true);
-
-      // Reset form fields
-      setFormName('');
-      setFormDescription('');
-      setProjectId('');
-      setStartDate('');
-      setEndDate('');
-      setAssignedTo([]);
-    } else {
-      setError(fetchData.status)
-    }  
+    setIsLoaded(true);
   }, [fetchData]);
 
 
