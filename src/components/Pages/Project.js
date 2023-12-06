@@ -10,7 +10,7 @@ function Project() {
     const [fetchData, setFetchData] = useState(null);
     const [fetchProject, setFetchProject] = useState(null);
     const [tasks, setTasks] = useState([]);
-    const [projects, setProjects] = useState();
+    const [projects, setProjects] = useState(null);
     const [filteredTasks, setFilteredTasks] = useState([]);
     const [isLoaded, setIsLoaded] = useState(false);
     const [error, setError] = useState(null);
@@ -96,7 +96,7 @@ function Project() {
     }, [fetchProject, tasks]);
 
     useEffect(() => {
-        if (projects.length > 0) {
+        if (projects) {
             console.log(projects);
             // setIsLoaded(true);
         }
