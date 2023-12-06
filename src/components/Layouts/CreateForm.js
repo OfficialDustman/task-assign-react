@@ -69,13 +69,11 @@ const CreateForm = ({ projects, users, userData, page }) => {
         display: 'flex',
         flexDirection: 'column',
         width: '85%',
-        margin: '0 auto',
-        marginBottom: '7rem',
+        margin: '2rem auto 7rem',
         gap: '1rem',
       }}
     >
-      <Form.Group as={Row}>
-        <Form.Group as={Col} controlId="formName">
+      <Form.Group controlId="formName">
         <Form.Label style={{textTransform: 'capitalize'}}>{page} Name</Form.Label>
         <Form.Control
           type="text"
@@ -85,7 +83,7 @@ const CreateForm = ({ projects, users, userData, page }) => {
         />
         </Form.Group>
 
-        <Form.Group as={Col} controlId="formDescription">
+        <Form.Group controlId="formDescription">
         <Form.Label style={{textTransform: 'capitalize'}}>{page} Description</Form.Label>
         <Form.Control
           as="textarea"
@@ -95,8 +93,6 @@ const CreateForm = ({ projects, users, userData, page }) => {
           onChange={(e) => setFormDescription(e.target.value)}
         />
         </Form.Group>
-      </Form.Group>
-
 
       <Form.Group as={Row}>
         {isTask && <Form.Group as={Col} controlId="projectId">

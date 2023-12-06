@@ -60,7 +60,8 @@ function Create() {
                     position: 'sticky',
                     top: 0,
                     background: 'white',
-                    paddingLeft: '8%',
+                    padding: '2rem',
+                    boxShadow: 'rgb(13 16 28 / 20%) 1px 0px 5px 1px',
                 }}
             >
                 <button 

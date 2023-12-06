@@ -80,7 +80,8 @@ function Project() {
             width: '100%',
             flexDirection: 'row',
             gap: '1rem',
-            justifyContent: 'space-between'
+            justifyContent: 'space-between',
+            background: 'linear-gradient(180deg, #FFF 0%, #DFE4F1 100%)'
         }}>
             {isLoaded &&
                 <>
