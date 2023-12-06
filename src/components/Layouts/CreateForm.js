@@ -195,7 +195,7 @@ const CreateForm = ({ projects, users, userData, page }) => {
         <SearchableMultiSelect
           options={users.map((user) => user.username)}
           selectedValues={assignedTo}
-          required={required}
+          required={"required"}
           onChange={handleAssignedToChange}
         />
       </Form.Group>}
