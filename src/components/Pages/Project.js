@@ -88,14 +88,17 @@ function Project() {
 
     useEffect(() => {
         if (tasks.length > 0 && fetchProject.data.length > 0) {
+            console.log(fetchProject.data);
             const groupedProjects = groupTasksByProject(fetchProject.data, tasks);
+            console.log(groupedProjects);
             setProjects(groupedProjects);
         }
     }, [fetchProject, tasks]);
 
     useEffect(() => {
         if (projects) {
-            setIsLoaded(true);
+            console.log(projects);
+            // setIsLoaded(true);
         }
     }, [projects]);
 
