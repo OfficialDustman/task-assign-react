@@ -106,7 +106,9 @@ const CreateForm = ({ projects, users, userData, page }) => {
   };
 
   useEffect(() => {
-    setIsLoaded(true);
+    if (fetchData) {
+      setIsLoaded(true);
+    }
   }, [fetchData]);
 
 
