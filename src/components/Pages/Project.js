@@ -8,6 +8,7 @@ import ProjectBody from "../Layouts/Projects/ProjectBody";
 function Project() {
 
     const [fetchData, setFetchData] = useState(null);
+    const [fetchProject, setFetchProject] = useState(null);
     const [tasks, setTasks] = useState([]);
     const [projects, setProjects] = useState();
     const [filteredTasks, setFilteredTasks] = useState([]);
@@ -15,17 +16,24 @@ function Project() {
     const [error, setError] = useState(null);
     const { userData } = useContext(AuthContext)
 
-    function groupTasksByProject(tasks) {
+    function groupTasksByProject(projects, tasks) {
         const groupedTasks = {};
 
+        projects.forEach(project => {
+            groupedTasks[project.project_id] = {
+              ...project,
+              tasks: [],
+            };
+        });
+
         tasks.forEach(task => {
-            if (!groupedTasks[task.project_id]) {
-                groupedTasks[task.project_id] = {
-                    project_id: task.project_id,
-                    project_name: task.project_name,
-                    tasks: [],
-                };
-            }
+            // if (!groupedTasks[task.project_id]) {
+            //     groupedTasks[task.project_id] = {
+            //         project_id: task.project_id,
+            //         project_name: task.project_name,
+            //         tasks: [],
+            //     };
+            // }
 
             groupedTasks[task.project_id].tasks.push(task);
         });
@@ -54,17 +62,36 @@ function Project() {
     }, [userData])
 
     useEffect(() => {
+        const formData = new FormData();
+        formData.append("username", userData?.username);
+
+        fetch("http://localhost/repos/task-assign/api/project/getProjects.php", {
+            method: "POST",
+            body: formData,
+        })
+            .then((response) => response.json())
+            .then((data) => {
+                setFetchProject(data);
+            })
+        // .catch((error) => {
+        //   setError(error)
+        //   console.error("Error fetching data:", error);
+        // });
+
+    }, [userData])
+
+    useEffect(() => {
         if (fetchData) {
             setTasks(fetchData.data);
         }
     }, [fetchData]);
 
     useEffect(() => {
-        if (tasks.length > 0) {
-            const groupedProjects = groupTasksByProject(tasks);
+        if (tasks.length > 0 && fetchProject.data.length > 0) {
+            const groupedProjects = groupTasksByProject(fetchProject.data, tasks);
             setProjects(groupedProjects);
         }
-    }, [tasks]);
+    }, [fetchProject, tasks]);
 
     useEffect(() => {
         if (projects) {

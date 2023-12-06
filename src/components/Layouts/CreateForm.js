@@ -65,10 +65,6 @@ const CreateForm = ({ projects, users, userData, page }) => {
       formData.append("team_id", userData.team_id);
     }
 
-    // for (const value of formData.values()) {
-    //   console.log(value);
-    // }
-
     fetch(`http://localhost/repos/task-assign/api/${page}/create${page}.php`, {
       method: "POST",
       body: formData,
@@ -78,20 +74,10 @@ const CreateForm = ({ projects, users, userData, page }) => {
         console.log(data);
         setIsLoaded(true);
       })
-      .catch((error) => {
-        // setError(error)
-        console.error("Error fetching data:", error);
-      });
-
-    // Do something with the form data (e.g., submit to API)
-    console.log({
-      formName,
-      formDescription,
-      projectId,
-      startDate,
-      endDate,
-      assignedTo,
-    });
+      // .catch((error) => {
+      //   // setError(error)
+      //   console.error("Error fetching data:", error);
+      // });
 
     // Reset form fields
     setFormName('');

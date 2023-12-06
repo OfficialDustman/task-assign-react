@@ -3,7 +3,7 @@
 require '../config.php';
 
 // Check if the required POST data is set
-if (isset($_POST['project_name'], $_POST['proje ct_description'], $_POST['team_id'], $_POST['start_date'], $_POST['end_date'], $_POST['status'])) {
+if (isset($_POST['project_name'], $_POST['project_description'], $_POST['team_id'], $_POST['start_date'], $_POST['end_date'], $_POST['status'])) {
     $projectName = $_POST['project_name'];
     $projectDescription = $_POST['project_description'];
     $teamId = $_POST['team_id'];
