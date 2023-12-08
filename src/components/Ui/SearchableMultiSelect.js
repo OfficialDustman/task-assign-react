@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Form, Button, Badge, } from 'react-bootstrap';
+import { Form, InputGroup, Button, Badge, } from 'react-bootstrap';
 
 const SearchableMultiSelect = ({ options, selectedValues, required, onChange }) => {
   const [filter, setFilter] = useState('');
@@ -48,7 +48,7 @@ const SearchableMultiSelect = ({ options, selectedValues, required, onChange }) 
                   fontSize: '1.2rem',
                 }}
               >
-                {username[0]}
+                {option[0]}
               </Badge>
               {' '}
               {option}
