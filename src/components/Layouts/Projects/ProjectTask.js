@@ -11,12 +11,30 @@ export default function ProjectTask({ task }) {
     };
 
     return (
-        <Card>
+        <Card
+            style={{
+                display: 'flex',
+                flexDirection: 'column',
+                padding: '0.5rem',
+            }}
+        >
             <Card.Title>{task.task_name}</Card.Title>
             <Card.Text>{task.task_description}</Card.Text>
 
-            <CardGroup>
-                <ListGroup>
+            <CardGroup
+                style={{
+                    display: 'flex',
+                    padding: '0.5rem',
+                }}
+            >
+                <ListGroup
+                    style={{
+                        display: 'flex',
+                        flexDirection: 'column',
+                        alignItems: 'center',
+                        padding: '0.5rem',
+                    }}
+                >
                     <FontAwesomeIcon icon="fa-solid fa-stopwatch" />
                     {formatDate(task.end_date)}
                 </ListGroup>

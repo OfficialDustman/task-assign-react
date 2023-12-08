@@ -15,7 +15,14 @@ const ProjectAccordion = ({ projects }) => {
           </Accordion.Header>
           <Accordion.Collapse eventKey={project.project_id.toString()}>
             <Card.Body>
-              <ul>
+              <ul 
+                style={{
+                    display: 'flex',
+                    width: '100%',
+                    flexDirection: 'column',
+                    gap: '1rem',
+                }}
+              >
                 {project.tasks.map(task => (
                   <li 
                     key={task.task_id}
