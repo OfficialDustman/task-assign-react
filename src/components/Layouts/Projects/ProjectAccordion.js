@@ -24,7 +24,7 @@ const ProjectAccordion = ({ projects }) => {
                   </li>
                 ))} */}
 
-                <TaskList task={project.tasks} />
+                <TaskList tasks={project.tasks} />
               </ul>
             </Card.Body>
           </Accordion.Collapse>

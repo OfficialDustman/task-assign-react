@@ -2,14 +2,16 @@ import { Tooltip, ListGroup } from "react-bootstrap"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export default function AssignedTooltip({ users }) {
-    console.log(users);
+
+    let usersArray = users.split(',');
+    console.log(users, usersArray);
     
     return (
         <Tooltip id="button-tooltip">
             <ListGroup>
-                {/* {users.map((user) => {
+                {usersArray.map((user) => {
                     <ListGroup.Item>{user}</ListGroup.Item>
-                })} */}
+                })}
             </ListGroup>
         </Tooltip>
     )
