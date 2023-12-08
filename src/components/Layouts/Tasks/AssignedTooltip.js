@@ -4,15 +4,15 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 export default function AssignedTooltip({ users }) {
 
     let usersArray = users.split(',');
-    console.log(users, usersArray);
+    console.log(usersArray);
     
     return (
         <Tooltip id="button-tooltip">
-            {/* <ListGroup>
+            <ListGroup>
                 {usersArray.map((user) => {
                     <ListGroup.Item>{user}</ListGroup.Item>
                 })}
-            </ListGroup> */}
+            </ListGroup>
         </Tooltip>
     )
 }

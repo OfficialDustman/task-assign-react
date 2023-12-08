@@ -64,12 +64,12 @@ export default function TaskItem({ task }) {
                     placement="bottom"
                     delay={{ show: 250, hide: 400 }}
                     overlay={<Tooltip id="button-tooltip">
-                        {task.assigned_users}
-                        {/* <ListGroup>
+                        {/* {task.assigned_users} */}
+                        <ListGroup>
                         {usersArray.map((user) => {
                             <ListGroup.Item>{user}</ListGroup.Item>
                         })}
-                    </ListGroup> */}
+                    </ListGroup>
                     </Tooltip>}
                 >
                     <Button variant="warning">Assigned Users</Button>
