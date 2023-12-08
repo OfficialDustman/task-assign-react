@@ -11,14 +11,13 @@ export default function TaskItem({ task }) {
         return date.toLocaleDateString('en-US', options);
     };
 
-    console.log(task, task.assigned_users);
+    console.log(task.assigned_users);
 
     return (
         <OverlayTrigger
             placement="bottom"
             delay={{ show: 250, hide: 400 }}
-            overlay={AssignedTooltip}
-            users={task.assigned_users}
+            overlay={<AssignedTooltip users={task.assigned_users}/>}
         >
             <Card style={{
                 display: 'flex',
