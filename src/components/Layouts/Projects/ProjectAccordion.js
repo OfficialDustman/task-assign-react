@@ -1,5 +1,5 @@
 import { Accordion, Card } from 'react-bootstrap';
-import TaskItem from '../Tasks/TaskItem';
+import TaskList from '../Tasks/TaskList';
 
 const ProjectAccordion = ({ projects }) => {
 
@@ -24,7 +24,7 @@ const ProjectAccordion = ({ projects }) => {
                   </li>
                 ))} */}
 
-                <TaskItem task={project.tasks} />
+                <TaskList task={project.tasks} />
               </ul>
             </Card.Body>
           </Accordion.Collapse>

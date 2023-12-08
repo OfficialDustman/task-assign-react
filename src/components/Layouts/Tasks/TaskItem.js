@@ -11,6 +11,8 @@ export default function TaskItem({ task }) {
         return date.toLocaleDateString('en-US', options);
     };
 
+    console.log(task, task.assigned_users);
+
     return (
         <OverlayTrigger
             placement="bottom"
