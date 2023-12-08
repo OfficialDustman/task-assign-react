@@ -14,7 +14,7 @@ if (isset($_POST['username'])) {
     if ($userCount > 0) {
         // Username exists, retrieve task IDs and project names assigned to the user
         $getTaskDetails = $pdo->prepare("
-            SELECT t.*, p.project_name
+            SELECT t.*, p.project_name, ta.username as assigned_users
             FROM tasks t
             JOIN task_assignments ta ON t.task_id = ta.task_id
             JOIN projects p ON t.project_id = p.project_id

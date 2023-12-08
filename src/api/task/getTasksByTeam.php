@@ -24,7 +24,7 @@ if (isset($_POST['username'])) {
 
         if (!empty($taskIds)) {
             // Fetch task details for the retrieved task IDs
-            $getTaskDetails = $pdo->prepare("SELECT t.*, p.project_name, GROUP_CONCAT(ta.username) as assigned_users
+            $getTaskDetails = $pdo->prepare("SELECT t.*, GROUP_CONCAT(ta.username) as assigned_users
                 FROM tasks t
                 LEFT JOIN task_assignments ta ON t.task_id = ta.task_id
                 LEFT JOIN projects p ON t.project_id = p.project_id
