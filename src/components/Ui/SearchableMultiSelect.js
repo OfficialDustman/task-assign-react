@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Form, InputGroup, Button, Badge, } from 'react-bootstrap';
+import { Form } from 'react-bootstrap';
 
 const SearchableMultiSelect = ({ options, selectedValues, required, onChange }) => {
   const [filter, setFilter] = useState('');
@@ -11,7 +11,7 @@ const SearchableMultiSelect = ({ options, selectedValues, required, onChange }) 
   const handleSelectChange = (event) => {
     const selectedOption = Array.from(event.target.selectedOptions, option => option.value);
     onChange(selectedOption);
-  };
+  }; 
 
   // Filter options based on the input value
   const filteredOptions = options.filter((option) =>
@@ -37,22 +37,15 @@ const SearchableMultiSelect = ({ options, selectedValues, required, onChange }) 
         onChange={handleSelectChange}
       >
         {filteredOptions.map((option) => (
-          <option key={option} value={option}>
-            <Button
-              variant="light"
-            >
-              <Badge
-                style={{
-                  backgroundColor: '#613BE7 !important',
-                  textTransform: 'uppercase',
-                  fontSize: '1.2rem',
-                }}
-              >
-                {option[0]}
-              </Badge>
-              {' '}
-              {option}
-            </Button>
+          <option 
+            key={option} 
+            value={option}
+            style={{
+              textTransform: 'capitalize',
+              color: '#613BE7',
+            }}
+          >
+            {option}
           </option>
         ))}
       </Form.Control>

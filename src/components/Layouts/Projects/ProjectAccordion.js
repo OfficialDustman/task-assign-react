@@ -1,4 +1,5 @@
 import { Accordion, Card } from 'react-bootstrap';
+import TaskItem from '../Tasks/TaskItem';
 
 const ProjectAccordion = ({ projects }) => {
 
@@ -15,13 +16,15 @@ const ProjectAccordion = ({ projects }) => {
           <Accordion.Collapse eventKey={project.project_id.toString()}>
             <Card.Body>
               <ul>
-                {project.tasks.map(task => (
+                {/* {project.tasks.map(task => (
                   <li 
                     key={task.task_id}
                   >
                     {task.task_name}
                   </li>
-                ))}
+                ))} */}
+
+                <TaskItem task={project.tasks} />
               </ul>
             </Card.Body>
           </Accordion.Collapse>
