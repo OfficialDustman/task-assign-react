@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Form } from 'react-bootstrap';
+import { Form, InputGroup } from 'react-bootstrap';
 
 const SearchableMultiSelect = ({ options, selectedValues, required, onChange }) => {
   const [filter, setFilter] = useState('');
