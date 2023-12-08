@@ -66,7 +66,7 @@ export default function TaskItem({ task }) {
                     overlay={<Tooltip id="button-tooltip">
                         {/* {task.assigned_users} */}
                         <ListGroup>
-                        {usersArray.map((user) => {
+                        {assignedUsers.map((user) => {
                             <ListGroup.Item>{user}</ListGroup.Item>
                         })}
                     </ListGroup>
