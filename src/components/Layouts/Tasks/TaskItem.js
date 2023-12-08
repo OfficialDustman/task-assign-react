@@ -11,9 +11,6 @@ export default function TaskItem({ task }) {
         return date.toLocaleDateString('en-US', options);
     };
 
-    console.log(task.assigned_users);
-    let assignedUsers = task.assigned_users.split(',');
-
     return (
 
         <Card style={{
@@ -64,12 +61,7 @@ export default function TaskItem({ task }) {
                     placement="bottom"
                     delay={{ show: 250, hide: 400 }}
                     overlay={<Tooltip id="button-tooltip">
-                        {/* {task.assigned_users} */}
-                        <ListGroup>
-                        {assignedUsers.map((user) => {
-                            <ListGroup.Item>{user}</ListGroup.Item>
-                        })}
-                    </ListGroup>
+                        {task.assigned_users}
                     </Tooltip>}
                 >
                     <Button variant="warning">Assigned Users</Button>
