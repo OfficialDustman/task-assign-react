@@ -3,6 +3,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export default function ProjectTask({ task }) {
 
+    const formatDate = (inputDate) => {
+        const date = new Date(inputDate);
+        const options = { year: 'numeric', month: 'long', day: 'numeric' };
+
+        return date.toLocaleDateString('en-US', options);
+    };
+
     return (
         <Card>
             <Card.Title>{task.task_name}</Card.Title>
