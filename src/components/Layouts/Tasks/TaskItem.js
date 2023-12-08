@@ -14,58 +14,61 @@ export default function TaskItem({ task }) {
     console.log(task.assigned_users);
 
     return (
-        <OverlayTrigger
-            placement="bottom"
-            delay={{ show: 250, hide: 400 }}
-            overlay={<AssignedTooltip users={task.assigned_users}/>}
-        >
-            <Card style={{
-                display: 'flex',
-                padding: '12px',
-                flexDirection: 'column',
-                alignitems: 'flex-start',
-                gap: '1rem',
-                alignself: 'stretch'
-            }}>
-                <Card.Title>{task.task_name}</Card.Title>
-                <Card.Text>{task.task_description}</Card.Text>
 
-                <Card.Body style={{
+        <Card style={{
+            display: 'flex',
+            padding: '12px',
+            flexDirection: 'column',
+            alignitems: 'flex-start',
+            gap: '1rem',
+            alignself: 'stretch'
+        }}>
+            <Card.Title>{task.task_name}</Card.Title>
+            <Card.Text>{task.task_description}</Card.Text>
+
+            <Card.Body style={{
+                display: 'flex',
+                alignItems: 'flex-start',
+                gap: '12px',
+                alignSelf: 'stretch',
+                justifyContent: 'space-between'
+            }}>
+                <CardGroup style={{
                     display: 'flex',
+                    flexDirection: 'column',
                     alignItems: 'flex-start',
-                    gap: '12px',
-                    alignSelf: 'stretch',
-                    justifyContent: 'space-between'
+                    gap: '10px',
+                    flex: '1 0 0'
                 }}>
-                    <CardGroup style={{
+                    <ListGroup.Item style={{
+                        textTransform: 'capitalize',
                         display: 'flex',
-                        flexDirection: 'column',
-                        alignItems: 'flex-start',
-                        gap: '10px',
-                        flex: '1 0 0'
+                        gap: '1rem',
+                        alignItems: 'center',
                     }}>
-                        <ListGroup.Item style={{
-                            textTransform: 'capitalize',
-                            display: 'flex',
-                            gap: '1rem',
-                            alignItems: 'center',
-                        }}>
-                            <FontAwesomeIcon icon="fa-solid fa-folder" />
-                            {task.project_name}
-                        </ListGroup.Item>
-                        <ListGroup.Item style={{
-                            display: 'flex',
-                            gap: '1rem',
-                            alignItems: 'center',
-                        }}>
-                            <FontAwesomeIcon icon="fa-solid fa-stopwatch" />
-                            {formatDate(task.end_date)}
-                        </ListGroup.Item>
-                    </CardGroup>
-                    <Button variant="info">{task.status}</Button>
-                </Card.Body>
-            </Card>
-        </OverlayTrigger>
+                        <FontAwesomeIcon icon="fa-solid fa-folder" />
+                        {task.project_name}
+                    </ListGroup.Item>
+                    <ListGroup.Item style={{
+                        display: 'flex',
+                        gap: '1rem',
+                        alignItems: 'center',
+                    }}>
+                        <FontAwesomeIcon icon="fa-solid fa-stopwatch" />
+                        {formatDate(task.end_date)}
+                    </ListGroup.Item>
+                </CardGroup>
+                <Button variant="info">{task.status}</Button>
+                <OverlayTrigger
+                    placement="bottom"
+                    delay={{ show: 250, hide: 400 }}
+                    overlay={<AssignedTooltip users={task.assigned_users} />}
+                >
+                    <Button variant="warning">Assigned Users</Button>
+                </OverlayTrigger>
+
+            </Card.Body>
+        </Card>
 
     )
 }
