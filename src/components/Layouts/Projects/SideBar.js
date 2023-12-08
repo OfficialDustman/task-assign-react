@@ -19,13 +19,19 @@ const Sidebar = ({ projects, username }) => {
         flexDirection: 'column',
         gap: '1rem',
         position: 'sticky',
-        top: '0'
+        top: '0',
+        overflowY: 'scroll'
       }}
     >
       <CardGroup style={{
         position: 'sticky',
         top: '0',
-        background: 'inherit'
+        background: 'inherit',
+        flexDirection: 'column',
+        zIndex: '10',
+        width: '100%',
+        alignItems: 'center',
+        padding: '1rem',
       }}>
         <Card>
           <Button
