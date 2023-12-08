@@ -28,6 +28,7 @@ function Project() {
         });
 
         tasks.forEach(task => {
+            console.log(task);
             if (groupedTasks[task.project_id]) {
                 groupedTasks[task.project_id].tasks.push(task);
             }
@@ -48,6 +49,7 @@ function Project() {
             .then((response) => response.json())
             .then((data) => {
                 setFetchData(data);
+                console.log(data);
             })
         .catch((error) => {
           setError(error)
