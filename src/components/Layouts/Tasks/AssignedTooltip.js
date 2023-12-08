@@ -8,7 +8,6 @@ export default function AssignedTooltip({ users }) {
     
     return (
         <Tooltip id="button-tooltip">
-            {users}
             {/* <ListGroup>
                 {usersArray.map((user) => {
                     <ListGroup.Item>{user}</ListGroup.Item>

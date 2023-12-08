@@ -1,4 +1,4 @@
-import { Card, Button, CardGroup, ListGroup, OverlayTrigger } from "react-bootstrap"
+import { Card, Button, CardGroup, ListGroup, OverlayTrigger, Tooltip } from "react-bootstrap"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import AssignedTooltip from "./AssignedTooltip";
 
@@ -12,6 +12,7 @@ export default function TaskItem({ task }) {
     };
 
     console.log(task.assigned_users);
+    let assignedUsers = task.assigned_users.split(',');
 
     return (
 
@@ -62,11 +63,17 @@ export default function TaskItem({ task }) {
                 <OverlayTrigger
                     placement="bottom"
                     delay={{ show: 250, hide: 400 }}
-                    overlay={<AssignedTooltip users={task.assigned_users} />}
+                    overlay={<Tooltip id="button-tooltip">
+                        {task.assigned_users}
+                        {/* <ListGroup>
+                        {usersArray.map((user) => {
+                            <ListGroup.Item>{user}</ListGroup.Item>
+                        })}
+                    </ListGroup> */}
+                    </Tooltip>}
                 >
                     <Button variant="warning">Assigned Users</Button>
                 </OverlayTrigger>
-
             </Card.Body>
         </Card>
 
