@@ -1,4 +1,6 @@
-import { Modal, Button, ListGroup, Card, CardGroup } from 'react-bootstrap';
+import { Modal, Button, ListGroup, Card, CardGroup, Form } from 'react-bootstrap';
+import { useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 function TaskModal({ task, show, handleClose }) {
 

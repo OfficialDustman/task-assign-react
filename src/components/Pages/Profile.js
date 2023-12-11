@@ -4,7 +4,7 @@ function Profile() {
     
     return (
         <>
-        <Card>
+        {/* <Card>
           <Button
             variant="light"
           >
@@ -20,7 +20,7 @@ function Profile() {
             {' '}
             {username}
           </Button>
-        </Card>
+        </Card> */}
         </>
     )
 }
