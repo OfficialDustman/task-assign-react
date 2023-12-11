@@ -102,7 +102,7 @@ function TaskModal({ task, show, handleClose }) {
 
         <ListGroup as='ul'>
           {usersArray.map((user) => {
-            <ListGroupItem as='li'>{user}</ListGroupItem>
+            <li>{user}</li>
           })}
         </ListGroup>
 
