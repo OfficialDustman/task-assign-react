@@ -30,8 +30,7 @@ function TaskModal({ task, show, handleClose }) {
     }
   }, [])
 
-  function submitHandler(e) {
-    e.preventDefault();
+  function submitHandler() {
 
     setIsLoaded(false);
 
@@ -108,7 +107,12 @@ function TaskModal({ task, show, handleClose }) {
           })}
         </ListGroup>
 
-        <Form onSubmit={submitHandler}>
+        <Form 
+          onSubmit={(e) => {
+            e.preventDefault(); 
+            submitHandler
+          }}
+        >
           <Form.Group controlId="statusValue">
             <Form.Label>Status</Form.Label>
             <Form.Control as="select" value={status ? status : task.status} required onChange={(e) => handleStatusChange(e.target.value)}>
