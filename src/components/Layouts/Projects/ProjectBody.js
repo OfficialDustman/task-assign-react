@@ -5,6 +5,7 @@ import TaskList from '../Tasks/TaskList';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link } from "react-router-dom";
 import { useState } from 'react';
+import TaskModal from './TaskModal';
 
 const ProjectBody = ({ tasks, projects }) => {
   const [taskClicked, setTaskClicked] = useState(false);
