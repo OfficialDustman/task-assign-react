@@ -37,7 +37,7 @@ function TaskModal({ task, show, handleClose }) {
       <Modal.Body>
         <Card.SubTitle>{task.task_description}</Card.SubTitle>
 
-        {/* <CardGroup style={{
+        <CardGroup style={{
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'flex-start',
@@ -61,13 +61,13 @@ function TaskModal({ task, show, handleClose }) {
             <FontAwesomeIcon icon="fa-solid fa-stopwatch" />
             {formatDate(task.start_date)} - {formatDate(task.end_date)}
           </ListGroup.Item>
-        </CardGroup> */}
+        </CardGroup>
 
-        <ListGroup>
+        {/* <ListGroup>
           {usersArray.map((user) => {
             <ListGroup.Item>{user}</ListGroup.Item>
           })}
-        </ListGroup>
+        </ListGroup> */}
 
         <Form.Group controlId="statusValue">
           <Form.Label>Status</Form.Label>
