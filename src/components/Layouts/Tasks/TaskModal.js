@@ -28,6 +28,8 @@ function TaskModal({ task, show, handleClose }) {
     if(task.status === 'assigned'){
       submitHandler()
     }
+
+    console.log(hiiii);
   }, [])
 
   function submitHandler() {
