@@ -110,7 +110,7 @@ function TaskModal({ task, show, handleClose }) {
         <Form 
           onSubmit={(e) => {
             e.preventDefault(); 
-            submitHandler
+            submitHandler()
           }}
         >
           <Form.Group controlId="statusValue">
