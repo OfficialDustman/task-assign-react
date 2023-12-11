@@ -18,7 +18,7 @@ function TaskModal({ task, show, handleClose }) {
   };
   console.log(task, status);
 
-  // let usersArray = task.assigned_users.split(',');
+  let usersArray = task.assigned_users.split(',');
 
   return (
     <Modal
