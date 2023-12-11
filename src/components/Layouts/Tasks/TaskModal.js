@@ -35,7 +35,7 @@ function TaskModal({ task, show, handleClose }) {
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <Card.SubTitle>{task.task_description}</Card.SubTitle>
+        {/* <Card.SubTitle>{task.task_description}</Card.SubTitle> */}
 
         <CardGroup style={{
           display: 'flex',
@@ -63,11 +63,11 @@ function TaskModal({ task, show, handleClose }) {
           </ListGroup.Item>
         </CardGroup>
 
-        {/* <ListGroup>
+        <ListGroup>
           {usersArray.map((user) => {
             <ListGroup.Item>{user}</ListGroup.Item>
           })}
-        </ListGroup> */}
+        </ListGroup>
 
         <Form.Group controlId="statusValue">
           <Form.Label>Status</Form.Label>
