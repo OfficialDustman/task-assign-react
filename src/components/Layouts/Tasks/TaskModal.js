@@ -25,7 +25,7 @@ function TaskModal({ task, show, handleClose }) {
   console.log(usersArray, status);
 
   useEffect(() => {
-    if(task.status === 'assigned'){
+    if(show && task.status === 'assigned'){
       submitHandler()
     }
 
