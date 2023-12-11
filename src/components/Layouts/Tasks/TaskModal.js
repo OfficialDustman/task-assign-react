@@ -1,4 +1,4 @@
-import { Modal, Button, ListGroup, Spinner, CardGroup, Form } from 'react-bootstrap';
+import { Modal, Button, ListGroup, ListGroupItem, Spinner, CardGroup, Form } from 'react-bootstrap';
 import { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import UIButton from "../../Ui/Button";
@@ -102,8 +102,7 @@ function TaskModal({ task, show, handleClose }) {
 
         <ListGroup as='ul'>
           {usersArray.map((user) => {
-            console.log(user);
-            <ListGroup.Item as='li'>{user}</ListGroup.Item>
+            <ListGroupItem as='li'>{user}</ListGroupItem>
           })}
         </ListGroup>
 
