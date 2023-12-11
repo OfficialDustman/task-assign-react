@@ -16,9 +16,9 @@ function TaskModal({ task, show, handleClose }) {
 
     return date.toLocaleDateString('en-US', options);
   };
-  console.log(task, status);
 
   let usersArray = task.assigned_users.split(',');
+  console.log(usersArray, status);
 
   return (
     <Modal

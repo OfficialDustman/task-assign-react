@@ -7,6 +7,8 @@ import { Link } from "react-router-dom";
 import { useState } from 'react';
 
 const ProjectBody = ({ tasks, projects }) => {
+  const [taskClicked, setTaskClicked] = useState(false);
+  const [taskData, setTaskData] = useState(null);
 
   const handleDateChange = (newDate) => {
     // Filter tasks based on the selected date and update the state
@@ -20,6 +22,14 @@ const ProjectBody = ({ tasks, projects }) => {
     // onDateChange(newDate)
   };
 
+  const handleTaskClick = (state, task) => {
+    setTaskClicked(state);
+    setTaskData(task)
+  }
+
+  const handleCloseModal = () => {
+    setTaskClicked(false);
+  };
 
   return (
     <Card style={{
@@ -62,6 +72,14 @@ const ProjectBody = ({ tasks, projects }) => {
         :
         <p>No Task Yet</p>
       }
+
+      <TaskModal
+        task={taskClicked ?
+          taskData :
+          tasks[0]}
+        show={taskClicked}
+        handleClose={handleCloseModal}
+      />
     </Card>
   );
 };
