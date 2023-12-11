@@ -100,10 +100,10 @@ function TaskModal({ task, show, handleClose }) {
           </ListGroup.Item>
         </CardGroup>
 
-        <ListGroup>
+        <ListGroup as='ul'>
           {usersArray.map((user) => {
             console.log(user);
-            // <ListGroup.Item>{user}</ListGroup.Item>
+            <ListGroup.Item as='li'>{user}</ListGroup.Item>
           })}
         </ListGroup>
 
