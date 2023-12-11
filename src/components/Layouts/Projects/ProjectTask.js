@@ -24,15 +24,16 @@ export default function ProjectTask({ task }) {
             <CardGroup
                 style={{
                     display: 'flex',
-                    padding: '0.5rem',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    gap: '0.5rem',
+
                 }}
             >
                 <ListGroup
                     style={{
                         display: 'flex',
-                        flexDirection: 'column',
-                        alignItems: 'center',
-                        padding: '0.5rem',
+                        gap: '0.5rem',
                     }}
                 >
                     <FontAwesomeIcon icon="fa-solid fa-stopwatch" />

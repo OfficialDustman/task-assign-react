@@ -2,7 +2,7 @@ import { Card, Button, CardGroup, ListGroup, OverlayTrigger, Tooltip } from "rea
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import AssignedTooltip from "./AssignedTooltip";
 
-export default function TaskItem({ task }) {
+export default function TaskItem({ task, ontaskclick }) {
 
     const formatDate = (inputDate) => {
         const date = new Date(inputDate);
@@ -11,16 +11,24 @@ export default function TaskItem({ task }) {
         return date.toLocaleDateString('en-US', options);
     };
 
+    const taskClickHandler = () => {
+        ontaskclick(true, task)
+    }
+
     return (
 
-        <Card style={{
-            display: 'flex',
-            padding: '12px',
-            flexDirection: 'column',
-            alignitems: 'flex-start',
-            gap: '1rem',
-            alignself: 'stretch'
-        }}>
+        <Card
+            style={{
+                display: 'flex',
+                padding: '12px',
+                flexDirection: 'column',
+                alignitems: 'flex-start',
+                gap: '1rem',
+                alignself: 'stretch'
+            }}
+
+            onClick={taskClickHandler}
+        >
             <Card.Title>{task.task_name}</Card.Title>
             <Card.Text>{task.task_description}</Card.Text>
 

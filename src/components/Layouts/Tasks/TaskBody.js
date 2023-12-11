@@ -2,10 +2,13 @@ import { Card } from 'react-bootstrap';
 import TaskFilter from '../../Ui/TaskFilter';
 import TaskList from './TaskList';
 import { useState } from 'react';
+import TaskModal from './TaskModal';
 
 const TaskBody = ({ date, tasks }) => {
 
   const [filteredTasks, setFilteredTasks] = useState([...tasks]);
+  const [taskClicked, setTaskClicked] = useState(false);
+  const [taskData, setTaskData] = useState(null);
 
   const handleFilterChange = (newFilter) => {
     let newFilteredTasks;
@@ -27,6 +30,15 @@ const TaskBody = ({ date, tasks }) => {
     setFilteredTasks(newFilteredTasks);
   };
 
+  const handleTaskClick = (state, task) => {
+    setTaskClicked(state);
+    setTaskData(task)
+  }
+
+  const handleCloseModal = () => {
+    setTaskClicked(false);
+  };
+
   console.log(filteredTasks);
 
   return (
@@ -41,10 +53,18 @@ const TaskBody = ({ date, tasks }) => {
         <Card.Title>{date} Task</Card.Title>
         <TaskFilter onFilterChange={handleFilterChange} />
         {filteredTasks.length > 0 ? 
-            <TaskList tasks={filteredTasks} />
+            <TaskList 
+              tasks={filteredTasks}
+              taskclicked={handleTaskClick}
+            />
               :
             <p>No Task Yet</p>
         }
+        <TaskModal 
+          task={taskData} 
+          show={taskClicked}
+          handleClose={handleCloseModal}
+        />
     </Card>
   );
 };
