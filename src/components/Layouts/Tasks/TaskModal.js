@@ -22,13 +22,10 @@ function TaskModal({ task, show, handleClose }) {
   };
 
   let usersArray = task.assigned_users.split(',');
-  console.log(usersArray, status);
 
   useEffect(() => {
-    console.log(show);
     if(show && task.status === 'assigned'){
       submitHandler()
-      console.log('hiiii');
     }
   }, [show])
 
@@ -105,7 +102,8 @@ function TaskModal({ task, show, handleClose }) {
 
         <ListGroup>
           {usersArray.map((user) => {
-            <ListGroup.Item>{user}</ListGroup.Item>
+            console.log(user);
+            // <ListGroup.Item>{user}</ListGroup.Item>
           })}
         </ListGroup>
 
