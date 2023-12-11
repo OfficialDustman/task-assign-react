@@ -25,7 +25,7 @@ function TaskModal({ task, show, handleClose }) {
   console.log(usersArray, status);
 
   useEffect(() => {
-    if(task.status = 'assigned'){
+    if(task.status === 'assigned'){
       submitHandler()
     }
   }, [])
@@ -39,7 +39,7 @@ function TaskModal({ task, show, handleClose }) {
 
     const formData = new FormData();
     formData.append("task_id", task.task_id);
-    // formData.append("end_date", null);
+    formData.append("end_date", '');
     formData.append("status", statusData);
 
     fetch("http://localhost/repos/task-assign/api/task/editTask.php", {
