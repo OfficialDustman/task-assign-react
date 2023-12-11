@@ -29,7 +29,7 @@ function TaskModal({ task, show, handleClose }) {
       submitHandler()
     }
 
-    console.log(hiiii);
+    console.log('hiiii');
   }, [])
 
   function submitHandler() {
