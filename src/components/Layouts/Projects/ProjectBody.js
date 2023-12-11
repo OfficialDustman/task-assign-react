@@ -69,7 +69,10 @@ const ProjectBody = ({ tasks, projects }) => {
       </Card.Title>
       <DateFilter onDateChange={handleDateChange} />
       {tasks.length > 0 ?
-        <TaskList tasks={tasks} />
+        <TaskList 
+          tasks={tasks} 
+          taskclicked={handleTaskClick}
+        />
         :
         <p>No Task Yet</p>
       }

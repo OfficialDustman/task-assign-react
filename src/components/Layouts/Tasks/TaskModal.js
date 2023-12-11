@@ -1,10 +1,14 @@
 import { Modal, Button, ListGroup, Card, CardGroup, Form } from 'react-bootstrap';
 import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import UIButton from "../../Ui/Button";
 
 function TaskModal({ task, show, handleClose }) {
 
   const [status, setStatus] = useState('');
+  const [isLoaded, setIsLoaded] = useState(true);
+  const [fetchData, setFetchData] = useState(null);
+  const [error, setError] = useState(null);
 
   const handleStatusChange = (selectedStatus) => {
     setStatus(selectedStatus);
@@ -19,6 +23,41 @@ function TaskModal({ task, show, handleClose }) {
 
   let usersArray = task.assigned_users.split(',');
   console.log(usersArray, status);
+
+  useEffect(() => {
+    if(task.status = 'assigned'){
+      submitHandler()
+    }
+  }, [])
+
+  function submitHandler(e) {
+    e.preventDefault();
+
+    setIsLoaded(false);
+
+    let statusData
+    status ? statusData = status : statusData = 'ongoing'
+
+    const formData = new FormData();
+    formData.append("task_id", task.task_id);
+    formData.append("end_date", null);
+    formData.append("status", statusData);
+
+    fetch("http://localhost/repos/task-assign/api/task/editTask.php", {
+      method: "POST",
+      body: formData,
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data)
+        setFetchData(data);
+        setIsLoaded(true);
+      })
+      .catch((error) => {
+        setError(error)
+        console.error("Error fetching data:", error);
+      });
+  }
 
   return (
     <Modal
@@ -69,15 +108,25 @@ function TaskModal({ task, show, handleClose }) {
           })}
         </ListGroup>
 
-        <Form.Group controlId="statusValue">
-          <Form.Label>Status</Form.Label>
-          <Form.Control as="select" value={task.status} required onChange={(e) => handleStatusChange(e.target.value)}>
-            <option value="">Select Status</option>
-            <option value="assigned">Assigned</option>
-            <option value="ongoing">Ongoing</option>
-            <option value="completed">Completed</option>
-          </Form.Control>
-        </Form.Group>
+        <Form onSubmit={submitHandler}>
+          <Form.Group controlId="statusValue">
+            <Form.Label>Status</Form.Label>
+            <Form.Control as="select" value={status ? status : task.status} required onChange={(e) => handleStatusChange(e.target.value)}>
+              <option value="assigned">Assigned</option>
+              <option value="ongoing">In Progress</option>
+              <option value="completed">Completed</option>
+            </Form.Control>
+          </Form.Group>
+
+          <UIButton type="submit">
+            {isLoaded ? (
+              "Submit"
+            ) : (
+              <Spinner animation="border" variant="light" size="sm" />
+            )}
+          </UIButton>
+        </Form>
+
       </Modal.Body>
       <Modal.Footer>
         <Button onClick={handleClose}>Close</Button>
