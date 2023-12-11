@@ -61,7 +61,9 @@ const TaskBody = ({ date, tasks }) => {
             <p>No Task Yet</p>
         }
         <TaskModal 
-          task={taskData} 
+          task={taskClicked ? 
+                taskData : 
+                filteredTasks[0]} 
           show={taskClicked}
           handleClose={handleCloseModal}
         />
