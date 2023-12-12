@@ -1,4 +1,4 @@
-import { Modal, Button, ListGroup, ListGroupItem, Spinner, CardGroup, Form } from 'react-bootstrap';
+import { Modal, Button, ListGroup, Badge, Spinner, CardGroup, Form } from 'react-bootstrap';
 import { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import UIButton from "../../Ui/Button";
@@ -24,7 +24,7 @@ function TaskModal({ task, show, handleClose }) {
   let usersArray = task.assigned_users.split(',');
 
   useEffect(() => {
-    if(show && task.status === 'assigned'){
+    if (show && task.status === 'assigned') {
       submitHandler()
     }
   }, [show])
@@ -101,27 +101,39 @@ function TaskModal({ task, show, handleClose }) {
         </CardGroup>
 
         <ListGroup as='ul'>
+          <ListGroup.Item active >Assigned Users</ListGroup.Item>
           {usersArray.map((user) => (
-            <ListGroup.Item as='li'>{user}</ListGroup.Item>
+            <ListGroup.Item as='li'>
+              <Badge
+                style={{
+                  backgroundColor: '#613BE7 !important',
+                  textTransform: 'uppercase',
+                  fontSize: '1.2rem',
+                }}
+              >
+                {user[0]}
+              </Badge>
+              {' '}
+              {user}
+            </ListGroup.Item>
           ))}
         </ListGroup>
 
-        <Form 
+        <Form
           onSubmit={(e) => {
-            e.preventDefault(); 
+            e.preventDefault();
             submitHandler()
           }}
         >
           <Form.Group controlId="statusValue">
             <Form.Label>Status</Form.Label>
-            <Form.Control 
-              as="select" 
-              value={status ? status : task.status} 
-              required 
+            <Form.Control
+              as="select"
+              value={status ? status : task.status}
+              required
               onChange={(e) => handleStatusChange(e.target.value)}
             >
-              <option 
-                value="assigned" disabled={task.status === "assigned"}>Assigned</option>
+              <option value="assigned" disabled>Assigned</option>
               <option value="ongoing" disabled={task.status === "ongoing"}>In Progress</option>
               <option value="completed" disabled={task.status === "completed"}>Completed</option>
             </Form.Control>
