@@ -1,4 +1,4 @@
-import { Modal, Button, ListGroup, Badge, Spinner, CardGroup, Form } from 'react-bootstrap';
+import { Modal, Button, ListGroup, Badge, Spinner, Card, CardGroup, Form } from 'react-bootstrap';
 import { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import UIButton from "../../Ui/Button";
@@ -72,7 +72,9 @@ function TaskModal({ task, show, handleClose }) {
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        {/* <Card.SubTitle>{task.task_description}</Card.SubTitle> */}
+        <Card>
+          <Card.SubTitle>{task.task_description}</Card.SubTitle>
+        </Card>
 
         <CardGroup style={{
           display: 'flex',
@@ -108,7 +110,7 @@ function TaskModal({ task, show, handleClose }) {
                 style={{
                   backgroundColor: '#613BE7 !important',
                   textTransform: 'uppercase',
-                  fontSize: '1.2rem',
+                  fontSize: '0.8rem',
                 }}
               >
                 {user[0]}
