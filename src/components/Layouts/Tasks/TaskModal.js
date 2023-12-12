@@ -100,11 +100,11 @@ function TaskModal({ task, show, handleClose }) {
           </ListGroup.Item>
         </CardGroup>
 
-        <ListGroup as='ul'>
+        <ul>
           {usersArray.map((user) => {
             <li>{user}</li>
           })}
-        </ListGroup>
+        </ul>
 
         <Form 
           onSubmit={(e) => {
@@ -114,10 +114,16 @@ function TaskModal({ task, show, handleClose }) {
         >
           <Form.Group controlId="statusValue">
             <Form.Label>Status</Form.Label>
-            <Form.Control as="select" value={status ? status : task.status} required onChange={(e) => handleStatusChange(e.target.value)}>
-              <option value="assigned">Assigned</option>
-              <option value="ongoing">In Progress</option>
-              <option value="completed">Completed</option>
+            <Form.Control 
+              as="select" 
+              value={status ? status : task.status} 
+              required 
+              onChange={(e) => handleStatusChange(e.target.value)}
+            >
+              <option 
+                value="assigned" disabled={task.status === "assigned"}>Assigned</option>
+              <option value="ongoing" disabled={task.status === "ongoing"}>In Progress</option>
+              <option value="completed" disabled={task.status === "completed"}>Completed</option>
             </Form.Control>
           </Form.Group>
 
