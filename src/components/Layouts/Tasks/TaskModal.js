@@ -73,7 +73,7 @@ function TaskModal({ task, show, handleClose }) {
       </Modal.Header>
       <Modal.Body>
         <Card>
-          <Card.SubTitle>{task.task_description}</Card.SubTitle>
+          <Card.Subtitle>{task.task_description}</Card.Subtitle>
         </Card>
 
         <CardGroup style={{
