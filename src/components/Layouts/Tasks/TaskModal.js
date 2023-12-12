@@ -21,7 +21,14 @@ function TaskModal({ task, show, handleClose }) {
     return date.toLocaleDateString('en-US', options);
   };
 
-  let usersArray = task.assigned_users.split(',');
+  let usersArray = [];
+
+  useEffect(() => {
+    if(task){
+      usersArray = task.assigned_users.split(',');
+      console.log(usersArray);
+    }
+  }, [task])
 
   useEffect(() => {
     if(show && task.status === 'assigned'){
