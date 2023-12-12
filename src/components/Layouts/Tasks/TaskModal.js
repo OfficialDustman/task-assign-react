@@ -21,14 +21,7 @@ function TaskModal({ task, show, handleClose }) {
     return date.toLocaleDateString('en-US', options);
   };
 
-  let usersArray = [];
-
-  useEffect(() => {
-    if(task){
-      usersArray = task.assigned_users.split(',');
-      console.log(usersArray);
-    }
-  }, [task])
+  let usersArray = task.assigned_users.split(',');
 
   useEffect(() => {
     if(show && task.status === 'assigned'){
@@ -107,11 +100,11 @@ function TaskModal({ task, show, handleClose }) {
           </ListGroup.Item>
         </CardGroup>
 
-        <ul>
-          {usersArray.map((user) => {
-            <li>{user}</li>
-          })}
-        </ul>
+        <ListGroup as='ul'>
+          {usersArray.map((user) => (
+            <ListGroup.Item as='li'>{user}</ListGroup.Item>
+          ))}
+        </ListGroup>
 
         <Form 
           onSubmit={(e) => {
