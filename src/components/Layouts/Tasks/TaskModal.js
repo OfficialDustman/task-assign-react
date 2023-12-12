@@ -71,10 +71,14 @@ function TaskModal({ task, show, handleClose }) {
           {task.task_name}
         </Modal.Title>
       </Modal.Header>
-      <Modal.Body>
-        <Card>
-          <Card.Subtitle>{task.task_description}</Card.Subtitle>
-        </Card>
+      <Modal.Body
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '0.7rem',
+        }}
+      >
+        <Card.Subtitle>{task.task_description}</Card.Subtitle>
 
         <CardGroup style={{
           display: 'flex',
@@ -122,6 +126,12 @@ function TaskModal({ task, show, handleClose }) {
         </ListGroup>
 
         <Form
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '0.7rem',
+          }}
+
           onSubmit={(e) => {
             e.preventDefault();
             submitHandler()
@@ -141,7 +151,10 @@ function TaskModal({ task, show, handleClose }) {
             </Form.Control>
           </Form.Group>
 
-          <UIButton type="submit">
+          <UIButton 
+            styles={{alignSelf: 'flex-start'}}
+            type="submit"
+          >
             {isLoaded ? (
               "Submit"
             ) : (
