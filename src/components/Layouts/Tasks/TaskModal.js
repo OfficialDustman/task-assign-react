@@ -59,6 +59,7 @@ function TaskModal({ task, show, handleClose, taskRefreshHandler }) {
 
   useEffect(() => {
     if (show && fetchData.status === 'success') {
+      console.log('hiiiiii');
       taskRefreshHandler()
     }
   }, [fetchData])
