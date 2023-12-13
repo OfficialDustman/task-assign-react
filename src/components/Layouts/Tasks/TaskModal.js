@@ -24,10 +24,10 @@ function TaskModal({ task, show, handleClose, taskRefreshHandler }) {
   let usersArray = task.assigned_users.split(',');
 
   useEffect(() => {
-    if (show && fetchData.status === 'success') {
-      taskRefreshHandler()
+    if (show && task.status === 'assigned') {
+      submitHandler()
     }
-  }, [show, fetchData])
+  }, [show])
 
   function submitHandler() {
 
@@ -58,10 +58,10 @@ function TaskModal({ task, show, handleClose, taskRefreshHandler }) {
   }
 
   useEffect(() => {
-    if (show && task.status === 'assigned') {
-      submitHandler()
+    if (show && fetchData.status === 'success') {
+      taskRefreshHandler()
     }
-  }, [show])
+  }, [fetchData])
 
   return (
     <Modal
