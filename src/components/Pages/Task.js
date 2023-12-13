@@ -38,12 +38,14 @@ function Task() {
 
     useEffect(() => {
       if (fetchData) {
+        console.log(fetchData)
         setTasks(fetchData.data);
       }
     }, [fetchData]);
   
     useEffect(() => {
       if (tasks.length > 0) {
+        console.log(filteredTasks);
         setFilteredTasks(tasks);
       }
     }, [tasks]);
