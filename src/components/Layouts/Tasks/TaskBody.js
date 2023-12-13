@@ -4,7 +4,7 @@ import TaskList from './TaskList';
 import { useState } from 'react';
 import TaskModal from './TaskModal';
 
-const TaskBody = ({ date, tasks }) => {
+const TaskBody = ({ date, tasks, onTaskRefresh }) => {
 
   const [filteredTasks, setFilteredTasks] = useState([...tasks]);
   const [taskClicked, setTaskClicked] = useState(false);
@@ -66,6 +66,7 @@ const TaskBody = ({ date, tasks }) => {
                 filteredTasks[0]} 
           show={taskClicked}
           handleClose={handleCloseModal}
+          taskRefreshHandler={onTaskRefresh}
         />
     </Card>
   );

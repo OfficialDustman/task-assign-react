@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import UIButton from "../../Ui/Button";
 
-function TaskModal({ task, show, handleClose }) {
+function TaskModal({ task, show, handleClose, taskRefreshHandler }) {
 
   const [status, setStatus] = useState('');
   const [isLoaded, setIsLoaded] = useState(true);
@@ -24,10 +24,10 @@ function TaskModal({ task, show, handleClose }) {
   let usersArray = task.assigned_users.split(',');
 
   useEffect(() => {
-    if (show && task.status === 'assigned') {
-      submitHandler()
+    if (show && fetchData.status === 'success') {
+      taskRefreshHandler()
     }
-  }, [show])
+  }, [show, fetchData])
 
   function submitHandler() {
 
@@ -56,6 +56,12 @@ function TaskModal({ task, show, handleClose }) {
         console.error("Error fetching data:", error);
       });
   }
+
+  useEffect(() => {
+    if (show && task.status === 'assigned') {
+      submitHandler()
+    }
+  }, [show])
 
   return (
     <Modal

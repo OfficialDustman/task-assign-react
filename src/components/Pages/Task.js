@@ -10,6 +10,7 @@ function Task() {
     const [fetchData, setFetchData] = useState(null);
     const [tasks, setTasks] = useState([]);
     const [filteredTasks, setFilteredTasks] = useState([]);
+    const [refreshTasks, setRefreshTask] = useState(false)
     const [date, setDate] = useState('Today');
     const [isLoaded, setIsLoaded] = useState(false);
     const [error, setError] = useState(null);
@@ -25,14 +26,15 @@ function Task() {
         })
           .then((response) => response.json() )
           .then((data) => {
+            console.log(data);
             setFetchData(data);
           })
-          // .catch((error) => {
-          //   setError(error)
-          //   console.error("Error fetching data:", error);
-          // });
+          .catch((error) => {
+            setError(error) 
+            console.error("Error fetching data:", error);
+          });
           
-    }, [userData])
+    }, [userData, refreshTasks])
 
     useEffect(() => {
       if (fetchData) {
@@ -60,6 +62,10 @@ function Task() {
         setDate(newDate);
     };
 
+    const handleTaskRefresh = () => {
+      setRefreshTask(true)
+    }
+
     return (
       <Card style={{ 
           display: 'flex', 
@@ -67,7 +73,10 @@ function Task() {
           padding: '20px',
           background: 'linear-gradient(180deg, #FFF 0%, #DFE4F1 100%)',
       }}>
-          {userData && <Header userData={userData}/>}
+          {userData && <Header 
+            userData={userData}
+            onTaskRefresh={handleTaskRefresh}
+          />}
           <Summary 
               tasks={tasks} 
               onFilteredTasksChange={handleFilteredTasksChange}
@@ -76,6 +85,7 @@ function Task() {
           {isLoaded && <TaskBody
               date={date}
               tasks={filteredTasks}
+              onTaskRefresh={handleTaskRefresh}
           />}
       </Card>
     )
