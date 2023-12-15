@@ -1,7 +1,7 @@
 import { useLocation, useNavigate, Outlet } from "react-router-dom";
 import NavBar from '../Layouts/NavBar';
 import AuthContext from "../../store/auth-context";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 
 function Home() {
 
