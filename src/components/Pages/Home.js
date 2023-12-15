@@ -1,7 +1,7 @@
 import { useLocation, useNavigate, Outlet } from "react-router-dom";
 import NavBar from '../Layouts/NavBar';
 import AuthContext from "../../store/auth-context";
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect } from "react";
 
 function Home() {
 
@@ -13,11 +13,10 @@ function Home() {
         location = useLocation();
 
     useEffect(() => {
-        // if () {
-            
-        // }
-        // else 
-        if (isLogged && location.pathname === '/home') {
+        if (!userData) {
+            setIsLogged(false)
+        }
+        else if (isLogged && location.pathname === '/home') {
             navigate("/home/task");
         }
     }, [location, navigate]);
@@ -32,8 +31,15 @@ function Home() {
                 background: 'linear-gradient(180deg, #FFF 0%, #DFE4F1 100%)'
             }}
         >
-            <Outlet />
-            <NavBar />
+            {isLogged ?
+                <>
+                    <Outlet />
+                    <NavBar />
+                </>
+                :     
+                <p>Sign In First</p>
+            }
+
         </div>
     )
 }
