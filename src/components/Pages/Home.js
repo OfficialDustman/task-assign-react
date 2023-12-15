@@ -1,14 +1,23 @@
 import { useLocation, useNavigate, Outlet } from "react-router-dom";
-import NavBar from '../Layouts/NavBar'
-import { useEffect } from "react";
+import NavBar from '../Layouts/NavBar';
+import AuthContext from "../../store/auth-context";
+import { useState, useEffect } from "react";
 
 function Home() {
+
+    const [isLogged, setIsLogged] = useState(true)
+    const { userData } = useContext(AuthContext)
+    console.log(userData);
 
     const navigate = useNavigate(),
         location = useLocation();
 
     useEffect(() => {
-        if (location.pathname === '/home') {
+        // if () {
+            
+        // }
+        // else 
+        if (isLogged && location.pathname === '/home') {
             navigate("/home/task");
         }
     }, [location, navigate]);

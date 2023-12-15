@@ -41,7 +41,7 @@ function Task() {
         console.log(fetchData)
         setTasks(fetchData.data);
       }
-    }, [fetchData, refreshTasks]);
+    }, [fetchData]);
   
     useEffect(() => {
       if (tasks.length > 0) {
