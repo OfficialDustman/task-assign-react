@@ -15,11 +15,12 @@ function Home() {
     useEffect(() => {
         if (!userData) {
             setIsLogged(false)
+            navigate("/");
         }
         else if (isLogged && location.pathname === '/home') {
             navigate("/home/task");
         }
-    }, [location, navigate]);
+    }, [location, navigate, userData]);
 
     return (
         <div
@@ -31,13 +32,11 @@ function Home() {
                 background: 'linear-gradient(180deg, #FFF 0%, #DFE4F1 100%)'
             }}
         >
-            {isLogged ?
+            {isLogged &&
                 <>
                     <Outlet />
                     <NavBar />
                 </>
-                :     
-                <p>Sign In First</p>
             }
 
         </div>
