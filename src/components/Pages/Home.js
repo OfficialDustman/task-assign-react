@@ -5,7 +5,7 @@ import { useState, useEffect, useContext } from "react";
 
 function Home() {
 
-    const [isLogged, setIsLogged] = useState(true)
+    const [isLogged, setIsLogged] = useState(false)
     const { userData } = useContext(AuthContext)
     console.log(userData);
 
@@ -13,14 +13,21 @@ function Home() {
         location = useLocation();
 
     useEffect(() => {
-        if (!userData) {
+        if (userData.length < 0) {
             setIsLogged(false)
+        } else if (userData) {
+            setIsLogged(true)
+        }
+    }, [userData]);
+
+    useEffect(() => {
+        if (!isLogged && location.pathname === '/home') {
             navigate("/");
         }
         else if (isLogged && location.pathname === '/home') {
             navigate("/home/task");
         }
-    }, [location, navigate, userData]);
+    }, [location, navigate]);
 
     return (
         <div
