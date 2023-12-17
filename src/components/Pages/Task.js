@@ -2,10 +2,12 @@ import Header from '../Layouts/Header'
 import Summary from '../Layouts/Summary'
 import TaskBody from '../Layouts/Tasks/TaskBody'
 import { Card } from 'react-bootstrap';
+import TaskContextProvider from "../../store/TaskProvider";
+import TaskContext from "../../store/task-context";
 import AuthContext from "../../store/auth-context";
 import { useState, useEffect, useContext } from "react";
 
-function Task() {
+function TaskApp() {
     
     const [fetchData, setFetchData] = useState(null);
     const [tasks, setTasks] = useState([]);
@@ -14,6 +16,7 @@ function Task() {
     const [date, setDate] = useState('Today');
     const [isLoaded, setIsLoaded] = useState(false);
     const [error, setError] = useState(null);
+    const { taskData, changeTaskData } = useContext(TaskContext)
     const { userData } = useContext(AuthContext)
     // console.log(userData);
     useEffect(() => {
@@ -36,13 +39,35 @@ function Task() {
           
     }, [userData, refreshTasks])
 
-    useEffect(() => {
+    useEffect(() => {  
       if (fetchData) {
-        console.log(fetchData)
-        setTasks(fetchData.data);
-      }
-    }, [fetchData]);
+        console.log(fetchData);
+
+        // Use context provider to update taskData
+        changeTaskData(fetchData.data);
   
+        // Compare with existing tasks state
+        if (tasks.length > 0) {
+          const newTasks = fetchData.data;
+          const diffTasks = newTasks.filter(
+            (newTask) => !tasks.some((task) => task.task_id === newTask.task_id)
+          );
+  
+          console.log("Newly fetched tasks not in current state:", diffTasks);
+  
+          // // Update tasks state
+          // setTasks(newTasks);
+        }
+      }
+    }, [fetchData]); 
+  
+    useEffect(() => {
+      if (taskData) {
+        console.log(taskData)
+        setTasks(taskData);
+      }
+    }, [taskData]);
+
     useEffect(() => {
       if (tasks.length > 0) {
         console.log(filteredTasks);
@@ -91,6 +116,14 @@ function Task() {
           />}
       </Card>
     )
+}
+
+function Task() {
+  return (
+    <TaskContextProvider>
+      <TaskApp />
+    </TaskContextProvider>
+  )
 }
 
 export default Task;

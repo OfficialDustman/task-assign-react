@@ -1,11 +1,13 @@
 import ProjectHead from "../Layouts/Projects/ProjectHead";
 import Sidebar from "../Layouts/Projects/SideBar";
 import AuthContext from "../../store/auth-context";
+import ProjectContextProvider from "../../store/ProjectProvider";
+import ProjectContext from "../../store/project-context";
 import { useState, useEffect, useContext } from "react";
 import { Card, Container } from 'react-bootstrap';
 import ProjectBody from "../Layouts/Projects/ProjectBody";
 
-function Project() {
+function ProjectApp() {
 
     const [fetchData, setFetchData] = useState(null);
     const [fetchProject, setFetchProject] = useState(null);
@@ -135,6 +137,14 @@ function Project() {
             }
         </Card>
     )
+}
+
+function Project() {
+    return (
+        <ProjectContextProvider>
+          <ProjectApp />
+        </ProjectContextProvider>
+      )
 }
 
 export default Project;

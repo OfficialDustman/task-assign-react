@@ -6,7 +6,7 @@ import AuthContext from "../../../store/auth-context";
 import { useState, useContext, useEffect } from "react";
 import SuccessModal from '../../Ui/SuccessModal';
 
-function SignIn() {
+function   SignIn() {
   const [teams] = useOutletContext();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
