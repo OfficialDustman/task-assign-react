@@ -61,8 +61,15 @@ function TaskApp() {
 
         if (taskData.length > 0) {
           const newTasks = fetchData.data;
+
+          console.log(newTasks, taskData);
+
           const diffTasks = newTasks.filter(
-            (newTask) => !taskData.some((task) => task.task_id === newTask.task_id)
+            (newTask) => !taskData.some((task) => {
+              console.log(task, newTask);
+              console.log(task.task_id, newTask.task_id);
+              return task.task_id === newTask.task_id
+            })
           );
   
           console.log("Newly fetched tasks not in current state:", diffTasks);
