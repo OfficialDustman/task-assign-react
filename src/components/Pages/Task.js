@@ -47,10 +47,22 @@ function TaskApp() {
         changeTaskData(fetchData.data);
   
         // Compare with existing tasks state
-        if (tasks.length > 0) {
+        // if (tasks.length > 0) {
+        //   const newTasks = fetchData.data;
+        //   const diffTasks = newTasks.filter(
+        //     (newTask) => !tasks.some((task) => task.task_id === newTask.task_id)
+        //   );
+  
+        //   console.log("Newly fetched tasks not in current state:", diffTasks);
+  
+        //   // // Update tasks state
+        //   // setTasks(newTasks);
+        // }
+
+        if (taskData.length > 0) {
           const newTasks = fetchData.data;
           const diffTasks = newTasks.filter(
-            (newTask) => !tasks.some((task) => task.task_id === newTask.task_id)
+            (newTask) => !taskData.some((task) => task.task_id === newTask.task_id)
           );
   
           console.log("Newly fetched tasks not in current state:", diffTasks);
