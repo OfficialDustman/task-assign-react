@@ -71,7 +71,7 @@ function TaskApp() {
           // setTasks(newTasks);
         }
       }
-    }, [fetchData]); 
+    }, [fetchData, taskData, changeTaskData]); 
   
     useEffect(() => {
       if (taskData) {
