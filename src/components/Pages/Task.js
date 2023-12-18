@@ -60,7 +60,7 @@ function TaskApp() {
     useEffect(() => {  
       if (fetchData) {
         console.log(fetchData);
-  
+        console.log(taskData)
         // Compare with existing tasks state
         // if (tasks.length > 0) {
         //   const newTasks = fetchData.data;
