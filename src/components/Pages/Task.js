@@ -18,7 +18,8 @@ function TaskApp() {
     const [error, setError] = useState(null);
     const { taskData, changeTaskData } = useContext(TaskContext)
     const { userData } = useContext(AuthContext)
-    // console.log(userData);
+    console.log(userData);
+    console.log(taskData)
 
     const getNewTask = () => {
       const newTasks = fetchData.data;
