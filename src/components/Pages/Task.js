@@ -63,7 +63,7 @@ function TaskApp() {
         console.log(fetchData);
         console.log(taskData)
         // Compare with existing tasks state
-        // if (tasks.length > 0) {
+        // if (tasks.length > 0) { 
         //   const newTasks = fetchData.data;
         //   const diffTasks = newTasks.filter(
         //     (newTask) => !tasks.some((task) => task.task_id === newTask.task_id)
@@ -151,4 +151,4 @@ function Task() {
   )
 }
 
-export default Task;
+export default Task; 

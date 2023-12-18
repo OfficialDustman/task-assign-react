@@ -1,7 +1,5 @@
 import ProjectHead from "../Layouts/Projects/ProjectHead";
 import Sidebar from "../Layouts/Projects/SideBar";
-import TaskContextProvider from "../../store/TaskProvider";
-import TaskContext from "../../store/task-context";
 import AuthContext from "../../store/auth-context";
 import ProjectContextProvider from "../../store/ProjectProvider";
 import ProjectContext from "../../store/project-context";
@@ -20,9 +18,7 @@ function ProjectApp() {
     const [isLoaded, setIsLoaded] = useState(false);
     const [error, setError] = useState(null);
     const { userData } = useContext(AuthContext)
-    const { taskData, changeTaskData } = useContext(TaskContext)
-    console.log(userData);
-    console.log(taskData)
+
     function groupTasksByProject(projects, tasks) {
         const groupedTasks = {};
 

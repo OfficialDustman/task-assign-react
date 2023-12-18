@@ -1,10 +1,12 @@
-import { Card, Button   } from "react-bootstrap"
+import { Card, Button, Badge  } from "react-bootstrap"
+import AuthContext from "../../store/auth-context";
 
 function Profile() {
-    
+  const { userData } = useContext(AuthContext)
+  
     return (
         <>
-        {/* <Card>
+        <Card>
           <Button
             variant="light"
           >
@@ -15,12 +17,12 @@ function Profile() {
                 fontSize: '1.2rem',
               }}
             >
-              {username[0]}
+              {userData[0]}
             </Badge>
             {' '}
-            {username}
+            {userData}
           </Button>
-        </Card> */}
+        </Card>
         </>
     )
 }
