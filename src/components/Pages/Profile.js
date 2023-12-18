@@ -1,4 +1,5 @@
 import { Card, Button, Badge  } from "react-bootstrap"
+import { useState, useEffect, useContext } from "react";
 import AuthContext from "../../store/auth-context";
 
 function Profile() {
