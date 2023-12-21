@@ -12,6 +12,7 @@ function Task() {
     const [fetchData, setFetchData] = useState(null);
     const [tasks, setTasks] = useState([]);
     const [filteredTasks, setFilteredTasks] = useState([]);
+    const [notificationTasks, setnotificationTasks] = useState([]);
     const [refreshTasks, setRefreshTask] = useState(false)
     const [date, setDate] = useState('Today');
     const [isLoaded, setIsLoaded] = useState(false);
@@ -42,9 +43,7 @@ function Task() {
 
     useEffect(() => {  
       if (fetchData) {
-        console.log(fetchData);
-        console.log(taskData)
-        // Compare with existing tasks state
+
         if (tasks.length > 0) { 
           console.log(taskData)
 
@@ -52,11 +51,8 @@ function Task() {
           const diffTasks = newTasks.filter(
             (newTask) => !tasks.some((task) => task.task_id === newTask.task_id)
           );
-  
+          setnotificationTasks(diffTasks)
           console.log("Newly fetched tasks not in current state:", diffTasks);
-  
-          // // Update tasks state
-          // setTasks(newTasks);
         }
 
         // Use context provider to update taskData
@@ -74,9 +70,8 @@ function Task() {
 
     useEffect(() => {
       if (tasks.length > 0) {
-        console.log(filteredTasks);
         setFilteredTasks(tasks);
-      }
+      } 
     }, [tasks]);
   
     useEffect(() => {
@@ -106,6 +101,7 @@ function Task() {
       }}>
           {userData && <Header 
             userData={userData}
+            newTasks={notificationTasks}
             onTaskRefresh={handleTaskRefresh}
           />}
           <Summary 

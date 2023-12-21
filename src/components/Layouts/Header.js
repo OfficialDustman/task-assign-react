@@ -1,7 +1,13 @@
 import { Card } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import NewTasks from '../Ui/Notification';
 
-export default function Header({ userData }) {
+export default function Header({ userData, newTasks }) {
+    const [show, setShow] = useState(false);
+
+    const toggleShow = () => {
+        setShow(!show);
+    }
 
     const checkTimeOfDay = (date) => {
         const hour = date.getHours();
@@ -36,7 +42,12 @@ export default function Header({ userData }) {
                 <Card.Title>{new Date().toDateString()}</Card.Title>
             </div>
 
-            <FontAwesomeIcon icon="fa-solid fa-bell" />
+            <FontAwesomeIcon onClick={toggleShow} icon="fa-solid fa-bell" />
+            <NewTasks 
+                tasks={newTasks}
+                showTask={show} 
+                closeTask={toggleShow}
+            />
         </header>
     )
 }
