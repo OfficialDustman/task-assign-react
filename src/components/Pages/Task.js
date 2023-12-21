@@ -17,25 +17,8 @@ function Task() {
     const [isLoaded, setIsLoaded] = useState(false);
     const [error, setError] = useState(null);
     const { userData, taskData, changeTaskData } = useContext(AuthContext)
-    console.log(userData);
+    // console.log(userData);
     console.log(taskData)
-
-    // const getNewTask = () => {
-    //   const newTasks = fetchData.data;
-
-    //   console.log(newTasks, taskData);
-
-    //   const diffTasks = newTasks.filter(
-    //     (newTask) => !taskData.some((task) => {
-    //       // console.log(task, newTask);
-    //       // console.log(task.task_id, newTask.task_id);
-    //       return task.task_id === newTask.task_id
-    //     })
-    //   );
-
-    //   console.log("Newly fetched tasks not in current state:", diffTasks);
-
-    // }
 
     useEffect(() => {
         const formData = new FormData();
@@ -60,36 +43,38 @@ function Task() {
     useEffect(() => {  
       if (fetchData) {
         console.log(fetchData);
-        console.log(taskData)
+        // console.log(taskData)
         // Compare with existing tasks state
-        if (tasks.length > 0) { 
-          console.log(taskData)
-
-          const newTasks = fetchData.data;
-          const diffTasks = newTasks.filter(
-            (newTask) => !tasks.some((task) => task.task_id === newTask.task_id)
-          );
-  
-          console.log("Newly fetched tasks not in current state:", diffTasks);
-  
-          // // Update tasks state
-          // setTasks(newTasks);
-        }
-
-        // if (taskData.length > 0) {
+        // if (tasks.length > 0) { 
         //   console.log(taskData)
-        //   getNewTask();
+
+        //   const newTasks = fetchData.data;
+        //   const diffTasks = newTasks.filter(
+        //     (newTask) => !tasks.some((task) => task.task_id === newTask.task_id)
+        //   );
   
+        //   console.log("Newly fetched tasks not in current state:", diffTasks);
+  
+        //   // // Update tasks state
+        //   // setTasks(newTasks);
         // }
 
         // Use context provider to update taskData
         changeTaskData(fetchData.data);
       }
-    }, [fetchData, taskData, changeTaskData]); 
+    }, [fetchData, changeTaskData]); 
   
     useEffect(() => {
       if (taskData.length > 0) {
         console.log(taskData)
+
+        const newTasks = fetchData.data;
+        const diffTasks = newTasks.filter(
+          (newTask) => !tasks.some((task) => task.task_id === newTask.task_id)
+        );
+
+        console.log("Newly fetched tasks not in current state:", diffTasks);
+
         setTasks(taskData);
       }
     }, [taskData]);
