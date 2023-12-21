@@ -2,12 +2,12 @@ import Header from '../Layouts/Header'
 import Summary from '../Layouts/Summary'
 import TaskBody from '../Layouts/Tasks/TaskBody'
 import { Card } from 'react-bootstrap';
-import TaskContextProvider from "../../store/TaskProvider";
-import TaskContext from "../../store/task-context";
+// import TaskContextProvider from "../../store/TaskProvider";
+// import TaskContext from "../../store/task-context";
 import AuthContext from "../../store/auth-context";
 import { useState, useEffect, useContext } from "react";
 
-function TaskApp() {
+function Task() {
     
     const [fetchData, setFetchData] = useState(null);
     const [tasks, setTasks] = useState([]);
@@ -16,8 +16,7 @@ function TaskApp() {
     const [date, setDate] = useState('Today');
     const [isLoaded, setIsLoaded] = useState(false);
     const [error, setError] = useState(null);
-    const { taskData, changeTaskData } = useContext(TaskContext)
-    const { userData } = useContext(AuthContext)
+    const { userData, taskData, changeTaskData } = useContext(AuthContext)
     console.log(userData);
     console.log(taskData)
 
@@ -141,14 +140,6 @@ function TaskApp() {
           />}
       </Card>
     )
-}
-
-function Task() {
-  return (
-    <TaskContextProvider>
-      <TaskApp />
-    </TaskContextProvider>
-  )
 }
 
 export default Task; 
