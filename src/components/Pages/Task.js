@@ -43,10 +43,11 @@ function Task() {
     useEffect(() => {  
       if (fetchData) {
         console.log(fetchData);
-        console.log(tasks)
-
+        console.log(taskData)
         // Compare with existing tasks state
         if (tasks.length > 0) { 
+          console.log(taskData)
+
           const newTasks = fetchData.data;
           const diffTasks = newTasks.filter(
             (newTask) => !tasks.some((task) => task.task_id === newTask.task_id)
@@ -61,11 +62,12 @@ function Task() {
         // Use context provider to update taskData
         changeTaskData(fetchData.data);
       }
-    }, [fetchData, tasks, changeTaskData]); 
+    }, [fetchData, taskData, changeTaskData]); 
   
     useEffect(() => {
       if (taskData.length > 0) {
         console.log(taskData)
+        
         setTasks(taskData);
       }
     }, [taskData]);
