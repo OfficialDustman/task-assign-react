@@ -20,22 +20,22 @@ function Task() {
     console.log(userData);
     console.log(taskData)
 
-    const getNewTask = () => {
-      const newTasks = fetchData.data;
+    // const getNewTask = () => {
+    //   const newTasks = fetchData.data;
 
-      console.log(newTasks, taskData);
+    //   console.log(newTasks, taskData);
 
-      const diffTasks = newTasks.filter(
-        (newTask) => !taskData.some((task) => {
-          // console.log(task, newTask);
-          // console.log(task.task_id, newTask.task_id);
-          return task.task_id === newTask.task_id
-        })
-      );
+    //   const diffTasks = newTasks.filter(
+    //     (newTask) => !taskData.some((task) => {
+    //       // console.log(task, newTask);
+    //       // console.log(task.task_id, newTask.task_id);
+    //       return task.task_id === newTask.task_id
+    //     })
+    //   );
 
-      console.log("Newly fetched tasks not in current state:", diffTasks);
+    //   console.log("Newly fetched tasks not in current state:", diffTasks);
 
-    }
+    // }
 
     useEffect(() => {
         const formData = new FormData();
@@ -62,23 +62,25 @@ function Task() {
         console.log(fetchData);
         console.log(taskData)
         // Compare with existing tasks state
-        // if (tasks.length > 0) { 
-        //   const newTasks = fetchData.data;
-        //   const diffTasks = newTasks.filter(
-        //     (newTask) => !tasks.some((task) => task.task_id === newTask.task_id)
-        //   );
-  
-        //   console.log("Newly fetched tasks not in current state:", diffTasks);
-  
-        //   // // Update tasks state
-        //   // setTasks(newTasks);
-        // }
-
-        if (taskData.length > 0) {
+        if (tasks.length > 0) { 
           console.log(taskData)
-          getNewTask();
+
+          const newTasks = fetchData.data;
+          const diffTasks = newTasks.filter(
+            (newTask) => !tasks.some((task) => task.task_id === newTask.task_id)
+          );
   
+          console.log("Newly fetched tasks not in current state:", diffTasks);
+  
+          // // Update tasks state
+          // setTasks(newTasks);
         }
+
+        // if (taskData.length > 0) {
+        //   console.log(taskData)
+        //   getNewTask();
+  
+        // }
 
         // Use context provider to update taskData
         changeTaskData(fetchData.data);
