@@ -43,41 +43,38 @@ function Task() {
     useEffect(() => {  
       if (fetchData) {
         console.log(fetchData);
-        // console.log(taskData)
-        // Compare with existing tasks state
-        // if (tasks.length > 0) { 
-        //   console.log(taskData)
 
-        //   const newTasks = fetchData.data;
-        //   const diffTasks = newTasks.filter(
-        //     (newTask) => !tasks.some((task) => task.task_id === newTask.task_id)
-        //   );
+        if (taskData.length > 0) {
+          console.log(taskData)
   
-        //   console.log("Newly fetched tasks not in current state:", diffTasks);
+          const newTasks = fetchData.data;
+          const diffTasks = newTasks.filter(
+            (newTask) => !tasks.some((task) => task.task_id === newTask.task_id)
+          );
   
-        //   // // Update tasks state
-        //   // setTasks(newTasks);
-        // }
+          console.log("Newly fetched tasks not in current state:", diffTasks);
+  
+          setTasks(taskData);
+        }
 
-        // Use context provider to update taskData
         changeTaskData(fetchData.data);
       }
-    }, [fetchData, changeTaskData]); 
+    }, [fetchData, taskData, changeTaskData]); 
   
-    useEffect(() => {
-      if (taskData.length > 0) {
-        console.log(taskData)
+    // useEffect(() => {
+    //   if (taskData.length > 0) {
+    //     console.log(taskData)
 
-        const newTasks = fetchData.data;
-        const diffTasks = newTasks.filter(
-          (newTask) => !tasks.some((task) => task.task_id === newTask.task_id)
-        );
+    //     const newTasks = fetchData.data;
+    //     const diffTasks = newTasks.filter(
+    //       (newTask) => !tasks.some((task) => task.task_id === newTask.task_id)
+    //     );
 
-        console.log("Newly fetched tasks not in current state:", diffTasks);
+    //     console.log("Newly fetched tasks not in current state:", diffTasks);
 
-        setTasks(taskData);
-      }
-    }, [taskData]);
+    //     setTasks(taskData);
+    //   }
+    // }, [taskData]);
 
     useEffect(() => {
       if (tasks.length > 0) {
