@@ -43,10 +43,10 @@ function Task() {
     useEffect(() => {  
       if (fetchData) {
         console.log(fetchData);
+        console.log(tasks)
 
-        if (taskData.length > 0) {
-          console.log(taskData)
-  
+        // Compare with existing tasks state
+        if (tasks.length > 0) { 
           const newTasks = fetchData.data;
           const diffTasks = newTasks.filter(
             (newTask) => !tasks.some((task) => task.task_id === newTask.task_id)
@@ -54,27 +54,21 @@ function Task() {
   
           console.log("Newly fetched tasks not in current state:", diffTasks);
   
-          setTasks(taskData);
+          // // Update tasks state
+          // setTasks(newTasks);
         }
 
+        // Use context provider to update taskData
         changeTaskData(fetchData.data);
       }
-    }, [fetchData, taskData, changeTaskData]); 
+    }, [fetchData, tasks, changeTaskData]); 
   
-    // useEffect(() => {
-    //   if (taskData.length > 0) {
-    //     console.log(taskData)
-
-    //     const newTasks = fetchData.data;
-    //     const diffTasks = newTasks.filter(
-    //       (newTask) => !tasks.some((task) => task.task_id === newTask.task_id)
-    //     );
-
-    //     console.log("Newly fetched tasks not in current state:", diffTasks);
-
-    //     setTasks(taskData);
-    //   }
-    // }, [taskData]);
+    useEffect(() => {
+      if (taskData.length > 0) {
+        console.log(taskData)
+        setTasks(taskData);
+      }
+    }, [taskData]);
 
     useEffect(() => {
       if (tasks.length > 0) {
