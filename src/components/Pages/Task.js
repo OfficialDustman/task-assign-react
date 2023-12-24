@@ -72,7 +72,7 @@ function Task() {
       if (tasks.length > 0) {
         setFilteredTasks(tasks);
       } 
-    }, [tasks]);
+    }, [tasks, notificationTasks]);
   
     useEffect(() => {
       if (filteredTasks.length > 0) {
