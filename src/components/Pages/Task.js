@@ -73,13 +73,14 @@ function Task() {
         console.log(tasks);
         setFilteredTasks(tasks);
       } 
-    }, [tasks, notificationTasks]);
+    }, [tasks]);
   
     useEffect(() => {
       if (filteredTasks.length > 0) {
+        console.log(filteredTasks);
         setIsLoaded(true);
       }
-    }, [filteredTasks]);
+    }, [filteredTasks, notificationTasks]);
 
     const handleFilteredTasksChange = (newFilteredTasks) => {
       setFilteredTasks(newFilteredTasks);
