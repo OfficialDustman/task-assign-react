@@ -70,6 +70,7 @@ function Task() {
 
     useEffect(() => {
       if (tasks.length > 0) {
+        console.log(tasks);
         setFilteredTasks(tasks);
       } 
     }, [tasks, notificationTasks]);
