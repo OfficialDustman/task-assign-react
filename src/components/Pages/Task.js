@@ -21,6 +21,18 @@ function Task() {
     // console.log(userData);
     console.log(taskData)
 
+    const handleFilteredTasksChange = (newFilteredTasks) => {
+      setFilteredTasks(newFilteredTasks);
+    };
+
+    const handleDateChange = (newDate) => {
+        setDate(newDate);
+    };
+
+    const handleTaskRefresh = () => {
+      setRefreshTask(true)
+    }
+
     useEffect(() => {
         const formData = new FormData();
         formData.append("username", userData?.username);
@@ -81,18 +93,6 @@ function Task() {
         setIsLoaded(true);
       }
     }, [filteredTasks, notificationTasks]);
-
-    const handleFilteredTasksChange = (newFilteredTasks) => {
-      setFilteredTasks(newFilteredTasks);
-    };
-
-    const handleDateChange = (newDate) => {
-        setDate(newDate);
-    };
-
-    const handleTaskRefresh = () => {
-      setRefreshTask(true)
-    }
 
     return (
       <Card style={{ 
