@@ -1,6 +1,7 @@
 import { Toast, ToastContainer } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-
+import { useState } from 'react';
+import TaskModal from '../Layouts/Tasks/TaskModal';
 
 function NewTasks({ tasks, showTask, closeTask, refreshTask }) {
 
@@ -42,7 +43,7 @@ function NewTasks({ tasks, showTask, closeTask, refreshTask }) {
             <TaskModal
                 task={taskClicked ?
                     taskData :
-                    filteredTasks[0]}
+                    tasks[0]}
                 show={taskClicked}
                 handleClose={handleCloseModal}
                 taskRefreshHandler={refreshTask}
