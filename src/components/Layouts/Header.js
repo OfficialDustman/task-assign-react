@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useState } from "react";
 import NewTasks from '../Ui/Notification';
 
-export default function Header({ userData, newTasks, onTaskRefresh }) {
+export default function Header({ userData, newTasks, onTaskRefresh, load }) {
     const [show, setShow] = useState(false);
 
     const toggleShow = () => {
@@ -12,13 +12,13 @@ export default function Header({ userData, newTasks, onTaskRefresh }) {
 
     const checkTimeOfDay = (date) => {
         const hour = date.getHours();
-      
+
         if (hour >= 6 && hour < 12) {
-          return 'Morning';
+            return 'Morning';
         } else if (hour >= 12 && hour < 18) {
-          return 'Afternoon';
+            return 'Afternoon';
         } else {
-          return 'Evening';
+            return 'Evening';
         }
     };
 
@@ -44,12 +44,13 @@ export default function Header({ userData, newTasks, onTaskRefresh }) {
             </div>
 
             <FontAwesomeIcon onClick={toggleShow} icon="fa-solid fa-bell" />
-            <NewTasks 
+            {load && <NewTasks
                 tasks={newTasks}
-                showTask={show} 
+                showTask={show}
                 closeTask={toggleShow}
                 refreshTask={onTaskRefresh}
-            />
+            />}
+
         </header>
     )
 }
