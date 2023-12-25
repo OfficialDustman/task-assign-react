@@ -8,6 +8,8 @@ function NewTasks({ tasks, showTask, closeTask, refreshTask }) {
     const [taskClicked, setTaskClicked] = useState(false);
     const [taskData, setTaskData] = useState(null);
 
+    console.log(tasks);
+
     const formatDate = (inputDate) => {
         const date = new Date(inputDate);
         const options = { year: 'numeric', month: 'long', day: 'numeric' };
