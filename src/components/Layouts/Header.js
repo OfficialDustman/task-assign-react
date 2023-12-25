@@ -44,7 +44,7 @@ export default function Header({ userData, newTasks, onTaskRefresh, load }) {
             </div>
 
             <FontAwesomeIcon onClick={toggleShow} icon="fa-solid fa-bell" />
-            {load && <NewTasks
+            {newTasks && <NewTasks
                 tasks={newTasks}
                 showTask={show}
                 closeTask={toggleShow}
