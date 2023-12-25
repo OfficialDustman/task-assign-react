@@ -5,6 +5,7 @@ const AuthContext = React.createContext({
     changeUserData : () => {},
     taskData : [],
     changeTaskData : () => {},
+    
     projectData : [],
     changeProjectData : () => {},
     projectTask : [],

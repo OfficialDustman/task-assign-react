@@ -57,7 +57,6 @@ function Task() {
       if (fetchData) {
 
         if (tasks.length > 0) { 
-          console.log(taskData)
 
           const newTasks = fetchData.data;
           const diffTasks = newTasks.filter(
@@ -73,23 +72,19 @@ function Task() {
     }, [fetchData, taskData, changeTaskData]); 
   
     useEffect(() => {
-      if (taskData.length > 0 && fetchData) {
-        console.log(taskData)
-        
+      if (taskData.length > 0 && fetchData) {        
         setTasks(taskData);
       }
     }, [taskData, fetchData]);
 
     useEffect(() => {
       if (tasks.length > 0) {
-        console.log(tasks);
         setFilteredTasks(tasks);
       } 
     }, [tasks]);
   
     useEffect(() => {
       if (filteredTasks.length > 0) {
-        console.log(filteredTasks);
         setIsLoaded(true);
       }
     }, [filteredTasks, notificationTasks]);
@@ -102,10 +97,8 @@ function Task() {
           background: 'linear-gradient(180deg, #FFF 0%, #DFE4F1 100%)',
       }}>
           {userData && <Header 
-            userData={userData}
             newTasks={notificationTasks}
             onTaskRefresh={handleTaskRefresh}
-            load={isLoaded}
           />}
           <Summary 
               tasks={tasks} 

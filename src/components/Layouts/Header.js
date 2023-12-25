@@ -1,10 +1,14 @@
 import { Card } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useState } from "react";
+import AuthContext from '../../store/auth-context';
+import { useState, useEffect, useContext } from "react";
 import NewTasks from '../Ui/Notification';
 
-export default function Header({ userData, newTasks, onTaskRefresh, load }) {
+export default function Header({ newTasks, onTaskRefresh }) {
     const [show, setShow] = useState(false);
+    const { userData, newtaskData, changeNewTaskData } = useContext(AuthContext)
+    console.log(userData);
+    console.log(newtaskData)
 
     const toggleShow = () => {
         setShow(!show);
@@ -21,6 +25,12 @@ export default function Header({ userData, newTasks, onTaskRefresh, load }) {
             return 'Evening';
         }
     };
+
+    useEffect(() => {
+        if (newTasks.length > 0) {
+            changeNewTaskData(newTasks);
+        } 
+      }, [newTasks]);
 
     return (
         <header style={{
@@ -44,8 +54,8 @@ export default function Header({ userData, newTasks, onTaskRefresh, load }) {
             </div>
 
             <FontAwesomeIcon onClick={toggleShow} icon="fa-solid fa-bell" />
-            {newTasks.length > 0 && <NewTasks
-                tasks={newTasks}
+            {newtaskData.length > 0 && <NewTasks
+                tasks={newtaskData}
                 showTask={show}
                 closeTask={toggleShow}
                 refreshTask={onTaskRefresh}

@@ -1,12 +1,14 @@
 import { Toast, ToastContainer } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useState } from 'react';
+import AuthContext from '../../store/auth-context';
+import { useState, useContext } from 'react';
 import TaskModal from '../Layouts/Tasks/TaskModal';
 
 function NewTasks({ tasks, showTask, closeTask, refreshTask }) {
 
     const [taskClicked, setTaskClicked] = useState(false);
     const [taskData, setTaskData] = useState(null);
+    const { changeNewTaskData } = useContext(AuthContext)
 
     console.log(tasks);
 
@@ -17,7 +19,14 @@ function NewTasks({ tasks, showTask, closeTask, refreshTask }) {
         return date.toLocaleDateString('en-US', options);
     };
 
+    const filterTask = (allTasks, selectTask) => {
+        const filteredTasks = allTasks.filter(task => task.task_id !== selectTask.task_id);
+        changeNewTaskData(filteredTasks);
+    }
+      
+
     const handleTaskClick = (task) => {
+        filterTask(tasks, task)
         setTaskData(task)
         setTaskClicked(true);
     }
