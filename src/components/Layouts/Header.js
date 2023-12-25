@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useState } from "react";
 import NewTasks from '../Ui/Notification';
 
-export default function Header({ userData, newTasks }) {
+export default function Header({ userData, newTasks, onTaskRefresh }) {
     const [show, setShow] = useState(false);
 
     const toggleShow = () => {
@@ -48,6 +48,7 @@ export default function Header({ userData, newTasks }) {
                 tasks={newTasks}
                 showTask={show} 
                 closeTask={toggleShow}
+                refreshTask={onTaskRefresh}
             />
         </header>
     )

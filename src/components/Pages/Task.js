@@ -73,12 +73,12 @@ function Task() {
     }, [fetchData, taskData, changeTaskData]); 
   
     useEffect(() => {
-      if (taskData.length > 0) {
+      if (taskData.length > 0 && fetchData) {
         console.log(taskData)
         
         setTasks(taskData);
       }
-    }, [taskData]);
+    }, [taskData, fetchData]);
 
     useEffect(() => {
       if (tasks.length > 0) {
