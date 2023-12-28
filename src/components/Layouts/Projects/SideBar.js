@@ -1,4 +1,4 @@
-import React from 'react';
+import { useState } from 'react';
 import { Navbar, Nav, Button, Badge, Card, CardGroup } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import ProjectAccordion from "./ProjectAccordion";
