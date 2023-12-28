@@ -29,6 +29,8 @@ const DateFilter = ({ onDateChange }) => {
         onDateChange(selectedDate);
     };
 
+    console.log(selectedDate);
+
     return (
         <Form.Group controlId="dateFilter">
             <Form.Label>Select Date:</Form.Label>
