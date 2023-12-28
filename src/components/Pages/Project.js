@@ -38,7 +38,7 @@ function Project() {
     }
 
     const handleTaskRefresh = () => {
-        setRefreshTask(true)
+        setRefreshTask(!refreshTasks)
     }
 
     useEffect(() => {

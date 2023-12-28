@@ -29,7 +29,7 @@ function Task() {
     };
 
     const handleTaskRefresh = () => {
-      setRefreshTask(true)
+      setRefreshTask(!refreshTasks)
     }
 
     useEffect(() => {
