@@ -12,8 +12,6 @@ function Task() {
     const [fetchData, setFetchData] = useState(null);
     const [tasks, setTasks] = useState([]);
     const [filteredTasks, setFilteredTasks] = useState([]);
-    const [newFilteredTasks, setnewFilteredTasks] = useState([]);
-    // const [isfiltered, setIsFiltered] = useState(false);
     const [notificationTasks, setnotificationTasks] = useState([]);
     const [refreshTasks, setRefreshTask] = useState(false)
     const [date, setDate] = useState('Today');
@@ -21,11 +19,6 @@ function Task() {
     const [error, setError] = useState(null);
     const { userData, taskData, changeTaskData } = useContext(AuthContext)
     console.log(taskData)
-
-    const handleFilteredTasksChange = (newFilteredTasks) => {
-      console.log(filteredTasks);
-      setnewFilteredTasks(newFilteredTasks);
-    };
 
     const handleDateChange = (newDate) => {
         setDate(newDate);
@@ -84,18 +77,17 @@ function Task() {
         setFilteredTasks(tasks);
       } 
     }, [tasks]);
-
-    useEffect(() => {
-      if (newFilteredTasks.length > 0) {        
-        setFilteredTasks(newFilteredTasks);
-      }
-    }, [newFilteredTasks]);
   
     useEffect(() => {
       if (filteredTasks.length > 0) {
         setIsLoaded(true);
       }
     }, [filteredTasks, notificationTasks]);
+
+    const handleFilteredTasksChange = (newFilteredTasks) => {
+      console.log(filteredTasks);
+      setFilteredTasks(newFilteredTasks);
+    };
 
     return (
       <Card style={{ 
