@@ -11,7 +11,7 @@ export default function ProjectTask({ task, ontaskclick }) {
     };
 
     const taskClickHandler = () => {
-        ontaskclick(true)
+        ontaskclick(task)
     }
     
     return (
