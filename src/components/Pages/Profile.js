@@ -7,7 +7,12 @@ function Profile() {
 
   return (
     <>
-      <Card>
+      <Card
+        style={{
+          width: '75%',
+          margin: '0 auto',
+        }}
+      >
         <Button
           variant="light"
         >
@@ -25,10 +30,9 @@ function Profile() {
         </Button>
 
         <Card.Body>
-          <Card.Title>{userData.email}</Card.Title>
+          <Card.Title>Email : {userData.email}</Card.Title>
           <Card.Text>
-            {userData.team_name}
-            {' '}
+            Team : {userData.team_name}
             {userData.team_description}
           </Card.Text>
         </Card.Body>
