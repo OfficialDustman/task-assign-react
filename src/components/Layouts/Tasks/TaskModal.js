@@ -21,6 +21,7 @@ function TaskModal({ task, show, handleClose, taskRefreshHandler }) {
     return date.toLocaleDateString('en-US', options);
   };
 
+  console.log(task);
   let usersArray = task.assigned_users.split(',');
 
   useEffect(() => {
