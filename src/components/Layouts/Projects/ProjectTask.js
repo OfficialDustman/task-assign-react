@@ -20,11 +20,12 @@ export default function ProjectTask({ task, ontaskclick }) {
                 display: 'flex',
                 flexDirection: 'column',
                 padding: '0.5rem',
+                fontSize: '0.85rem',
             }}
 
             onClick={taskClickHandler}
         >
-            <Card.Title>{task.task_name}</Card.Title>
+            <Card.Title style={{fontSize: '0.95rem'}}>{task.task_name}</Card.Title>
             <Card.Text>{task.task_description}</Card.Text>
 
             <CardGroup
@@ -52,11 +53,11 @@ export default function ProjectTask({ task, ontaskclick }) {
                     style={{
                         display: 'flex',
                         gap: '0.5rem',
-                        flexDirection: 'row',
+                        flexDirection: 'column',
                         alignItems: 'center'
                     }}
                 >
-                    <Button variant="info">{task.status}</Button>
+                    <Button variant="info" style={{fontSize: '0.85rem'}}>{task.status}</Button>
                     <OverlayTrigger
                         placement="bottom"
                         delay={{ show: 250, hide: 400 }}
@@ -64,7 +65,7 @@ export default function ProjectTask({ task, ontaskclick }) {
                             {task.assigned_users}
                         </Tooltip>}
                     >
-                        <Button variant="warning">Assigned Users</Button>
+                        <Button variant="warning" style={{fontSize: '0.85rem'}}>Assigned Users</Button>
                     </OverlayTrigger>
                 </ListGroup>
 

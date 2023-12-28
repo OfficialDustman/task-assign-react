@@ -13,8 +13,8 @@ const Sidebar = ({ tasks, projects, username, onTaskRefresh }) => {
   const [taskData, setTaskData] = useState(null);
 
   const handleTaskClick = (task) => {
+    setTaskData(task);
     setTaskClicked(true);
-    setTaskData(task)
   }
 
   const handleCloseModal = () => {
