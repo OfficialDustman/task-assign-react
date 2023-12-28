@@ -7,8 +7,6 @@ import NewTasks from '../Ui/Notification';
 export default function Header({ newTasks, onTaskRefresh }) {
     const [show, setShow] = useState(false);
     const { userData, newtaskData, changeNewTaskData } = useContext(AuthContext)
-    console.log(userData);
-    console.log(newtaskData)
 
     const toggleShow = () => {
         setShow(!show);

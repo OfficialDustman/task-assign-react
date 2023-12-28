@@ -18,7 +18,6 @@ function Task() {
     const [isLoaded, setIsLoaded] = useState(false);
     const [error, setError] = useState(null);
     const { userData, taskData, changeTaskData } = useContext(AuthContext)
-    // console.log(userData);
     console.log(taskData)
 
     const handleFilteredTasksChange = (newFilteredTasks) => {
@@ -31,7 +30,6 @@ function Task() {
 
     const handleTaskRefresh = () => {
       setRefreshTask(true)
-      console.log(true);
     }
 
     useEffect(() => {

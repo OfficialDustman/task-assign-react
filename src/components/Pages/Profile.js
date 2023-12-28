@@ -5,10 +5,12 @@ import AuthContext from "../../store/auth-context";
 function Profile() {
   const { userData } = useContext(AuthContext)
   
+  console.log(userData );
+
     return (
         <>
         <Card>
-          <Button
+          {/* <Button
             variant="light"
           >
             <Badge
@@ -22,7 +24,7 @@ function Profile() {
             </Badge>
             {' '}
             {userData}
-          </Button>
+          </Button> */}
         </Card>
         </>
     )
