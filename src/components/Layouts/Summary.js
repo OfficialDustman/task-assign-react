@@ -16,9 +16,9 @@ export default function Summary({ tasks, onFilteredTasksChange, onDateChange }) 
         const newFilteredTasks = tasks?.filter(task => {
             const taskDate = new Date(task.start_date); // Assuming each task has a 'date' property
             const selectDate = new Date(newDate);
-            console.log(taskDate, newDate, selectDate);
-            console.log(taskDate.toDateString(), newDate.toDateString());
-            return taskDate.toDateString() === newDate.toDateString();
+            console.log(taskDate, selectDate);
+            console.log(taskDate.toDateString(), selectDate.toDateString());
+            return taskDate.toDateString() === selectDate.toDateString();
         });
         setDateFilteredTasks(newFilteredTasks);
         onFilteredTasksChange(newFilteredTasks)
