@@ -1,24 +1,21 @@
 import { Card, CardGroup } from "react-bootstrap"
 import DateFilter from "../Ui/DateFilter"
 import TaskCount from "../Ui/TaskCount"
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 
 export default function Summary({ tasks, onFilteredTasksChange, onDateChange }) {
     const [datefilteredTasks, setDateFilteredTasks] = useState([...tasks]);
+    const [allTasksCount, setAllTasksCount] = useState(0);
+    const [completedTasksCount, setCompletedTasksCount] = useState(0);
 
-    // Count all tasks and completed tasks
-    const allTasksCount = datefilteredTasks.length;
-    const completedTasksCount = datefilteredTasks.filter(task => task.status === 'completed').length;
 
     const handleDateChange = (newDate) => {
         // Filter tasks based on the selected date and update the state
         const selectDate = new Date(newDate);
 
         const newFilteredTasks = tasks?.filter(task => {
-            const taskDate = new Date(task.start_date); // Assuming each task has a 'date' property
-            console.log(taskDate, selectDate);
-            console.log(taskDate.toDateString(), selectDate.toDateString());
+            const taskDate = new Date(task.start_date);
             return taskDate.toDateString() === selectDate.toDateString();
         });
         console.log(newFilteredTasks);
@@ -27,6 +24,15 @@ export default function Summary({ tasks, onFilteredTasksChange, onDateChange }) 
         onFilteredTasksChange(newFilteredTasks)
         onDateChange(selectDate.toDateString())
     };
+
+    useEffect(() => {
+        if (datefilteredTasks) {
+            const completedCount = datefilteredTasks.filter(task => task.status === 'completed').length;
+            
+            setAllTasksCount(datefilteredTasks.length);
+            setCompletedTasksCount(completedCount);
+        }
+    }, [datefilteredTasks]);
 
     const taskCountStyle = {
         display: 'flex',

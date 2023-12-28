@@ -21,6 +21,7 @@ function Task() {
     console.log(taskData)
 
     const handleFilteredTasksChange = (newFilteredTasks) => {
+      console.log(filteredTasks);
       setFilteredTasks(newFilteredTasks);
     };
 
