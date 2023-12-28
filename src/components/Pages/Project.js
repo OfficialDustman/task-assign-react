@@ -12,18 +12,19 @@ function Project() {
     const [tasks, setTasks] = useState([]);
     const [projects, setProjects] = useState([]);
     const [groupedProjects, setGroupedProjects] = useState(null);
+    const [refreshTasks, setRefreshTask] = useState(false)
     const [filteredTasks, setFilteredTasks] = useState([]);
     const [isLoaded, setIsLoaded] = useState(false);
     const [error, setError] = useState(null);
     const { userData, projectData, changeProjectData, projectTask, changeProjectTask } = useContext(AuthContext)
 
-    function groupTasksByProject(projects, tasks) {
+    const groupTasksByProject = (projects, tasks) => {
         const groupedTasks = {};
 
         projects.forEach(project => {
             groupedTasks[project.project_id] = {
-              ...project,
-              tasks: [],
+                ...project,
+                tasks: [],
             };
         });
 
@@ -36,6 +37,9 @@ function Project() {
         return Object.values(groupedTasks);
     }
 
+    const handleTaskRefresh = () => {
+        setRefreshTask(true)
+    }
 
     useEffect(() => {
         const formData = new FormData();
@@ -49,12 +53,12 @@ function Project() {
             .then((data) => {
                 setFetchData(data);
             })
-        .catch((error) => {
-          setError(error)
-          console.error("Error fetching data:", error);
-        });
+            .catch((error) => {
+                setError(error)
+                console.error("Error fetching data:", error);
+            });
 
-    }, [userData])
+    }, [userData, refreshTasks])
 
     useEffect(() => {
         const formData = new FormData();
@@ -68,10 +72,10 @@ function Project() {
             .then((data) => {
                 setFetchProject(data);
             })
-        .catch((error) => {
-          setError(error)
-          console.error("Error fetching data:", error);
-        });
+            .catch((error) => {
+                setError(error)
+                console.error("Error fetching data:", error);
+            });
 
     }, [userData])
 
@@ -125,10 +129,12 @@ function Project() {
             {isLoaded &&
                 <>
                     <Sidebar
+                        tasks={tasks}
                         projects={groupedProjects}
                         username={userData?.username}
+                        onTaskRefresh={handleTaskRefresh}
                     />
-                    <Container 
+                    <Container
                         style={{
                             display: 'flex',
                             flexDirection: 'column',
@@ -138,9 +144,10 @@ function Project() {
                         }}
                     >
                         <ProjectHead userData={userData} />
-                        <ProjectBody 
+                        <ProjectBody
                             tasks={tasks}
                             projects={groupedProjects}
+                            onTaskRefresh={handleTaskRefresh}
                         />
                     </Container>
                 </>

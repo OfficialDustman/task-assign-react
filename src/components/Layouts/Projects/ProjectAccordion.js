@@ -1,7 +1,7 @@
 import { Accordion, Card } from 'react-bootstrap';
 import ProjectTask from './ProjectTask';
 
-const ProjectAccordion = ({ projects }) => {
+const ProjectAccordion = ({ projects, taskclicked}) => {
 
   return (
     <Accordion defaultActiveKey={projects[0].project_id.toString()} alwaysOpen>
@@ -27,7 +27,10 @@ const ProjectAccordion = ({ projects }) => {
                   <li 
                     key={task.task_id}
                   >
-                    <ProjectTask task={task} />
+                    <ProjectTask 
+                      task={task}
+                      ontaskclick={taskclicked} 
+                    />
                   </li>
                 ))}
               </ul>

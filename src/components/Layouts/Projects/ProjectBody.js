@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 import { useState } from 'react';
 import TaskModal from '../Tasks/TaskModal';
 
-const ProjectBody = ({ tasks, projects }) => {
+const ProjectBody = ({ tasks, projects, onTaskRefresh }) => {
   const [taskClicked, setTaskClicked] = useState(false);
   const [taskData, setTaskData] = useState(null);
 
@@ -48,7 +48,8 @@ const ProjectBody = ({ tasks, projects }) => {
           gap: '2rem',
         }}
       >
-        Today Task
+        {'Today Task '}
+        <FontAwesomeIcon onClick={onTaskRefresh} icon="fa-solid fa-arrows-rotate" />
 
         <UIButton>
           <Link
@@ -83,6 +84,8 @@ const ProjectBody = ({ tasks, projects }) => {
           tasks[0]}
         show={taskClicked}
         handleClose={handleCloseModal}
+        taskRefreshHandler={onTaskRefresh}
+
       />
     </Card>
   );

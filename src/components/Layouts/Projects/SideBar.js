@@ -3,10 +3,25 @@ import { Navbar, Nav, Button, Badge, Card, CardGroup } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import ProjectAccordion from "./ProjectAccordion";
 import UIButton from '../../Ui/Button';
+import TaskModal from '../Tasks/TaskModal';
 import { Link } from "react-router-dom";
 
 
-const Sidebar = ({ projects, username }) => {
+const Sidebar = ({ tasks, projects, username, onTaskRefresh }) => {
+
+  const [taskClicked, setTaskClicked] = useState(false);
+  const [taskData, setTaskData] = useState(null);
+
+  const handleTaskClick = (task) => {
+    setTaskClicked(true);
+    setTaskData(task)
+  }
+
+  const handleCloseModal = () => {
+    setTaskClicked(false);
+  };
+
+
   return (
     <Navbar
       expand="lg"
@@ -52,8 +67,11 @@ const Sidebar = ({ projects, username }) => {
         </Card>
 
         <Navbar.Brand>
-          <FontAwesomeIcon icon={'fa-solid fa-folder'} />{' '}
+          <FontAwesomeIcon icon={'fa-solid fa-folder'} />
+          {' '}
           Projects
+          {' '}
+          <FontAwesomeIcon onClick={onTaskRefresh} icon="fa-solid fa-arrows-rotate" />
         </Navbar.Brand>
 
         <UIButton>
@@ -76,8 +94,20 @@ const Sidebar = ({ projects, username }) => {
 
 
       <Nav>
-        <ProjectAccordion projects={projects} />
+        <ProjectAccordion
+          projects={projects}
+          taskclicked={handleTaskClick}
+        />
       </Nav>
+
+      <TaskModal
+        task={taskClicked ?
+          taskData :
+          tasks[0]}
+        show={taskClicked}
+        handleClose={handleCloseModal}
+        taskRefreshHandler={onTaskRefresh}
+      />
     </Navbar>
   );
 };

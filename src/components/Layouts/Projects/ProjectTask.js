@@ -1,7 +1,7 @@
 import { Card, Button, CardGroup, ListGroup, OverlayTrigger, Tooltip } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-export default function ProjectTask({ task }) {
+export default function ProjectTask({ task, ontaskclick }) {
 
     const formatDate = (inputDate) => {
         const date = new Date(inputDate);
@@ -10,6 +10,10 @@ export default function ProjectTask({ task }) {
         return date.toLocaleDateString('en-US', options);
     };
 
+    const taskClickHandler = () => {
+        ontaskclick(true)
+    }
+    
     return (
         <Card
             style={{
@@ -17,6 +21,8 @@ export default function ProjectTask({ task }) {
                 flexDirection: 'column',
                 padding: '0.5rem',
             }}
+
+            onClick={taskClickHandler}
         >
             <Card.Title>{task.task_name}</Card.Title>
             <Card.Text>{task.task_description}</Card.Text>
@@ -34,22 +40,34 @@ export default function ProjectTask({ task }) {
                     style={{
                         display: 'flex',
                         gap: '0.5rem',
+                        flexDirection: 'row',
+                        alignItems: 'center'
                     }}
                 >
                     <FontAwesomeIcon icon="fa-solid fa-stopwatch" />
                     {formatDate(task.end_date)}
                 </ListGroup>
 
-                <Button variant="info">{task.status}</Button>
-                <OverlayTrigger
-                    placement="bottom"
-                    delay={{ show: 250, hide: 400 }}
-                    overlay={<Tooltip id="button-tooltip">
-                        {task.assigned_users}
-                    </Tooltip>}
+                <ListGroup
+                    style={{
+                        display: 'flex',
+                        gap: '0.5rem',
+                        flexDirection: 'row',
+                        alignItems: 'center'
+                    }}
                 >
-                    <Button variant="warning">Assigned Users</Button>
-                </OverlayTrigger>
+                    <Button variant="info">{task.status}</Button>
+                    <OverlayTrigger
+                        placement="bottom"
+                        delay={{ show: 250, hide: 400 }}
+                        overlay={<Tooltip id="button-tooltip">
+                            {task.assigned_users}
+                        </Tooltip>}
+                    >
+                        <Button variant="warning">Assigned Users</Button>
+                    </OverlayTrigger>
+                </ListGroup>
+
             </CardGroup>
 
         </Card>
