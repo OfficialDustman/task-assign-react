@@ -85,9 +85,10 @@ function Task() {
     }, [filteredTasks, notificationTasks]);
 
     const handleFilteredTasksChange = (newFilteredTasks) => {
-      console.log(filteredTasks);
       setFilteredTasks(newFilteredTasks);
+      console.log(filteredTasks);
     };
+    console.log(filteredTasks);
 
     return (
       <Card style={{ 
