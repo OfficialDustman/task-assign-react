@@ -50,7 +50,7 @@ const TaskBody = ({ date, tasks, onTaskRefresh }) => {
         marginBottom: '6rem',
         gap: '1rem',
       }}>
-        <Card.Title>{date.toDateString()} Task</Card.Title>
+        <Card.Title>{date} Task</Card.Title>
         <TaskFilter onFilterChange={handleFilterChange} />
         {filteredTasks.length > 0 ? 
             <TaskList 

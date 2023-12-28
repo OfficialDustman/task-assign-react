@@ -25,7 +25,7 @@ export default function Summary({ tasks, onFilteredTasksChange, onDateChange }) 
 
         setDateFilteredTasks(newFilteredTasks);
         onFilteredTasksChange(newFilteredTasks)
-        onDateChange(selectDate)
+        onDateChange(selectDate.toDateString())
     };
 
     const taskCountStyle = {
