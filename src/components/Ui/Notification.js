@@ -23,7 +23,7 @@ function NewTasks({ tasks, showTask, closeTask, refreshTask }) {
         const filteredTasks = allTasks.filter(task => task.task_id !== selectTask.task_id);
         changeNewTaskData(filteredTasks);
     }
-      
+
 
     const handleTaskClick = (task) => {
         filterTask(tasks, task)
@@ -36,19 +36,30 @@ function NewTasks({ tasks, showTask, closeTask, refreshTask }) {
     };
 
     return (
-        <ToastContainer className="position-static">
+        <ToastContainer
+            className="position-static"
+            style={{
+                position: 'absolute',
+                top: 0,
+                right: 0,
+                transform: 'translate(-1rem, 5rem)',
+            }}
+        >
             {tasks.length > 0 && tasks.map((task) => (
                 <Toast
                     show={showTask}
                     onClose={closeTask}
-                    onClick={ () =>  handleTaskClick(task)}
                 >
                     <Toast.Header>
                         <FontAwesomeIcon icon="fa-solid fa-bell" />
                         <strong className="me-auto">{task.task_name}</strong>
                         <small className="text-muted">{formatDate(task.end_date)}</small>
                     </Toast.Header>
-                    <Toast.Body>{task.task_description}</Toast.Body>
+                    <Toast.Body
+                        onClick={() => handleTaskClick(task)}
+                    >
+                        {task.task_description}
+                    </Toast.Body>
                 </Toast>
             ))}
             <TaskModal

@@ -31,6 +31,7 @@ function Task() {
 
     const handleTaskRefresh = () => {
       setRefreshTask(true)
+      console.log(true);
     }
 
     useEffect(() => {

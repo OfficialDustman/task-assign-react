@@ -54,6 +54,7 @@ export default function Header({ newTasks, onTaskRefresh }) {
             </div>
 
             <FontAwesomeIcon onClick={toggleShow} icon="fa-solid fa-bell" />
+            <FontAwesomeIcon onClick={onTaskRefresh} icon="fa-solid fa-arrows-rotate" />
             {newtaskData.length > 0 && <NewTasks
                 tasks={newtaskData}
                 showTask={show}
