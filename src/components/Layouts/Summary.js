@@ -15,7 +15,8 @@ export default function Summary({ tasks, onFilteredTasksChange, onDateChange }) 
         // Filter tasks based on the selected date and update the state
         const newFilteredTasks = tasks?.filter(task => {
             const taskDate = new Date(task.start_date); // Assuming each task has a 'date' property
-            console.log(taskDate, newDate);
+            const selectDate = new Date(newDate);
+            console.log(taskDate, newDate, selectDate);
             console.log(taskDate.toDateString(), newDate.toDateString());
             return taskDate.toDateString() === newDate.toDateString();
         });
