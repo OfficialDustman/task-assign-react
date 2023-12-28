@@ -13,7 +13,7 @@ function Task() {
     const [tasks, setTasks] = useState([]);
     const [filteredTasks, setFilteredTasks] = useState([]);
     const [newFilteredTasks, setnewFilteredTasks] = useState([]);
-    const [isfiltered, setIsFiltered] = useState(false);
+    // const [isfiltered, setIsFiltered] = useState(false);
     const [notificationTasks, setnotificationTasks] = useState([]);
     const [refreshTasks, setRefreshTask] = useState(false)
     const [date, setDate] = useState('Today');
@@ -89,7 +89,7 @@ function Task() {
       if (newFilteredTasks.length > 0) {        
         setFilteredTasks(newFilteredTasks);
       }
-    }, [newFilteredTasks, isfiltered]);
+    }, [newFilteredTasks]);
   
     useEffect(() => {
       if (filteredTasks.length > 0) {
@@ -112,7 +112,6 @@ function Task() {
               tasks={tasks} 
               onFilteredTasksChange={handleFilteredTasksChange}
               onDateChange={handleDateChange}
-              isfiltered={() => setIsFiltered(true)}
           />
           {isLoaded && <TaskBody
               date={date}

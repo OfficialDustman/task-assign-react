@@ -4,7 +4,7 @@ import TaskCount from "../Ui/TaskCount"
 import { useState, useEffect } from 'react';
 
 
-export default function Summary({ tasks, onFilteredTasksChange, onDateChange, isFiltered }) {
+export default function Summary({ tasks, onFilteredTasksChange, onDateChange }) {
     const [datefilteredTasks, setDateFilteredTasks] = useState([...tasks]);
     const [allTasksCount, setAllTasksCount] = useState(0);
     const [completedTasksCount, setCompletedTasksCount] = useState(0);
@@ -21,7 +21,6 @@ export default function Summary({ tasks, onFilteredTasksChange, onDateChange, is
         console.log(newFilteredTasks);
 
         setDateFilteredTasks(newFilteredTasks);
-        isFiltered();
         onFilteredTasksChange(newFilteredTasks)
         onDateChange(selectDate.toDateString())
     };
