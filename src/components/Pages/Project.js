@@ -1,13 +1,11 @@
 import ProjectHead from "../Layouts/Projects/ProjectHead";
 import Sidebar from "../Layouts/Projects/SideBar";
 import AuthContext from "../../store/auth-context";
-import ProjectContextProvider from "../../store/ProjectProvider";
-import ProjectContext from "../../store/project-context";
 import { useState, useEffect, useContext } from "react";
 import { Card, Container } from 'react-bootstrap';
 import ProjectBody from "../Layouts/Projects/ProjectBody";
 
-function ProjectApp() {
+function Project() {
 
     const [fetchData, setFetchData] = useState(null);
     const [fetchProject, setFetchProject] = useState(null);
@@ -17,7 +15,7 @@ function ProjectApp() {
     const [filteredTasks, setFilteredTasks] = useState([]);
     const [isLoaded, setIsLoaded] = useState(false);
     const [error, setError] = useState(null);
-    const { userData } = useContext(AuthContext)
+    const { userData, projectData, changeProjectData, projectTask, changeProjectTask } = useContext(AuthContext)
 
     function groupTasksByProject(projects, tasks) {
         const groupedTasks = {};
@@ -79,15 +77,27 @@ function ProjectApp() {
 
     useEffect(() => {
         if (fetchData) {
-            setTasks(fetchData.data);
+            changeProjectTask(fetchData.data);
         }
-    }, [fetchData]);
+    }, [fetchData, changeProjectTask]);
 
     useEffect(() => {
         if (fetchProject) {
-            setProjects(fetchProject.data);
+            changeProjectData(fetchProject.data);
         }
-    }, [fetchProject]);
+    }, [fetchProject, changeProjectData]);
+
+    useEffect(() => {
+        if (projectTask.length > 0) {
+            setTasks(projectTask);
+        }
+    }, [projectTask]);
+
+    useEffect(() => {
+        if (projectData.length > 0) {
+            setProjects(projectData);
+        }
+    }, [projectData]);
 
     useEffect(() => {
         if (tasks.length > 0 && projects.length > 0) {
@@ -137,14 +147,6 @@ function ProjectApp() {
             }
         </Card>
     )
-}
-
-function Project() {
-    return (
-        <ProjectContextProvider>
-          <ProjectApp />
-        </ProjectContextProvider>
-      )
 }
 
 export default Project;
