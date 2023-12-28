@@ -13,16 +13,19 @@ export default function Summary({ tasks, onFilteredTasksChange, onDateChange }) 
 
     const handleDateChange = (newDate) => {
         // Filter tasks based on the selected date and update the state
+        const selectDate = new Date(newDate);
+
         const newFilteredTasks = tasks?.filter(task => {
             const taskDate = new Date(task.start_date); // Assuming each task has a 'date' property
-            const selectDate = new Date(newDate);
             console.log(taskDate, selectDate);
             console.log(taskDate.toDateString(), selectDate.toDateString());
             return taskDate.toDateString() === selectDate.toDateString();
         });
+        console.log(newFilteredTasks);
+
         setDateFilteredTasks(newFilteredTasks);
         onFilteredTasksChange(newFilteredTasks)
-        onDateChange(newDate)
+        onDateChange(selectDate)
     };
 
     const taskCountStyle = {
